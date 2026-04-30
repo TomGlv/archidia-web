@@ -3,35 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archidia | Accueil</title>
+    <title>ArchidiA | Architecture & Expertise</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
-</head>
-<body class="bg-white text-gray-900 font-['Inter']">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Force le blanc absolu sur tout ce qui n'est pas une image ou un overlay */
+        :root {
+            --pure-white: #ffffff;
+        }
 
-    <!-- NAVIGATION -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center">
-                <span class="text-xl font-black uppercase tracking-tighter">ARCHI<span class="text-orange-500">DIA</span></span>
-            </div>
-            <div class="hidden md:flex space-x-8 text-[11px] uppercase font-bold tracking-[0.2em]">
-                <a href="index.html" class="text-orange-500">Accueil</a>
-                <a href="projets.html" class="hover:text-orange-500 transition">Nos Projets</a>
-                <a href="agence.html" class="hover:text-orange-500 transition">Qui sommes-nous ?</a>
-                <a href="contact.html" class="bg-gray-900 text-white px-4 py-2 hover:bg-orange-500 transition">Contact</a>
+        html, body, nav, section, footer {
+            background-color: var(--pure-white) !important;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+            .reveal.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    <!-- NAVIGATION : BLANC PUR SANS TRANSPARENCE -->
+    <nav class="fixed w-full z-50 bg-[#ffffff] border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center bg-[#ffffff]">
+            <a href="index.html" class="block bg-[#ffffff]">
+                <img src="Claudia-Paredes/logo-grand.jpg" alt="ArchidiA Logo" class="h-12 w-auto block">
+            </a>
+            <div class="hidden md:flex space-x-10 text-[11px] uppercase font-bold tracking-[0.2em] text-gray-400">
+                <a href="index.html" class="text-orange-500 border-b-2 border-orange-500 pb-1">Accueil</a>
+                <a href="projets.html" class="hover:text-black transition">Réalisations</a>
+                <a href="agence.html" class="hover:text-black transition">L'Agence</a>
+                <a href="contact.html" class="hover:text-orange-600 transition">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <header class="h-screen flex items-center justify-center bg-gray-50 border-b border-gray-100">
-        <div class="text-center px-6">
-            <h1 class="text-6xl md:text-[120px] font-black uppercase leading-[0.8] mb-8 tracking-tighter">Pure<br><span class="text-orange-500 italic font-light lowercase">Lines.</span></h1>
-            <p class="text-gray-400 tracking-[0.5em] uppercase text-[10px] mb-12">Conception & Réalisation Architecturale</p>
-            <a href="projets.html" class="inline-block border-2 border-gray-900 px-10 py-5 uppercase font-bold text-[10px] hover:bg-gray-900 hover:text-white transition">Explorer les projets</a>
+    <!-- HERO SECTION -->
+    <header class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="Maison-Bougival/8.jpg" class="w-full h-full object-cover" alt="Architecture">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-6">
+            <h1 class="text-5xl md:text-7xl font-extrabold uppercase tracking-tighter leading-none mb-6">
+                L'Exigence <br>Architecturale.
+            </h1>
+            <p class="text-[10px] md:text-xs uppercase tracking-[0.6em] font-bold text-orange-400">
+                Conception • Maîtrise d'œuvre • Expertise technique
+            </p>
         </div>
     </header>
 
+    <!-- SECTION MÉTIER : BLANC PUR -->
+    <section class="py-32 px-8 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-24 items-center">
+            <div class="reveal">
+                <h2 class="text-orange-600 font-bold uppercase text-[10px] tracking-[0.3em] mb-8">Votre partenaire technique</h2>
+                <h3 class="text-5xl font-extrabold uppercase tracking-tight mb-8 leading-[1.1] text-black">
+                    De l'idée à la <br>réalisation finale.
+                </h3>
+                <p class="text-gray-600 leading-relaxed text-lg mb-10">
+                    ArchidiA ne se contente pas de dessiner des espaces. Nous pilotons chaque étape technique pour garantir que le projet imaginé soit celui qui vous est livré, sans compromis sur la qualité ou le budget.
+                </p>
+                <a href="projets.html" class="inline-block bg-black text-white px-10 py-5 text-[10px] font-bold uppercase tracking-widest hover:bg-orange-600 transition">
+                    Découvrir les réalisations
+                </a>
+            </div>
+            <div class="reveal shadow-2xl">
+                <img src="Maison-Bougival/2.jpg" class="w-full h-auto object-cover grayscale-[0.2]" alt="Détail technique">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION SERVICES -->
+    <section class="py-24 px-8">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-16">
+            <div class="reveal">
+                <h4 class="text-[11px] font-black uppercase tracking-widest text-black mb-6 border-l-4 border-orange-500 pl-4">01 / Architecture</h4>
+                <p class="text-sm text-gray-500 leading-relaxed">Conception sur mesure, optimisation des volumes et dépôt de permis de construire.</p>
+            </div>
+            <div class="reveal">
+                <h4 class="text-[11px] font-black uppercase tracking-widest text-black mb-6 border-l-4 border-orange-500 pl-4">02 / Maîtrise d'œuvre</h4>
+                <p class="text-sm text-gray-500 leading-relaxed">Gestion rigoureuse du chantier, sélection des artisans et suivi technique quotidien.</p>
+            </div>
+            <div class="reveal">
+                <h4 class="text-[11px] font-black uppercase tracking-widest text-black mb-6 border-l-4 border-orange-500 pl-4">03 / Conseil technique</h4>
+                <p class="text-sm text-gray-500 leading-relaxed">Diagnostics, faisabilité et assistance pour sécuriser vos investissements immobiliers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION CITATION -->
+    <section class="reveal relative h-[60vh] w-full overflow-hidden">
+        <img src="Maison-Bougival/8.jpg" class="w-full h-full object-cover" alt="Vision ArchidiA">
+        <div class="absolute inset-0 bg-black/60 flex items-center justify-center text-center px-6">
+            <div class="max-w-4xl">
+                <blockquote class="text-white text-3xl md:text-4xl font-light italic leading-relaxed mb-12">
+                    "L'architecture est une réponse aux besoins, mais aussi une quête de lumière."
+                </blockquote>
+                <div class="w-20 h-1 bg-orange-500 mx-auto mb-12"></div>
+                <a href="contact.html" class="text-white text-[11px] font-bold uppercase tracking-[0.4em] hover:text-orange-500 transition">
+                    Parlons de votre projet →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER : BLANC PUR -->
+    <footer class="py-20 px-8 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <img src="Claudia-Paredes/logo-grand.jpg" alt="Logo" class="h-10 mb-8 md:mb-0 grayscale hover:grayscale-0 transition">
+            <div class="flex space-x-12 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="index.html" class="hover:text-black transition">Accueil</a>
+                <a href="projets.html" class="hover:text-black transition">Réalisations</a>
+                <a href="agence.html" class="hover:text-black transition">L'Agence</a>
+                <a href="contact.html" class="hover:text-black transition">Contact</a>
+            </div>
+        </div>
+        <div class="text-center mt-16 text-[9px] text-gray-300 uppercase tracking-widest font-medium">
+            © 2026 ArchidiA. Architecture & Ingénierie.
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>

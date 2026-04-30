@@ -3,32 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archidia | Contact</title>
+    <title>ArchidiA | Contact</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-white text-gray-900 font-['Inter']">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+        }
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center"><span class="text-xl font-black uppercase tracking-tighter">ARCHI<span class="text-orange-500">DIA</span></span></div>
-            <div class="hidden md:flex space-x-8 text-[11px] uppercase font-bold tracking-[0.2em]">
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+            .reveal.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        .input-field {
+            border: none;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 0;
+            width: 100%;
+            transition: all 0.3s ease;
+            outline: none;
+            font-size: 0.875rem;
+            background: transparent;
+        }
+
+            .input-field:focus {
+                border-bottom-color: #f97316;
+                padding-left: 8px;
+            }
+
+            .input-field::placeholder {
+                color: #9ca3af;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 10px;
+            }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    <!-- NAVIGATION HARMONISÉE -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="block">
+                <img src="Claudia-Paredes/logo-grand.jpg" alt="ArchidiA Logo" class="h-12 w-auto">
+            </a>
+            <div class="hidden md:flex space-x-10 text-[11px] uppercase font-bold tracking-[0.2em] text-gray-400">
                 <a href="index.html" class="hover:text-orange-500 transition">Accueil</a>
-                <a href="projets.html" class="hover:text-orange-500 transition">Nos Projets</a>
-                <a href="agence.html" class="hover:text-orange-500 transition">Qui sommes-nous ?</a>
-                <a href="contact.html" class="text-orange-500">Contact</a>
+                <a href="projets.html" class="hover:text-orange-500 transition">Réalisations</a>
+                <a href="agence.html" class="hover:text-orange-500 transition">L'Agence</a>
+                <a href="contact.html" class="text-orange-500 border-b-2 border-orange-500 pb-1">Contact</a>
             </div>
         </div>
     </nav>
 
-    <main class="h-screen flex items-center justify-center px-6">
-        <div class="text-center">
-            <h1 class="text-7xl md:text-9xl font-black uppercase mb-8 tracking-tighter">Contact.</h1>
-            <div class="space-y-4">
-                <a href="mailto:contact@archidia.com" class="block text-2xl font-light hover:text-orange-500 transition underline underline-offset-8">contact@archidia.com</a>
-                <p class="text-gray-400 uppercase tracking-widest text-[10px]">Studio Paris — France</p>
+    <!-- CONTENU PRINCIPAL (Copie structure Agence) -->
+    <main class="pt-40 pb-24 px-8 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-24 items-start">
+
+            <!-- COLONNE GAUCHE : PHOTO TECHNIQUE -->
+            <div class="reveal">
+                <div class="relative">
+                    <img src="Maison-Bougival/2.jpg" class="w-full grayscale shadow-2xl border-l-8 border-orange-500" alt="Contact ArchidiA">
+                </div>
+                <div class="mt-12 space-y-8">
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-orange-500 mb-2">Email</h4>
+                        <a href="mailto:claudia.aubert@archidia.fr" class="text-xl font-light hover:text-orange-500 transition">claudia.aubert@archidia.fr</a>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-orange-500 mb-2">Téléphone</h4>
+                            <p class="text-lg font-medium">06.14.60.06.63</p>
+                        </div>
+                        <div>
+                            <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-orange-500 mb-2">Studio</h4>
+                            <p class="text-sm text-gray-500 leading-relaxed font-bold uppercase tracking-wider">
+                                8, av. des Fauvettes<br>78380 Bougival
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- COLONNE DROITE : TITRE ET FORMULAIRE -->
+            <div class="reveal">
+                <h1 class="text-6xl md:text-7xl font-extrabold uppercase tracking-tighter leading-none mb-4">
+                    Parlons <br><span class="text-orange-500 italic">Projet.</span>
+                </h1>
+                <p class="text-gray-400 font-bold mb-12 tracking-[0.3em] uppercase text-[10px]">
+                    Demande de devis & Expertise technique
+                </p>
+
+                <form action="https://formspree.io/f/xrejgbzq" method="POST" class="space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <input type="text" name="name" required placeholder="Votre Nom" class="input-field font-bold uppercase">
+                        <input type="email" name="_replyto" required placeholder="Votre Email" class="input-field font-bold uppercase">
+                    </div>
+                    <input type="text" name="subject" placeholder="Sujet (Rénovation, AMO...)" class="input-field font-bold uppercase">
+                    <textarea name="message" rows="4" required placeholder="Votre Message" class="input-field font-bold uppercase"></textarea>
+
+                    <input type="hidden" name="_subject" value="Nouveau contact ArchidiA">
+
+                    <div class="pt-8">
+                        <button type="submit" class="bg-black text-white px-10 py-5 text-[10px] font-bold uppercase tracking-widest hover:bg-orange-600 transition duration-300">
+                            Envoyer le message
+                        </button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     </main>
 
+    <!-- FOOTER HARMONISÉ -->
+    <footer class="bg-white py-12 px-8 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center opacity-40">
+            <img src="Claudia-Paredes/logo-grand.jpg" alt="Logo" class="h-8 grayscale">
+            <p class="text-[9px] uppercase tracking-widest mt-4 md:mt-0 italic">© 2026 ArchidiA Architecture & Ingénierie.</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>

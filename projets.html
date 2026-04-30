@@ -3,66 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archidia | Nos Projets</title>
+    <title>Archidia | Réalisations</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-white text-gray-900 font-['Inter']">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        .project-card img {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .overlay-text {
+            transition: all 0.4s ease;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center"><span class="text-xl font-black uppercase tracking-tighter">ARCHI<span class="text-orange-500">DIA</span></span></div>
+            <a href="index.html"><img src="Claudia-Paredes/logo-grand.jpg" alt="Logo" class="h-10"></a>
             <div class="hidden md:flex space-x-8 text-[11px] uppercase font-bold tracking-[0.2em]">
                 <a href="index.html" class="hover:text-orange-500 transition">Accueil</a>
-                <a href="projets.html" class="text-orange-500">Nos Projets</a>
-                <a href="agence.html" class="hover:text-orange-500 transition">Qui sommes-nous ?</a>
-                <a href="contact.html" class="bg-gray-900 text-white px-4 py-2 hover:bg-orange-500 transition">Contact</a>
+                <a href="projets.html" class="text-orange-500">Réalisations</a>
+                <a href="agence.html" class="hover:text-orange-500 transition">À Propos</a>
+                <a href="contact.html" class="hover:text-orange-500 transition">Contact</a>
             </div>
         </div>
     </nav>
 
-    <main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
-        <h1 class="text-6xl font-black uppercase mb-20 tracking-tighter">Nos Réalisations</h1>
+    <main class="pt-32 pb-24 px-6 max-w-7xl mx-auto">
+        <header class="mb-24 max-w-3xl">
+            <h1 class="text-7xl font-black uppercase tracking-tighter mb-6">Réalisations</h1>
+            <p class="text-lg text-gray-500 leading-relaxed">
+                De la rénovation d'appartements privés à la gestion de complexes hôteliers,
+                chaque projet est une réponse unique alliant rigueur technique et esthétisme durable.
+            </p>
+        </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-            <!-- New Hall -->
-            <div class="space-y-4 group">
-                <div class="aspect-video bg-black overflow-hidden">
-                    <video controls class="w-full h-full object-cover">
-                        <source src="Appartement-New-Hall/video.mp4" type="video/mp4">
-                    </video>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24 mb-32">
+
+            <!-- PROJET : NEW HALL -->
+            <div class="project-card group space-y-6">
+                <a href="Appartement-New-Hall/1.jpg" class="glightbox" data-gallery="newhall">
+                    <div class="relative overflow-hidden bg-gray-100 aspect-[16/10] shadow-2xl">
+                        <img src="Appartement-New-Hall/1.jpg" class="w-full h-full object-cover" alt="Appartement New Hall">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white border border-white px-8 py-3 text-xs uppercase tracking-[0.3em] font-bold">Explorer la galerie</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="hidden">
+                    <a href="Appartement-New-Hall/2.jpg" class="glightbox" data-gallery="newhall"></a>
+                    <a href="Appartement-New-Hall/3.jpg" class="glightbox" data-gallery="newhall"></a>
+                    <a href="Appartement-New-Hall/4.jpg" class="glightbox" data-gallery="newhall"></a>
+                    <a href="Appartement-New-Hall/5.jpg" class="glightbox" data-gallery="newhall"></a>
+                    <a href="Appartement-New-Hall/6.jpg" class="glightbox" data-gallery="newhall"></a>
+                    <a href="Appartement-New-Hall/7.jpg" class="glightbox" data-gallery="newhall"></a>
+                    <a href="Appartement-New-Hall/8.jpg" class="glightbox" data-gallery="newhall"></a>
+                    <a href="Appartement-New-Hall/9.jpg" class="glightbox" data-gallery="newhall"></a>
+                    <a href="Appartement-New-Hall/10.jpg" class="glightbox" data-gallery="newhall"></a>
+                    <a href="Appartement-New-Hall/11.jpg" class="glightbox" data-gallery="newhall"></a>
+                    <a href="Appartement-New-Hall/12.jpg" class="glightbox" data-gallery="newhall"></a>
+                    <a href="Appartement-New-Hall/13.jpg" class="glightbox" data-gallery="newhall"></a>
+                    <a href="Appartement-New-Hall/14.jpg" class="glightbox" data-gallery="newhall"></a>
+                    <a href="Appartement-New-Hall/15.jpg" class="glightbox" data-gallery="newhall"></a>
+                    <a href="Appartement-New-Hall/video.mp4" class="glightbox" data-gallery="newhall"></a>
                 </div>
-                <h3 class="text-2xl font-bold uppercase group-hover:text-orange-500 transition">Appartement New Hall</h3>
-                <p class="text-xs text-gray-400 uppercase tracking-widest">Paris — 15 Photos</p>
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-[10px] bg-orange-500 text-white px-2 py-1 font-bold uppercase tracking-widest">Rénovation</span>
+                        <span class="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Paris</span>
+                    </div>
+                    <h3 class="text-3xl font-black uppercase tracking-tight">Appartement New Hall</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed max-w-md">
+                        Une transformation radicale privilégiant la lumière naturelle et des matériaux nobles pour créer un espace de vie fluide et contemporain.
+                    </p>
+                </div>
             </div>
 
-            <!-- Bougival -->
-            <div class="space-y-4 group">
-                <div class="aspect-video overflow-hidden">
-                    <img src="Maison-Bougival/2.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            <!-- PROJET : MAISON DENISE -->
+            <div class="project-card group space-y-6">
+                <a href="Maison-Denise/14.jpg" class="glightbox" data-gallery="denise">
+                    <div class="relative overflow-hidden bg-gray-100 aspect-[16/10] shadow-2xl">
+                        <img src="Maison-Denise/14.jpg" class="w-full h-full object-cover" alt="Maison Denise">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white border border-white px-8 py-3 text-xs uppercase tracking-[0.3em] font-bold">Explorer la galerie</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="hidden">
+                    <a href="Maison-Denise/0.jpg" class="glightbox" data-gallery="denise"></a>
+                    <a href="Maison-Denise/2.jpg" class="glightbox" data-gallery="denise"></a>
+                    <a href="Maison-Denise/3.jpg" class="glightbox" data-gallery="denise"></a>
+                    <a href="Maison-Denise/4.jpg" class="glightbox" data-gallery="denise"></a>
+                    <a href="Maison-Denise/5.png" class="glightbox" data-gallery="denise"></a>
+                    <a href="Maison-Denise/6.png" class="glightbox" data-gallery="denise"></a>
+                    <a href="Maison-Denise/7.jpg" class="glightbox" data-gallery="denise"></a>
+                    <a href="Maison-Denise/8.jpg" class="glightbox" data-gallery="denise"></a>
+                    <a href="Maison-Denise/9.jpg" class="glightbox" data-gallery="denise"></a>
+                    <a href="Maison-Denise/11.jpg" class="glightbox" data-gallery="denise"></a>
+                    <a href="Maison-Denise/12.jpg" class="glightbox" data-gallery="denise"></a>
+                    <a href="Maison-Denise/13.jpg" class="glightbox" data-gallery="denise"></a>
+                    <a href="Maison-Denise/15.jpg" class="glightbox" data-gallery="denise"></a>
                 </div>
-                <h3 class="text-2xl font-bold uppercase group-hover:text-orange-500 transition">Maison Bougival</h3>
-                <p class="text-xs text-gray-400 uppercase tracking-widest">Yvelines — 11 Photos</p>
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-[10px] bg-gray-900 text-white px-2 py-1 font-bold uppercase tracking-widest">Extension</span>
+                        <span class="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Île-de-France</span>
+                    </div>
+                    <h3 class="text-3xl font-black uppercase tracking-tight">Maison Denise</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed max-w-md">
+                        Dialogue entre l'existant et une extension moderne. Un travail minutieux sur les volumes pour harmoniser espace familial et jardin.
+                    </p>
+                </div>
             </div>
 
-            <!-- Denise -->
-            <div class="space-y-4 group">
-                <div class="aspect-video overflow-hidden">
-                    <img src="Maison-Denise/14.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            <!-- PROJET : MAISON BOUGIVAL -->
+            <div class="project-card group space-y-6">
+                <a href="Maison-Bougival/2.jpg" class="glightbox" data-gallery="bougival">
+                    <div class="relative overflow-hidden bg-gray-100 aspect-[16/10] shadow-2xl">
+                        <img src="Maison-Bougival/2.jpg" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white border border-white px-8 py-3 text-xs uppercase tracking-[0.3em] font-bold">Explorer la galerie</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="hidden">
+                    <a href="Maison-Bougival/1.jpg" class="glightbox" data-gallery="bougival"></a>
+                    <a href="Maison-Bougival/3.jpg" class="glightbox" data-gallery="bougival"></a>
+                    <a href="Maison-Bougival/4.jpg" class="glightbox" data-gallery="bougival"></a>
+                    <a href="Maison-Bougival/5.jpg" class="glightbox" data-gallery="bougival"></a>
+                    <a href="Maison-Bougival/6.jpg" class="glightbox" data-gallery="bougival"></a>
+                    <a href="Maison-Bougival/7.jpg" class="glightbox" data-gallery="bougival"></a>
+                    <a href="Maison-Bougival/8.jpg" class="glightbox" data-gallery="bougival"></a>
+                    <a href="Maison-Bougival/9.jpg" class="glightbox" data-gallery="bougival"></a>
+                    <a href="Maison-Bougival/10.jpg" class="glightbox" data-gallery="bougival"></a>
+                    <a href="Maison-Bougival/11.jpg" class="glightbox" data-gallery="bougival"></a>
                 </div>
-                <h3 class="text-2xl font-bold uppercase group-hover:text-orange-500 transition">Maison Denise</h3>
-                <p class="text-xs text-gray-400 uppercase tracking-widest">Normandie — Série complète</p>
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-[10px] bg-orange-500 text-white px-2 py-1 font-bold uppercase tracking-widest">Construction</span>
+                        <span class="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Bougival</span>
+                    </div>
+                    <h3 class="text-3xl font-black uppercase tracking-tight">Maison Bougival</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed max-w-md">
+                        Projet architectural axé sur la transparence et l'ouverture, créant une connexion permanente entre l'intérieur et le paysage boisé.
+                    </p>
+                </div>
             </div>
 
-            <!-- Varengeville -->
-            <div class="space-y-4 group">
-                <div class="aspect-video overflow-hidden">
-                    <img src="Maison-Varengeville/5.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            <!-- PROJET : MAISON VARENGEVILLE -->
+            <div class="project-card group space-y-6">
+                <a href="Maison-Varengeville/5.jpg" class="glightbox" data-gallery="varengeville">
+                    <div class="relative overflow-hidden bg-gray-100 aspect-[16/10] shadow-2xl">
+                        <img src="Maison-Varengeville/5.jpg" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white border border-white px-8 py-3 text-xs uppercase tracking-[0.3em] font-bold">Explorer la galerie</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="hidden">
+                    <a href="Maison-Varengeville/1.jpg" class="glightbox" data-gallery="varengeville"></a>
+                    <a href="Maison-Varengeville/2.jpg" class="glightbox" data-gallery="varengeville"></a>
+                    <a href="Maison-Varengeville/3.jpg" class="glightbox" data-gallery="varengeville"></a>
+                    <a href="Maison-Varengeville/4.jpg" class="glightbox" data-gallery="varengeville"></a>
+                    <a href="Maison-Varengeville/6.jpg" class="glightbox" data-gallery="varengeville"></a>
+                    <a href="Maison-Varengeville/7.jpg" class="glightbox" data-gallery="varengeville"></a>
+                    <a href="Maison-Varengeville/8.jpg" class="glightbox" data-gallery="varengeville"></a>
+                    <a href="Maison-Varengeville/9.jpg" class="glightbox" data-gallery="varengeville"></a>
                 </div>
-                <h3 class="text-2xl font-bold uppercase group-hover:text-orange-500 transition">Maison Varengeville</h3>
-                <p class="text-xs text-gray-400 uppercase tracking-widest">Seine-Maritime — 9 Photos</p>
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-[10px] bg-gray-900 text-white px-2 py-1 font-bold uppercase tracking-widest">AMO / Architecture</span>
+                        <span class="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Normandie</span>
+                    </div>
+                    <h3 class="text-3xl font-black uppercase tracking-tight">Maison Varengeville</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed max-w-md">
+                        Réinterprétation des codes locaux normands pour une demeure élégante, mêlant confort moderne et respect de l'environnement littoral.
+                    </p>
+                </div>
             </div>
+
         </div>
+
+        <!-- SECTION RÉFÉRENCES (Plus épurée) -->
+        <section class="border-t border-gray-100 pt-20">
+            <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-orange-500 mb-16">Autres Références Notables</h2>
+            <div class="grid md:grid-cols-3 gap-16">
+                <div class="space-y-6">
+                    <h4 class="font-bold uppercase text-[11px] tracking-widest border-b border-gray-100 pb-4">Hôtellerie</h4>
+                    <ul class="text-sm space-y-4 text-gray-500">
+                        <li><strong class="text-gray-900">Hôtel Hilton Beyrouth</strong><br>Direction artistique et exécution.</li>
+                        <li><strong class="text-gray-900">Novotel Le Havre</strong><br>Conduite de travaux gros œuvre.</li>
+                        <li><strong class="text-gray-900">Hôtel Melia La Défense</strong><br>Management de projet complexe.</li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold uppercase text-[11px] tracking-widest border-b border-gray-100 pb-4">Tertiaire & Public</h4>
+                    <ul class="text-sm space-y-4 text-gray-500">
+                        <li><strong class="text-gray-900">Immeuble Mondovi Paris</strong><br>Rénovation lourde de bureaux.</li>
+                        <li><strong class="text-gray-900">Basalte - La Défense</strong><br>Suivi opérationnel et AMO.</li>
+                        <li><strong class="text-gray-900">Centre Aquatique</strong><br>Expertise technique et mise aux normes.</li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold uppercase text-[11px] tracking-widest border-b border-gray-100 pb-4">Services ArchidiA</h4>
+                    <ul class="text-sm space-y-4 text-gray-500 italic leading-relaxed">
+                        <li>Études de faisabilité et diagnostic technique.</li>
+                        <li>Conception architecturale et design intérieur.</li>
+                        <li>Suivi de chantier et maîtrise d'œuvre d'exécution.</li>
+                        <li>Accompagnement AMO (Assistance Maîtrise d'Ouvrage).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <!-- FOOTER SIMPLE -->
+    <footer class="py-12 border-t border-gray-100 text-center">
+        <p class="text-[10px] text-gray-400 uppercase tracking-widest">&copy; 2026 ArchidiA Architecture. Tous droits réservés.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        const lightbox = GLightbox({
+        selector: '.glightbox',
+        loop: true,
+        autoplayVideos: true,
+        touchNavigation: true
+        });
+    </script>
 </body>
 </html>
