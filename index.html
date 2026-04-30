@@ -3,30 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prototypes - Archidia</title>
-    <!-- Correction ici : l'URL est propre désormais -->
+    <title>Archidia | Accueil</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-slate-50 flex items-center justify-center min-h-screen p-4">
+<body class="bg-white text-gray-900 font-['Inter']">
 
-    <div class="text-center bg-white p-10 rounded-2xl shadow-xl max-w-lg border-t-4 border-orange-500">
-        <h1 class="text-2xl font-bold text-slate-800 mb-2 uppercase tracking-widest">Projets Archidia</h1>
-        <p class="text-slate-500 mb-8 italic">Veuillez choisir une direction artistique :</p>
-
-        <div class="grid gap-4">
-            <!-- Option 1 -->
-            <a href="./style-minimaliste/index.html" class="block p-4 border-2 border-slate-100 hover:border-orange-500 rounded-xl transition-all group text-left">
-                <span class="block text-lg font-semibold text-slate-700 group-hover:text-orange-500">Option 1 : Minimaliste & Luxe</span>
-                <span class="text-sm text-slate-400">Typographie Serif, mise en page aérée, accents orange discrets.</span>
-            </a>
-
-            <!-- Option 2 -->
-            <a href="./style-moderne/index.html" class="block p-4 border-2 border-slate-100 hover:border-orange-500 rounded-xl transition-all group text-left">
-                <span class="block text-lg font-semibold text-slate-700 group-hover:text-orange-500">Option 2 : Moderne & Technique</span>
-                <span class="text-sm text-slate-400">Typographie Sans-Serif, contrastes forts, style dynamique.</span>
-            </a>
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <span class="text-xl font-black uppercase tracking-tighter">ARCHI<span class="text-orange-500">DIA</span></span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-[11px] uppercase font-bold tracking-[0.2em]">
+                <a href="index.html" class="text-orange-500">Accueil</a>
+                <a href="projets.html" class="hover:text-orange-500 transition">Nos Projets</a>
+                <a href="agence.html" class="hover:text-orange-500 transition">Qui sommes-nous ?</a>
+                <a href="contact.html" class="bg-gray-900 text-white px-4 py-2 hover:bg-orange-500 transition">Contact</a>
+            </div>
         </div>
-    </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="h-screen flex items-center justify-center bg-gray-50 border-b border-gray-100">
+        <div class="text-center px-6">
+            <h1 class="text-6xl md:text-9xl font-black uppercase leading-[0.8] mb-8">Architecture<br><span class="text-orange-500 italic font-light lowercase">moderne.</span></h1>
+            <p class="text-gray-400 tracking-[0.5em] uppercase text-xs mb-12">Studio de conception & réalisation</p>
+            <a href="projets.html" class="inline-block border-2 border-gray-900 px-10 py-5 uppercase font-bold text-xs hover:bg-gray-900 hover:text-white transition">Voir les réalisations</a>
+        </div>
+    </header>
+
+    <!-- FOOTER -->
+    <footer class="py-10 text-center text-[10px] uppercase tracking-[0.3em] text-gray-400">
+        © 2026 Archidia Studio — Paris
+    </footer>
 
 </body>
 </html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archidia | Nos Projets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-900 font-['Inter']">
+
+    <!-- NAV (Même que index) -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center"><span class="text-xl font-black uppercase tracking-tighter">ARCHI<span class="text-orange-500">DIA</span></span></div>
+            <div class="hidden md:flex space-x-8 text-[11px] uppercase font-bold tracking-[0.2em]">
+                <a href="index.html" class="hover:text-orange-500 transition">Accueil</a>
+                <a href="projets.html" class="text-orange-500">Nos Projets</a>
+                <a href="agence.html" class="hover:text-orange-500 transition">Qui sommes-nous ?</a>
+                <a href="contact.html" class="bg-gray-900 text-white px-4 py-2 hover:bg-orange-500 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+        <h1 class="text-6xl font-black uppercase mb-20 tracking-tighter">Nos Projets</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <!-- New All -->
+            <div class="group">
+                <div class="aspect-video overflow-hidden bg-gray-100 mb-6">
+                    <img src="appartement-new-all/1.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                </div>
+                <h2 class="text-2xl font-bold uppercase">Appartement New All</h2>
+                <p class="text-orange-500 text-xs font-bold uppercase tracking-widest mt-2">15 Photos & Vidéo</p>
+            </div>
+
+            <!-- Bougival -->
+            <div class="group">
+                <div class="aspect-video overflow-hidden bg-gray-100 mb-6">
+                    <img src="maison-bougival/1.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                </div>
+                <h2 class="text-2xl font-bold uppercase">Maison Bougival</h2>
+                <p class="text-orange-500 text-xs font-bold uppercase tracking-widest mt-2">Série Architecturale</p>
+            </div>
+
+            <!-- Denises -->
+            <div class="group">
+                <div class="aspect-video overflow-hidden bg-gray-100 mb-6">
+                    <img src="maison-denises/0.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                </div>
+                <h2 class="text-2xl font-bold uppercase">Maison Denises</h2>
+                <p class="text-orange-500 text-xs font-bold uppercase tracking-widest mt-2">Rénovation Complète</p>
+            </div>
+
+            <!-- Varengeville -->
+            <div class="group">
+                <div class="aspect-video overflow-hidden bg-gray-100 mb-6">
+                    <img src="maison-varengeville/1.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                </div>
+                <h2 class="text-2xl font-bold uppercase">Maison Varengeville</h2>
+                <p class="text-orange-500 text-xs font-bold uppercase tracking-widest mt-2">Extension Contemporaine</p>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
