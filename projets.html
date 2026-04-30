@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archidia | Nos Projets</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
 <body class="bg-white text-gray-900 font-['Inter']">
 
-    <!-- NAV (Même que index) -->
     <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center"><span class="text-xl font-black uppercase tracking-tighter">ARCHI<span class="text-orange-500">DIA</span></span></div>
@@ -23,43 +21,45 @@
     </nav>
 
     <main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
-        <h1 class="text-6xl font-black uppercase mb-20 tracking-tighter">Nos Projets</h1>
+        <h1 class="text-6xl font-black uppercase mb-20 tracking-tighter">Nos Réalisations</h1>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-            <!-- New All -->
-            <div class="group">
-                <div class="aspect-video overflow-hidden bg-gray-100 mb-6">
-                    <img src="appartement-new-all/1.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            <!-- New Hall -->
+            <div class="space-y-4 group">
+                <div class="aspect-video bg-black overflow-hidden">
+                    <video controls class="w-full h-full object-cover">
+                        <source src="Appartement-New-Hall/video.mp4" type="video/mp4">
+                    </video>
                 </div>
-                <h2 class="text-2xl font-bold uppercase">Appartement New All</h2>
-                <p class="text-orange-500 text-xs font-bold uppercase tracking-widest mt-2">15 Photos & Vidéo</p>
+                <h3 class="text-2xl font-bold uppercase group-hover:text-orange-500 transition">Appartement New Hall</h3>
+                <p class="text-xs text-gray-400 uppercase tracking-widest">Paris — 15 Photos</p>
             </div>
 
             <!-- Bougival -->
-            <div class="group">
-                <div class="aspect-video overflow-hidden bg-gray-100 mb-6">
-                    <img src="maison-bougival/1.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            <div class="space-y-4 group">
+                <div class="aspect-video overflow-hidden">
+                    <img src="Maison-Bougival/2.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
                 </div>
-                <h2 class="text-2xl font-bold uppercase">Maison Bougival</h2>
-                <p class="text-orange-500 text-xs font-bold uppercase tracking-widest mt-2">Série Architecturale</p>
+                <h3 class="text-2xl font-bold uppercase group-hover:text-orange-500 transition">Maison Bougival</h3>
+                <p class="text-xs text-gray-400 uppercase tracking-widest">Yvelines — 11 Photos</p>
             </div>
 
-            <!-- Denises -->
-            <div class="group">
-                <div class="aspect-video overflow-hidden bg-gray-100 mb-6">
-                    <img src="maison-denises/0.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            <!-- Denise -->
+            <div class="space-y-4 group">
+                <div class="aspect-video overflow-hidden">
+                    <img src="Maison-Denise/14.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
                 </div>
-                <h2 class="text-2xl font-bold uppercase">Maison Denises</h2>
-                <p class="text-orange-500 text-xs font-bold uppercase tracking-widest mt-2">Rénovation Complète</p>
+                <h3 class="text-2xl font-bold uppercase group-hover:text-orange-500 transition">Maison Denise</h3>
+                <p class="text-xs text-gray-400 uppercase tracking-widest">Normandie — Série complète</p>
             </div>
 
             <!-- Varengeville -->
-            <div class="group">
-                <div class="aspect-video overflow-hidden bg-gray-100 mb-6">
-                    <img src="maison-varengeville/1.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            <div class="space-y-4 group">
+                <div class="aspect-video overflow-hidden">
+                    <img src="Maison-Varengeville/5.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
                 </div>
-                <h2 class="text-2xl font-bold uppercase">Maison Varengeville</h2>
-                <p class="text-orange-500 text-xs font-bold uppercase tracking-widest mt-2">Extension Contemporaine</p>
+                <h3 class="text-2xl font-bold uppercase group-hover:text-orange-500 transition">Maison Varengeville</h3>
+                <p class="text-xs text-gray-400 uppercase tracking-widest">Seine-Maritime — 9 Photos</p>
             </div>
         </div>
     </main>
