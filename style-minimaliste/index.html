@@ -1,54 +1,133 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archidia - Minimaliste</title>
-
-    <!-- Correction des liens : suppression des [] et () -->
+    <title>Archidia | Portfolio Architecture</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Helvetica', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
-        h1, h2 {
-            font-family: 'Playfair Display', serif;
+        .project-title {
+            letter-spacing: -0.05em;
         }
     </style>
 </head>
-<body class="bg-white text-[#4B5563]">
-    <nav class="p-8 flex justify-between items-center border-b border-gray-50">
-        <div class="text-xl tracking-[0.3em] font-light uppercase">ARCHI<span class="text-[#F97316]">DIA</span></div>
-        <div class="space-x-12 text-xs uppercase tracking-widest">
-            <a href="#" class="hover:text-[#F97316] transition">Projets</a>
-            <a href="#" class="hover:text-[#F97316] transition">Contact</a>
-            <a href="../index.html" class="text-gray-400 hover:text-black transition">← Retour</a>
+<body class="bg-white text-gray-900">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="logo.png" alt="" class="h-8 w-auto mr-2" onerror="this.style.display='none'">
+                <span class="text-xl font-black uppercase tracking-tighter">ARCHI<span class="text-orange-500">DIA</span></span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-[10px] uppercase font-bold tracking-widest">
+                <a href="#new-all" class="hover:text-orange-500 transition">New All</a>
+                <a href="#bougival" class="hover:text-orange-500 transition">Bougival</a>
+                <a href="#denises" class="hover:text-orange-500 transition">Denises</a>
+                <a href="#varengeville" class="hover:text-orange-500 transition">Varengeville</a>
+                <a href="#contact" class="bg-orange-500 text-white px-4 py-2 hover:bg-gray-900 transition">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <main class="max-w-5xl mx-auto py-24 px-6">
-        <h1 class="text-5xl mb-20 italic font-light text-gray-800">L'espace au service de l'émotion.</h1>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
-            <!-- Projet 1 -->
-            <div>
-                <div class="overflow-hidden bg-gray-100">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6199f7d009" class="w-full grayscale hover:grayscale-0 transition duration-1000 scale-100 hover:scale-105">
-                </div>
-                <h3 class="mt-6 text-sm uppercase tracking-widest italic">Résidence L'Horizon — 2024</h3>
-            </div>
-
-            <!-- Projet 2 -->
-            <div class="md:mt-32">
-                <div class="overflow-hidden bg-gray-100">
-                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d" class="w-full grayscale hover:grayscale-0 transition duration-1000 scale-100 hover:scale-105">
-                </div>
-                <h3 class="mt-6 text-sm uppercase tracking-widest italic">Pavillon de Verre — 2023</h3>
-            </div>
+    <!-- HERO SECTION -->
+    <header class="h-[70vh] flex items-center justify-center bg-gray-50 border-b border-gray-100">
+        <div class="text-center">
+            <h1 class="text-7xl md:text-9xl font-black project-title uppercase mb-4">Portfolio</h1>
+            <p class="text-orange-500 font-bold uppercase tracking-[0.5em] text-sm">Archidia Studio Architecture</p>
         </div>
+    </header>
+
+    <!-- PROJETS -->
+    <main class="max-w-7xl mx-auto px-6 py-20">
+
+        <!-- 1. APPARTEMENT NEW ALL -->
+        <section id="new-all" class="mb-40">
+            <div class="flex justify-between items-baseline mb-10">
+                <h2 class="text-5xl font-black uppercase project-title">Appartement New All</h2>
+                <span class="text-orange-500 font-bold italic">15 Photos + Vidéo</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="md:col-span-2 aspect-video bg-black">
+                    <video controls class="w-full h-full object-cover shadow-2xl">
+                        <source src="appartement-new-all/video.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <img src="appartement-new-all/1.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500" alt="">
+                    <img src="appartement-new-all/2.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500" alt="">
+                </div>
+            </div>
+            <p class="mt-6 text-gray-400 text-sm max-w-xl italic">Exploration d'un espace urbain minimaliste et lumineux.</p>
+        </section>
+
+        <!-- 2. MAISON BOUGIVAL -->
+        <section id="bougival" class="mb-40">
+            <div class="flex justify-between items-baseline mb-10">
+                <h2 class="text-5xl font-black uppercase project-title">Maison Bougival</h2>
+                <span class="text-orange-500 font-bold italic">11 Photos</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="md:col-span-2">
+                    <img src="maison-bougival/designer.jpg" class="w-full h-[600px] object-cover border-l-8 border-orange-500" alt="Designer Context">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 md:col-span-2 gap-4">
+                    <img src="maison-bougival/1.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition" alt="">
+                    <img src="maison-bougival/2.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition" alt="">
+                    <img src="maison-bougival/3.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition" alt="">
+                    <img src="maison-bougival/4.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. MAISON DENISES -->
+        <section id="denises" class="mb-40">
+            <div class="flex justify-between items-baseline mb-10">
+                <h2 class="text-5xl font-black uppercase project-title">Maison Denises</h2>
+                <span class="text-orange-500 font-bold italic">Série 0-18</span>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2">
+                <!-- On affiche une sélection représentative -->
+                <img src="maison-denises/0.jpg" class="w-full h-64 object-cover" alt="">
+                <img src="maison-denises/1.jpg" class="w-full h-64 object-cover" alt="">
+                <img src="maison-denises/5.jpg" class="w-full h-64 object-cover" alt="">
+                <img src="maison-denises/10.jpg" class="w-full h-64 object-cover" alt="">
+                <img src="maison-denises/18.jpg" class="w-full h-64 object-cover border-r-4 border-orange-500" alt="">
+            </div>
+        </section>
+
+        <!-- 4. MAISON VARENGEVILLE -->
+        <section id="varengeville" class="mb-40">
+            <div class="flex justify-between items-baseline mb-10">
+                <h2 class="text-5xl font-black uppercase project-title">Maison Varengeville</h2>
+                <span class="text-orange-500 font-bold italic">9 Photos</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <img src="maison-varengeville/1.jpg" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition" alt="">
+                <img src="maison-varengeville/2.jpg" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition" alt="">
+                <img src="maison-varengeville/3.jpg" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition" alt="">
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="py-20 border-t-2 border-gray-900 text-center">
+            <h2 class="text-6xl font-black uppercase mb-8 project-title">Travaillons<br>ensemble</h2>
+            <a href="mailto:contact@archidia.com" class="inline-block bg-orange-500 text-white px-12 py-5 font-black uppercase tracking-widest hover:bg-gray-900 transition-all shadow-xl">
+                Envoyer un Email
+            </a>
+        </section>
+
     </main>
+
+    <!-- FOOTER -->
+    <footer class="py-10 text-center text-[10px] uppercase tracking-[0.3em] text-gray-400">
+        © 2026 Archidia Studio Architecture — Tous droits réservés
+    </footer>
+
 </body>
 </html>
