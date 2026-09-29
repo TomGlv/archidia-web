@@ -1,0 +1,138 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const pillars = [
+  {
+    idx: "01",
+    title: "AMO / MOE",
+    text: "Piloter un projet de bureaux, d'hôtellerie ou de logements collectifs pour le compte d'un maître d'ouvrage, de la conception à la réception.",
+    href: "/amo-moe",
+  },
+  {
+    idx: "02",
+    title: "Diagnostics & Copropriétés",
+    text: "Diagnostics techniques (DAE, DTG) et accompagnement des copropriétés.",
+    href: "/diagnostics",
+  },
+  {
+    idx: "03",
+    title: "Maisons individuelles",
+    text: "Construire, agrandir ou rénover une maison, avec la rigueur d'un suivi de chantier de A à Z.",
+    href: "/maisons-individuelles",
+  },
+  {
+    idx: "04",
+    title: "Autonomie",
+    text: "Adapter un logement pour bien vieillir chez soi, avec l'accompagnement MaPrimeAdapt'.",
+    href: "/autonomie",
+  },
+];
+---
+
+<Layout
+  title="ArchidiA — Votre projet, notre exigence"
+  description="ArchidiA, agence d'architecture et d'assistance à maîtrise d'ouvrage : AMO/MOE, diagnostics et copropriétés, maisons individuelles, adaptation des logements. De la conception à la réception, avec exigence."
+>
+  <!-- HERO -->
+  <header class="relative flex h-[78vh] min-h-[440px] items-center justify-center overflow-hidden bg-[#20221f]">
+    <img
+      src="/images/hero-home.jpg"
+      alt="Réalisation architecturale ArchidiA"
+      class="absolute inset-0 h-full w-full object-cover opacity-70"
+      fetchpriority="high"
+      width="1920"
+      height="1080"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/25"></div>
+    <div class="relative z-10 mx-auto max-w-4xl px-6 text-center">
+      <h1 class="mb-6 text-4xl font-extrabold uppercase leading-[1.05] tracking-tight text-white drop-shadow-lg sm:text-5xl md:text-7xl">
+        Votre projet,<br />notre exigence.
+      </h1>
+      <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-300 md:text-xs">
+        AMO · MOE · <span class="text-accent">Expertise technique</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- NOTRE APPROCHE -->
+  <section class="mx-auto max-w-3xl px-6 py-24 text-center md:py-32">
+    <p class="reveal mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+      Notre approche
+    </p>
+    <p class="reveal text-xl leading-relaxed text-gray-700 md:text-2xl">
+      Chez <span class="font-semibold text-black">Archidi<span class="text-accent">A</span></span>,
+      l'agence accompagne chaque maître d'ouvrage avec la même rigueur, du premier
+      trait jusqu'à la réception des travaux.
+    </p>
+    <p class="reveal mt-6 text-base leading-relaxed text-gray-500 md:text-lg">
+      AMO, diagnostics, accompagnement des copropriétés et maisons individuelles,
+      adaptation des logements seniors — une pluralité de missions portées par une
+      même conviction : chaque projet, professionnel ou particulier, répond à la même
+      exigence de qualité.
+    </p>
+    <a
+      href="/realisations"
+      class="reveal mt-10 inline-block bg-black px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-white transition hover:bg-accent"
+    >
+      Découvrir nos réalisations →
+    </a>
+  </section>
+
+  <!-- PILIERS / SERVICES -->
+  <section class="border-t border-gray-100 px-6 py-20 md:px-8">
+    <div class="mx-auto grid max-w-7xl gap-12 sm:grid-cols-2 lg:grid-cols-4">
+      {pillars.map((p) => (
+        <a href={p.href} class="reveal group block">
+          <span class="mb-5 block border-l-4 border-accent pl-4 text-[11px] font-black uppercase tracking-widest text-black">
+            {p.idx} / {p.title}
+          </span>
+          <p class="pl-4 text-sm leading-relaxed text-gray-500">{p.text}</p>
+          <span class="mt-4 inline-block pl-4 text-[10px] font-bold uppercase tracking-widest text-accent transition group-hover:translate-x-1">
+            Découvrir →
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- CITATION -->
+  <section class="reveal relative h-[60vh] min-h-[380px] w-full overflow-hidden">
+    <img
+      src="/images/home-intro.jpg"
+      alt=""
+      class="h-full w-full object-cover"
+      loading="lazy"
+      width="1200"
+      height="800"
+    />
+    <div class="absolute inset-0 flex items-center justify-center bg-black/65 px-6 text-center">
+      <div class="max-w-3xl">
+        <blockquote class="text-2xl font-light italic leading-relaxed text-white md:text-3xl">
+          « Je conçois l'architecture comme un dialogue permanent entre l'intérieur
+          et l'extérieur, où chaque espace se façonne autour de celui qui l'habite,
+          et où la lumière est une quête perpétuelle. »
+        </blockquote>
+        <div class="mx-auto my-10 h-1 w-20 bg-accent"></div>
+        <a
+          href="/contact"
+          class="text-[11px] font-bold uppercase tracking-[0.35em] text-white transition hover:text-accent"
+        >
+          Parlons de votre projet →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA CONTACT -->
+  <section class="mx-auto max-w-7xl px-6 py-24 text-center md:px-8">
+    <h2 class="reveal text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
+      Un projet en tête ?
+    </h2>
+    <a
+      href="/contact"
+      class="reveal mt-8 inline-block border-2 border-black px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-black transition hover:bg-black hover:text-white"
+    >
+      Parlons de votre projet →
+    </a>
+  </section>
+</Layout>

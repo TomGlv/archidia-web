@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /merci
+Disallow: /mentions-legales
+
+Sitemap: https://archidia.fr/sitemap-index.xml

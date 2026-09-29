@@ -1,0 +1,181 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const steps = [
+  {
+    idx: "01",
+    title: "Diagnostic du logement",
+    text: "Visite à domicile, repérage pièce par pièce des points de vigilance et échange sur les besoins et les habitudes de vie.",
+  },
+  {
+    idx: "02",
+    title: "Plan d'aménagement",
+    text: "Propositions d'aménagement adaptées, et orientation vers les dispositifs d'aide existants (MaPrimeAdapt', crédit d'impôt, aides des caisses de retraite) selon votre situation.",
+  },
+  {
+    idx: "03",
+    title: "Suivi de chantier",
+    text: "Coordination des intervenants, contrôle de la qualité d'exécution et réception des travaux aux côtés du bénéficiaire.",
+  },
+];
+
+const residences = [
+  {
+    name: "Résidence senior Montana",
+    place: "Dijon · 2024",
+    text: "Résidence senior avec des appartements du studio à 3 pièces et de nombreux espaces communs : salon avec cheminée, salon de thé, atelier artistique, restaurant gastronomique, piscine et spa, salle de gym, bibliothèque, cinéma, espace beauté. Appartements avec douche de plain-pied et cuisine équipée. Mission de livraison réalisée pour Delpha Conseil.",
+  },
+  {
+    name: "Résidence senior Montana",
+    place: "Compiègne · 2022",
+    text: "Résidence senior avec des appartements du studio à 3 pièces et de nombreux espaces communs : salon avec cheminée, salon de thé, atelier artistique, restaurant gastronomique, piscine et spa, salle de gym, bibliothèque, cinéma, espace beauté. Appartements avec douche de plain-pied et cuisine équipée. Mission de livraison des espaces communs réalisée pour Delpha Conseil.",
+  },
+];
+---
+
+<Layout
+  title="Autonomie — Adaptation du logement"
+  description="Adaptation du logement senior pour le maintien à domicile : diagnostic, accessibilité et suivi des travaux, avec l'accompagnement MaPrimeAdapt'. Bien vieillir chez soi."
+>
+  <!-- HERO -->
+  <header class="relative flex h-[72vh] min-h-[420px] items-center justify-center overflow-hidden bg-[#20221f]">
+    <img
+      src="/images/home-intro.jpg"
+      alt="Intérieur de logement adapté et lumineux"
+      class="absolute inset-0 h-full w-full object-cover opacity-70"
+      fetchpriority="high"
+      width="1920"
+      height="1080"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/30"></div>
+    <div class="relative z-10 mx-auto max-w-4xl px-6 text-center">
+      <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.35em] text-accent">
+        Archidi<span class="text-white">A</span> Autonomie
+      </p>
+      <h1 class="mb-6 text-4xl font-extrabold uppercase leading-[1.08] tracking-tight text-white drop-shadow-lg sm:text-5xl md:text-6xl">
+        Adapter le logement,<br />préserver l'autonomie
+      </h1>
+      <p class="text-xs font-bold uppercase tracking-[0.3em] text-gray-300 md:text-sm">
+        Diagnostic · Conseil aménagement · Suivi de travaux
+      </p>
+    </div>
+  </header>
+
+  <!-- INTRODUCTION -->
+  <section class="mx-auto max-w-3xl px-6 py-20 text-center md:py-24">
+    <p class="reveal text-xl leading-relaxed text-gray-700 md:text-2xl md:leading-relaxed">
+      Chez <span class="font-semibold text-black">Archidi<span class="text-accent">A</span></span>,
+      nous accompagnons les familles qui souhaitent que leurs proches continuent à
+      <span class="font-semibold text-black">bien vivre chez eux</span>, avec la même
+      exigence technique que pour nos missions de maîtrise d'œuvre et d'assistance à
+      maîtrise d'ouvrage.
+    </p>
+  </section>
+
+  <!-- LES RÉSIDENCES SENIORS -->
+  <section class="border-t border-gray-100 bg-gray-50 px-6 py-20 md:px-8 md:py-24">
+    <div class="mx-auto max-w-6xl">
+      <p class="reveal mb-4 text-center text-[11px] font-bold uppercase tracking-[0.3em] text-accent">
+        Notre expérience
+      </p>
+      <h2 class="reveal mb-14 text-center text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
+        Les résidences seniors
+      </h2>
+      <div class="grid gap-8 md:grid-cols-2">
+        {residences.map((r) => (
+          <article class="reveal flex flex-col border-t-4 border-accent bg-white p-8 shadow-sm md:p-10">
+            <h3 class="text-2xl font-extrabold uppercase tracking-tight text-black">
+              {r.name}
+            </h3>
+            <p class="mt-2 text-sm font-bold uppercase tracking-[0.2em] text-accent">
+              {r.place}
+            </p>
+            <p class="mt-6 text-base leading-relaxed text-gray-600 md:text-lg md:leading-relaxed">
+              {r.text}
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- POUR LES PARTICULIERS / ÉTAPES -->
+  <section class="px-6 py-20 md:px-8 md:py-24">
+    <div class="mx-auto max-w-6xl">
+      <p class="reveal mb-4 text-center text-[11px] font-bold uppercase tracking-[0.3em] text-accent">
+        Pour les particuliers
+      </p>
+      <h2 class="reveal mb-14 text-center text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
+        Ce que nous pouvons faire<br class="hidden sm:block" /> dans votre logement
+      </h2>
+      <div class="grid gap-10 md:grid-cols-3">
+        {steps.map((s) => (
+          <div class="reveal">
+            <span class="block text-5xl font-extrabold text-accent">{s.idx}</span>
+            <h3 class="mt-4 text-xl font-extrabold uppercase tracking-tight text-black">
+              {s.title}
+            </h3>
+            <p class="mt-4 text-base leading-relaxed text-gray-600 md:text-lg md:leading-relaxed">
+              {s.text}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MAPRIMEADAPT' -->
+  <section class="border-t border-gray-100 bg-gray-50 px-6 py-20 md:px-8 md:py-24">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="reveal mb-4 text-[11px] font-bold uppercase tracking-[0.3em] text-accent">
+        Les aides possibles
+      </p>
+      <p class="reveal text-xl leading-relaxed text-gray-700 md:text-2xl md:leading-relaxed">
+        Selon votre âge, votre niveau de ressources et votre situation d'autonomie,
+        plusieurs dispositifs d'aide peuvent exister — dont
+        <span class="font-semibold text-black">MaPrimeAdapt'</span>. Que vous soyez
+        éligible ou non à ces aides, <span class="font-semibold text-black">Archidi<span class="text-accent">A</span></span>
+        vous accompagne dans votre projet d'adaptation.
+      </p>
+      <p class="reveal mt-8 text-base leading-relaxed text-gray-500 md:text-lg">
+        Un premier échange téléphonique, gratuit, permet de faire le point sur votre
+        situation et d'envisager une visite conseil à domicile.
+      </p>
+      <a
+        href="/contact"
+        class="reveal mt-10 inline-block bg-black px-10 py-5 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-accent"
+      >
+        Être recontacté →
+      </a>
+    </div>
+  </section>
+
+  <!-- CITATION -->
+  <section class="reveal relative w-full overflow-hidden bg-[#20221f] px-6 py-24 text-center md:py-28">
+    <!-- PHOTO: portrait / ambiance chaleureuse d'un logement adapté possible en fond -->
+    <div class="mx-auto max-w-3xl">
+      <blockquote class="text-2xl font-light italic leading-relaxed text-white md:text-3xl md:leading-relaxed">
+        « Adapter un logement, c'est permettre à chacun de continuer à habiter
+        pleinement chez soi. »
+      </blockquote>
+      <div class="mx-auto my-10 h-1 w-20 bg-accent"></div>
+    </div>
+  </section>
+
+  <!-- CTA CONTACT -->
+  <section class="mx-auto max-w-7xl px-6 py-20 text-center md:px-8 md:py-24">
+    <h2 class="reveal text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
+      Un projet d'adaptation ?
+    </h2>
+    <p class="reveal mx-auto mt-6 max-w-xl text-base leading-relaxed text-gray-500 md:text-lg">
+      Parlons ensemble de votre situation et des solutions qui permettront à vos
+      proches de bien vieillir chez eux.
+    </p>
+    <a
+      href="/contact"
+      class="reveal mt-10 inline-block border-2 border-black px-10 py-5 text-xs font-bold uppercase tracking-widest text-black transition hover:bg-black hover:text-white"
+    >
+      Parlons de votre projet →
+    </a>
+  </section>
+</Layout>

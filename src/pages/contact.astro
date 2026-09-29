@@ -1,0 +1,131 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const coords = [
+  { label: "Adresse", value: "8, av. des Fauvettes<br/>78380 Bougival" },
+  { label: "Téléphone", value: '<a href="tel:+33614600663" class="hover:text-accent transition">06 14 60 06 63</a>' },
+  { label: "Email", value: '<a href="mailto:claudia.aubert@archidia.fr" class="hover:text-accent transition">claudia.aubert@archidia.fr</a>' },
+  { label: "Zone d'intervention", value: "Île-de-France" },
+];
+---
+
+<Layout
+  title="Contact — Parlons de votre projet"
+  description="Contactez ArchidiA (Bougival, Île-de-France) pour votre projet : AMO/MOE, diagnostics et copropriétés, maison individuelle ou adaptation du logement. Réponse sous 48 h."
+>
+  <!-- Bandeau titre -->
+  <section class="border-b border-gray-100 px-6 py-20 text-center md:px-8 md:py-28">
+    <p class="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">Contact</p>
+    <h1 class="text-4xl font-extrabold uppercase tracking-tight text-black md:text-6xl">
+      Parlons de votre projet
+    </h1>
+    <p class="mx-auto mt-6 max-w-2xl text-sm uppercase tracking-[0.15em] text-gray-400">
+      AMO · Diagnostics &amp; Copropriétés · Maisons individuelles · Autonomie
+    </p>
+  </section>
+
+  <section class="mx-auto grid max-w-7xl gap-16 px-6 py-20 md:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
+    <!-- Coordonnées -->
+    <div class="reveal">
+      <h2 class="mb-10 text-2xl font-extrabold uppercase tracking-tight text-black">
+        Coordonnées
+      </h2>
+      <dl class="space-y-8">
+        {coords.map((c) => (
+          <div class="border-l-4 border-accent pl-5">
+            <dt class="text-[10px] font-black uppercase tracking-widest text-gray-400">{c.label}</dt>
+            <dd class="mt-1 text-base text-gray-800" set:html={c.value} />
+          </div>
+        ))}
+      </dl>
+
+      <div class="mt-12 flex gap-6 text-[11px] font-bold uppercase tracking-widest text-gray-400">
+        <a href="https://www.linkedin.com/in/claudia-aubert-paredes-90141a16" target="_blank" rel="noopener" class="transition hover:text-accent">LinkedIn</a>
+        <a href="https://www.instagram.com/archidia_architecture" target="_blank" rel="noopener" class="transition hover:text-accent">Instagram</a>
+      </div>
+    </div>
+
+    <!-- Formulaire -->
+    <div class="reveal">
+      <div class="border border-gray-200 p-8 md:p-10">
+        <h2 class="mb-8 text-xl font-extrabold uppercase tracking-tight text-black">
+          Parlons projet
+        </h2>
+
+        <!--
+          Formulaire Netlify Forms.
+          - `data-netlify="true"` : détecté automatiquement au déploiement Netlify.
+          - `bot-field` : piège anti-robots (honeypot) invisible.
+          - `data-netlify-recaptcha` : protection reCAPTCHA (case « Je ne suis pas un robot »).
+          - Redirection vers /merci après envoi.
+          - Les emails partent vers claudia.aubert@archidia.fr : à configurer dans
+            Netlify → Forms → Notifications (voir DEPLOIEMENT.md).
+        -->
+        <form
+          name="contact"
+          method="POST"
+          action="/merci"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          data-netlify-recaptcha="true"
+          class="space-y-6"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden">
+            <label>Ne pas remplir : <input name="bot-field" /></label>
+          </p>
+
+          <div>
+            <label for="nom" class="mb-2 block text-[11px] font-bold uppercase tracking-widest text-gray-500">Nom</label>
+            <input
+              type="text" id="nom" name="nom" required
+              placeholder="Votre nom"
+              class="w-full border border-gray-300 px-4 py-3 text-sm outline-none transition focus:border-accent"
+            />
+          </div>
+
+          <div>
+            <label for="contact-info" class="mb-2 block text-[11px] font-bold uppercase tracking-widest text-gray-500">Téléphone ou email</label>
+            <input
+              type="text" id="contact-info" name="telephone_ou_email" required
+              placeholder="Comment vous recontacter ?"
+              class="w-full border border-gray-300 px-4 py-3 text-sm outline-none transition focus:border-accent"
+            />
+          </div>
+
+          <div>
+            <label for="type-projet" class="mb-2 block text-[11px] font-bold uppercase tracking-widest text-gray-500">Type de projet</label>
+            <select
+              id="type-projet" name="type_de_projet"
+              class="w-full border border-gray-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-accent"
+            >
+              <option>AMO / MOE</option>
+              <option>Diagnostics &amp; Copropriétés</option>
+              <option>Maison individuelle</option>
+              <option>Autonomie</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message" class="mb-2 block text-[11px] font-bold uppercase tracking-widest text-gray-500">Votre message</label>
+            <textarea
+              id="message" name="message" rows="5" required
+              placeholder="Décrivez brièvement votre projet"
+              class="w-full border border-gray-300 px-4 py-3 text-sm outline-none transition focus:border-accent"
+            ></textarea>
+          </div>
+
+          <div data-netlify-recaptcha="true"></div>
+
+          <button
+            type="submit"
+            class="w-full bg-black px-8 py-4 text-[11px] font-bold uppercase tracking-widest text-white transition hover:bg-accent md:w-auto"
+          >
+            Envoyer le message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,318 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Références PPPT / DTG copropriétés
+const coproprietes = [
+  {
+    title: "Copropriété Serrurier",
+    meta: "Paris 19 · 2026",
+    text: "Diagnostic Technique Global (DTG) pour la copropriété Serrurier, construite en 1968. 58 lots dont 32 appartements.",
+  },
+  {
+    title: "Copropriété Championnière",
+    meta: "Paris 13 · 2026",
+    text: "Projet de Plan Pluriannuel de Travaux (PPT) pour la copropriété Championnière, construite en 1935. 47 lots dont 45 appartements.",
+  },
+  {
+    title: "Copropriété Poliveau",
+    meta: "Paris 5 · 2026",
+    text: "Projet de Plan Pluriannuel de Travaux (PPT) pour la copropriété Poliveau, construite en 1965. 45 lots, tous appartements.",
+  },
+  {
+    title: "Copropriété La Jonchère",
+    meta: "5 180 m² · Bougival · 2025",
+    text: "Diagnostic Technique Global (DTG) pour la copropriété La Jonchère, un ensemble de 7 bâtiments construit en 1982/1983 — environ 5 180 m², 219 lots dont 58 appartements.",
+  },
+  {
+    title: "Copropriété Entrepreneurs",
+    meta: "Paris 15 · 2025",
+    text: "Diagnostic Technique Global (DTG) pour la copropriété Entrepreneurs, construite avant 1948. 66 lots dont 34 appartements.",
+  },
+  {
+    title: "Copropriété Le Concerto",
+    meta: "Franconville · 2024",
+    text: "Audit architectural pour la copropriété Le Concerto, un ensemble de 2 bâtiments construit en 1930. 156 lots dont 76 appartements.",
+  },
+  {
+    title: "Copropriété Ferrus",
+    meta: "Paris 14 · 2024",
+    text: "Projet de Plan Pluriannuel de Travaux (PPT) pour la copropriété Ferrus, construite en 1965. 288 lots dont 102 logements.",
+  },
+];
+
+// Références DAE – Maisons individuelles / petits collectifs
+const dae = [
+  {
+    title: "Maison Anna Jacquin",
+    meta: "180 m² · Boulogne-Billancourt · 2024",
+    text: "Diagnostic architectural et énergétique (DAE) sur une maison individuelle de 180 m² construite en 1930, pour le compte d'un particulier.",
+  },
+  {
+    title: "Maison Nungesser et Coli",
+    meta: "135 m² · Sèvres · 2024",
+    text: "Diagnostic architectural et énergétique (DAE) sur une maison individuelle de 135 m² construite en 1830, pour le compte d'un particulier.",
+  },
+  {
+    title: "Maison Maréchal de Lattre de Tassigny",
+    meta: "175 m² · Maisons-Alfort · 2024",
+    text: "Diagnostic architectural et énergétique (DAE) sur une maison individuelle de 175 m² construite en 1900, pour le compte d'un particulier.",
+  },
+  {
+    title: "Maison Valentine Jacquet",
+    meta: "175 m² · Vanves · 2024",
+    text: "Diagnostic architectural et énergétique (DAE) sur une maison individuelle de 175 m² construite en 1926, pour le compte d'un particulier.",
+  },
+  {
+    title: "Maison Paul Doumer",
+    meta: "≈120 m² · Rueil-Malmaison · 2024",
+    text: "Diagnostic architectural et énergétique (DAE) sur une maison individuelle d'environ 120 m² construite entre 1948 et 1974, pour le compte d'un particulier.",
+  },
+  {
+    title: "Maison Marquis de Coriolis",
+    meta: "200 m² · Rueil-Malmaison · 2023",
+    text: "Audit et diagnostic architectural et énergétique (DAE) sur une maison individuelle de 200 m² construite avant 1949, pour le compte d'un particulier.",
+  },
+  {
+    title: "Maison Marnes",
+    meta: "150 m² · Ville-d'Avray · 2023",
+    text: "Diagnostic architectural et énergétique (DAE) sur une maison individuelle de 150 m² construite en 1995, pour le compte d'un particulier.",
+  },
+  {
+    title: "Maison Albert 1er",
+    meta: "150 m² · Rueil-Malmaison · 2023",
+    text: "Diagnostic architectural et énergétique (DAE) et étude de faisabilité sur une maison individuelle de 150 m² construite avant 1949, pour le compte d'un particulier.",
+  },
+  {
+    title: "Maison Ferrié",
+    meta: "106 m² · Saint-Maur-des-Fossés · 2023",
+    text: "Diagnostic architectural et énergétique (DAE) sur une maison individuelle de 106 m² construite en 1971, pour le compte d'un particulier.",
+  },
+  {
+    title: "Maison Bons Raisins",
+    meta: "200 m² + studios · Rueil-Malmaison · 2023",
+    text: "Diagnostic architectural et énergétique (DAE) sur une maison individuelle de 200 m² (avec 100 m² de sous-sol et des studios de 35/40 m²) construite vers 1965, pour le compte d'un particulier.",
+  },
+  {
+    title: "Petit collectif rue des Rosiers",
+    meta: "500 m² · Rueil-Malmaison · 2023",
+    text: "Audit et diagnostic architectural et énergétique (DAE) pour la copropriété rue des Rosiers, un petit collectif de 500 m² construit en 1973.",
+  },
+  {
+    title: "Petit collectif Paul Vaillant Couturier",
+    meta: "145 m² · Nanterre · 2022",
+    text: "Diagnostic architectural et énergétique (DAE) et étude de faisabilité sur un petit collectif de 3 logements (145 m²) construit avant 1921, pour le compte d'une SCI.",
+  },
+];
+
+// Tarification des missions — base tarif journalier 800 € HT
+const tarifs = [
+  {
+    mission: "Diagnostic architectural & énergétique (DAE)",
+    cible: "Maison individuelle / petit collectif",
+    base: "Sur devis · tarif journalier 800 € HT",
+  },
+  {
+    mission: "Diagnostic Technique Global (DTG)",
+    cible: "Copropriété",
+    base: "Sur devis · tarif journalier 800 € HT",
+  },
+  {
+    mission: "Projet de Plan Pluriannuel de Travaux (PPPT)",
+    cible: "Copropriété",
+    base: "Sur devis · tarif journalier 800 € HT",
+  },
+  {
+    mission: "Étude de faisabilité",
+    cible: "Particulier / SCI",
+    base: "Sur devis · tarif journalier 800 € HT",
+  },
+];
+
+// Certifications & référencements
+const certifications = [
+  "Inscrit à l'Ordre des architectes",
+  "CoachCopro",
+  "Pass'Réno Habitat",
+  "Adhérent Architectes & Particuliers",
+];
+---
+
+<Layout
+  title="Diagnostics & Copropriétés"
+  description="Diagnostic technique global (DTG), projet de plan pluriannuel de travaux (PPPT) et diagnostic architectural et énergétique (DAE) : ArchidiA accompagne copropriétés et particuliers."
+>
+  <!-- HERO -->
+  <header class="relative flex h-[52vh] min-h-[360px] items-end overflow-hidden bg-[#20221f]">
+    <img
+      src="/images/hero-home.jpg"
+      alt="Diagnostics techniques et copropriétés ArchidiA"
+      class="absolute inset-0 h-full w-full object-cover opacity-60"
+      fetchpriority="high"
+      width="1920"
+      height="1080"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20"></div>
+    <div class="relative z-10 mx-auto w-full max-w-7xl px-6 pb-14 md:px-8">
+      <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.35em] text-accent">
+        Diagnostics & Copropriétés
+      </p>
+      <h1 class="max-w-3xl text-3xl font-extrabold uppercase leading-[1.1] tracking-tight text-white drop-shadow-lg sm:text-4xl md:text-5xl">
+        Diagnostics techniques & accompagnement des copropriétés
+      </h1>
+      <p class="mt-5 text-[10px] font-bold uppercase tracking-[0.4em] text-gray-300 md:text-xs">
+        Copropriétés · <span class="text-accent">DTG</span> · <span class="text-accent">DAE</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="mx-auto max-w-3xl px-6 py-20 text-center md:py-28">
+    <p class="reveal mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+      Notre expertise
+    </p>
+    <p class="reveal text-lg leading-relaxed text-gray-700 md:text-xl">
+      Formée à la rénovation énergétique, <span class="font-semibold text-black">Claudia Aubert-Paredes</span>
+      a élargi son champ d'intervention aux diagnostics techniques et à l'accompagnement des copropriétés.
+    </p>
+    <p class="reveal mt-6 text-base leading-relaxed text-gray-500 md:text-lg">
+      <span class="font-semibold text-black">Archidi<span class="text-accent">A</span></span> accompagne
+      les copropriétés et leurs syndics sur des missions de Diagnostic Technique Global (DTG) et de Projet
+      de Plan Pluriannuel de Travaux (PPPT), ainsi que les maisons individuelles et les petits collectifs
+      sur des missions de diagnostics architecturaux et énergétiques (DAE).
+    </p>
+  </section>
+
+  <!-- PPPT / DTG COPROPRIÉTÉS -->
+  <section class="border-t border-gray-100 px-6 py-20 md:px-8">
+    <div class="mx-auto max-w-7xl">
+      <h2 class="reveal mb-12 text-2xl font-extrabold uppercase tracking-tight text-black md:text-3xl">
+        <span class="text-accent">PPPT / DTG</span> copropriétés
+      </h2>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {coproprietes.map((c) => (
+          <article class="reveal group border-l-4 border-accent bg-gray-50 p-6 transition hover:bg-white hover:shadow-lg">
+            <h3 class="text-sm font-black uppercase tracking-wide text-black">{c.title}</h3>
+            <p class="mt-1 text-[10px] font-bold uppercase tracking-widest text-accent">{c.meta}</p>
+            <p class="mt-4 text-sm leading-relaxed text-gray-500">{c.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DAE – MAISONS INDIVIDUELLES / PETITS COLLECTIFS -->
+  <section class="border-t border-gray-100 bg-[#20221f] px-6 py-20 text-white md:px-8">
+    <div class="mx-auto max-w-7xl">
+      <h2 class="reveal mb-12 text-2xl font-extrabold uppercase tracking-tight text-white md:text-3xl">
+        <span class="text-accent">DAE</span> — Maisons individuelles / petits collectifs
+      </h2>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {dae.map((d) => (
+          <article class="reveal border-l-4 border-accent bg-white/5 p-6 transition hover:bg-white/10">
+            <h3 class="text-sm font-black uppercase tracking-wide text-white">{d.title}</h3>
+            <p class="mt-1 text-[10px] font-bold uppercase tracking-widest text-accent">{d.meta}</p>
+            <p class="mt-4 text-sm leading-relaxed text-gray-300">{d.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HONORAIRES / TARIFICATION -->
+  <section class="mx-auto max-w-7xl px-6 py-20 md:px-8 md:py-24">
+    <p class="reveal mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+      Honoraires
+    </p>
+    <h2 class="reveal text-2xl font-extrabold uppercase tracking-tight text-black md:text-3xl">
+      Tarification des missions
+    </h2>
+    <p class="reveal mt-6 max-w-3xl text-base leading-relaxed text-gray-500 md:text-lg">
+      Nos honoraires pour les diagnostics et études de faisabilité sont établis sur la base d'un
+      <span class="font-semibold text-black">tarif journalier de 800 € HT</span>, dont le montant final
+      est déterminé selon le type de bien et la taille du bien.
+    </p>
+
+    <div class="reveal mt-10 overflow-x-auto">
+      <table class="w-full min-w-[560px] border-collapse text-left text-sm">
+        <thead>
+          <tr class="bg-[#20221f] text-white">
+            <th class="border border-gray-200 px-5 py-4 text-[10px] font-bold uppercase tracking-widest">
+              Mission
+            </th>
+            <th class="border border-gray-200 px-5 py-4 text-[10px] font-bold uppercase tracking-widest">
+              Bien concerné
+            </th>
+            <th class="border border-gray-200 px-5 py-4 text-[10px] font-bold uppercase tracking-widest">
+              Base d'honoraires
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {tarifs.map((t, i) => (
+            <tr class:list={[i % 2 === 1 && "bg-gray-50"]}>
+              <td class="border border-gray-200 px-5 py-4 font-semibold text-black">{t.mission}</td>
+              <td class="border border-gray-200 px-5 py-4 text-gray-500">{t.cible}</td>
+              <td class="border border-gray-200 px-5 py-4 text-gray-500">{t.base}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-4 text-xs italic text-gray-400">
+      Montants indicatifs, établis sur devis selon la nature et la taille du bien.
+    </p>
+  </section>
+
+  <!-- CERTIFICATIONS & QUALIFICATIONS -->
+  <section class="border-t border-gray-100 bg-gray-50 px-6 py-20 md:px-8 md:py-24">
+    <div class="mx-auto grid max-w-7xl gap-8 md:grid-cols-2">
+      <div class="reveal rounded-md border border-gray-200 bg-white p-8">
+        <p class="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+          Certification / référencement
+        </p>
+        <ul class="space-y-4">
+          {certifications.map((c) => (
+            <li class="flex items-start gap-3 text-sm font-semibold text-black">
+              <span class="mt-1.5 block h-1.5 w-1.5 flex-none bg-accent"></span>
+              {c}
+            </li>
+          ))}
+        </ul>
+        <!-- PHOTO: logos Ordre des architectes / CoachCopro / Pass'Réno Habitat / Architectes & Particuliers -->
+      </div>
+
+      <div class="reveal rounded-md border border-gray-200 bg-white p-8">
+        <p class="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+          Partenaires & qualifications
+        </p>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 text-sm font-semibold text-black">
+            <span class="mt-1.5 block h-1.5 w-1.5 flex-none bg-accent"></span>
+            Tribu Énergie
+          </li>
+          <li class="flex items-start gap-3 text-sm font-semibold text-black">
+            <span class="mt-1.5 block h-1.5 w-1.5 flex-none bg-accent"></span>
+            Qualifications OPQIBI et RGE
+          </li>
+        </ul>
+        <!-- PHOTO: logo partenaire Tribu Énergie -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA CONTACT -->
+  <section class="mx-auto max-w-7xl px-6 py-24 text-center md:px-8">
+    <p class="reveal mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+      Un diagnostic à réaliser ?
+    </p>
+    <h2 class="reveal text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
+      Parlons de votre projet
+    </h2>
+    <a
+      href="/contact"
+      class="reveal mt-8 inline-block border-2 border-black px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-black transition hover:bg-black hover:text-white"
+    >
+      Parlons de votre projet →
+    </a>
+  </section>
+</Layout>

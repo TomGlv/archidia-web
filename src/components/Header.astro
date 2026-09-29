@@ -1,0 +1,81 @@
+---
+const links = [
+  { href: "/", label: "Accueil" },
+  { href: "/amo-moe", label: "AMO / MOE" },
+  { href: "/diagnostics", label: "Diagnostics" },
+  { href: "/maisons-individuelles", label: "Maisons" },
+  { href: "/autonomie", label: "Autonomie" },
+  { href: "/realisations", label: "Réalisations" },
+  { href: "/a-propos", label: "À propos" },
+  { href: "/contact", label: "Contact" },
+];
+
+// Chemin courant pour surligner l'onglet actif
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isActive = (href: string) =>
+  href === "/" ? path === "/" : path === href || path.startsWith(href + "/");
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
+    <a href="/" class="flex items-center" aria-label="ArchidiA — accueil">
+      <img src="/images/logo.jpg" alt="ArchidiA" class="h-11 w-auto" width="140" height="44" />
+    </a>
+
+    <!-- Menu desktop -->
+    <nav class="hidden items-center gap-7 text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400 lg:flex">
+      {links.map((l) => (
+        <a
+          href={l.href}
+          class:list={[
+            "transition hover:text-black",
+            isActive(l.href) && "border-b-2 border-accent pb-1 text-accent",
+          ]}
+        >
+          {l.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Bouton hamburger mobile -->
+    <button
+      id="menu-toggle"
+      class="inline-flex flex-col gap-[5px] p-2 lg:hidden"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="block h-0.5 w-6 bg-black transition"></span>
+      <span class="block h-0.5 w-6 bg-black transition"></span>
+      <span class="block h-0.5 w-6 bg-black transition"></span>
+    </button>
+  </div>
+
+  <!-- Menu mobile -->
+  <nav
+    id="mobile-menu"
+    class="hidden border-t border-gray-100 bg-white px-6 pb-6 pt-2 lg:hidden"
+  >
+    {links.map((l) => (
+      <a
+        href={l.href}
+        class:list={[
+          "block border-b border-gray-50 py-3 text-sm font-bold uppercase tracking-[0.15em] transition",
+          isActive(l.href) ? "text-accent" : "text-gray-500 hover:text-black",
+        ]}
+      >
+        {l.label}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  toggle?.addEventListener("click", () => {
+    const open = menu?.classList.toggle("hidden") === false;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+  });
+</script>

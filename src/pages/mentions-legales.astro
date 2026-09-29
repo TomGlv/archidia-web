@@ -1,0 +1,81 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const blocks = [
+  {
+    title: "Éditeur du site",
+    rows: [
+      ["Raison sociale", "ArchidiA — SASU d'architecture"],
+      ["Représentante", "Claudia Aubert-Paredes, architecte"],
+      ["Adresse", "8, av. des Fauvettes, 78380 Bougival"],
+      ["Téléphone", "06 14 60 06 63"],
+      ["Email", "claudia.aubert@archidia.fr"],
+    ],
+  },
+  {
+    title: "Architecte",
+    rows: [
+      ["Ordre des architectes", "Inscrite au tableau de l'Ordre des architectes d'Île-de-France depuis le 10/09/2019 — n° S21000"],
+      ["Assurance", "Police d'assurance MAF n° 168786/B"],
+    ],
+  },
+  {
+    title: "Informations légales",
+    rows: [
+      ["RCS / SIREN", "RCS Versailles n° 878 483 239"],
+      ["APE", "7111Z"],
+      ["Capital social", "5 000 €"],
+      ["N° TVA intracommunautaire", "FR81 878 483 239"],
+    ],
+  },
+  {
+    title: "Hébergement",
+    rows: [
+      ["Hébergeur", "Netlify, Inc."],
+      ["Adresse", "512 2nd Street, Suite 200, San Francisco, CA 94107, USA"],
+    ],
+  },
+];
+---
+
+<Layout
+  title="Mentions légales — ArchidiA"
+  description="Mentions légales du site ArchidiA — architecture et assistance à maîtrise d'ouvrage, Bougival (78)."
+  noindex={true}
+>
+  <section class="mx-auto max-w-3xl px-6 py-20 md:py-28">
+    <p class="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">Informations légales</p>
+    <h1 class="text-3xl font-extrabold uppercase tracking-tight text-black md:text-5xl">
+      Mentions légales
+    </h1>
+
+    <div class="mt-14 space-y-12">
+      {blocks.map((b) => (
+        <div class="reveal">
+          <h2 class="mb-5 border-l-4 border-accent pl-4 text-sm font-black uppercase tracking-widest text-black">
+            {b.title}
+          </h2>
+          <dl class="divide-y divide-gray-100">
+            {b.rows.map(([k, v]) => (
+              <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-[220px_1fr] sm:gap-4">
+                <dt class="text-[11px] font-bold uppercase tracking-widest text-gray-400">{k}</dt>
+                <dd class="text-sm text-gray-700">{v}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      ))}
+
+      <div class="reveal">
+        <h2 class="mb-5 border-l-4 border-accent pl-4 text-sm font-black uppercase tracking-widest text-black">
+          Propriété intellectuelle
+        </h2>
+        <p class="text-sm leading-relaxed text-gray-600">
+          L'ensemble des contenus (textes, images, photographies, logo) présents sur
+          ce site est la propriété exclusive d'ArchidiA, sauf mention contraire. Toute
+          reproduction, même partielle, est interdite sans autorisation préalable.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

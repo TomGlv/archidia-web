@@ -1,0 +1,178 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const stats = [
+  { value: "+10 ans", label: "En agences d'architecture" },
+  { value: "10 ans", label: "Management de projet chez Artelia" },
+  { value: "2019", label: "Création d'ArchidiA" },
+  { value: "15+", label: "Missions AMO livrées depuis 2019" },
+];
+
+const timeline = [
+  {
+    period: "1996 – 2007",
+    text: "Je débute dans de grands cabinets d'architecture, sur des projets d'envergure en France et à l'international — notamment l'agence Arquitectonica au Pérou, l'agence Jean-Paul Viguier à Paris, et l'agence Claude Montfort Architectes, sur plusieurs opérations dont l'Hôtel Hilton de Beyrouth et la rénovation du terminal 1 pour Aéroports de Paris.",
+  },
+  {
+    period: "2007 – 2017",
+    text: "Je passe dix ans chez Artelia en management de projet / cheffe de projet, sur des opérations tertiaires et hôtelières de grande envergure : la Tour Generali à La Défense (90 000 m², R+50), l'immeuble Basalte pour la salle des marchés de la Société Générale, l'Hôtel Melia (369 chambres), l'aménagement des sièges parisiens de La Poste.",
+  },
+  {
+    period: "2019",
+    text: "J'ai créé ArchidiA, fort de mon expérience professionnelle de plus de 20 ans et du désir de partager mon savoir-faire au sein de ma propre structure.",
+  },
+  {
+    period: "En parallèle",
+    text: "Je me forme à la rénovation énergétique et élargis mon champ d'intervention au diagnostic énergétique et à l'accompagnement des copropriétés.",
+  },
+  {
+    period: "Depuis 2026",
+    text: "J'étends cette expertise à l'adaptation du logement et à l'accompagnement des personnes âgées, via l'offre Autonomie.",
+  },
+];
+---
+
+<Layout
+  title="À propos — Claudia Aubert-Paredes"
+  description="Claudia Aubert-Paredes, architecte fondatrice d'ArchidiA : plus de 20 ans d'expérience en agences et en management de projet. Parcours, formation et engagements."
+>
+  <!-- EN-TÊTE -->
+  <section class="border-b border-gray-100 px-6 py-20 md:px-8 md:py-24">
+    <div class="mx-auto max-w-7xl">
+      <p class="reveal mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+        À propos
+      </p>
+      <h1 class="reveal max-w-4xl text-4xl font-extrabold uppercase leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl">
+        Claudia<br />Aubert-Paredes
+      </h1>
+      <p class="reveal mt-6 max-w-2xl text-base font-medium uppercase tracking-wide text-gray-500 md:text-lg">
+        Architecture et assistance à la maîtrise d'ouvrage
+      </p>
+    </div>
+  </section>
+
+  <!-- BIO : PORTRAIT + TEXTE -->
+  <section class="px-6 py-20 md:px-8 md:py-24">
+    <div class="mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-12 lg:gap-16">
+      <!-- Portrait -->
+      <div class="reveal lg:col-span-5">
+        <img
+          src="/images/claudia.jpg"
+          alt="Claudia Aubert-Paredes, architecte fondatrice d'ArchidiA"
+          class="w-full object-cover shadow-sm"
+          width="900"
+          height="1125"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Texte -->
+      <div class="reveal lg:col-span-7">
+        <h2 class="mb-8 text-2xl font-extrabold uppercase tracking-tight text-black md:text-3xl">
+          Parcours
+        </h2>
+        <div class="space-y-6 text-base leading-relaxed text-gray-600 md:text-lg">
+          <p>
+            Architecte, fondatrice d'Archidi<span class="text-accent">A</span>,
+            société d'architecture et d'assistance à maîtrise d'ouvrage créée en
+            novembre 2019. Diplômée de l'Université Ricardo Palma (Lima, Pérou),
+            titulaire d'un CEA (Certificat d'Études Approfondies) en Architecture
+            Urbaine, Architecture et Urbanisme de l'École nationale supérieure
+            d'architecture de Paris-Belleville (2002-2003).
+          </p>
+          <p>
+            Habilitée à exercer le métier d'architecte en mon nom propre par le
+            Ministère de la Culture, je suis inscrite à l'Ordre des architectes
+            d'Île-de-France sous le n° 086701.
+          </p>
+          <p>
+            Membre du réseau d'architectes « Architectes et Particuliers », je suis
+            agréée et référencée par PasseRenoHabitat et CoachCopro.
+          </p>
+        </div>
+
+        <!-- Chiffres clés -->
+        <dl class="mt-10 grid grid-cols-2 gap-6 border-t border-gray-100 pt-8 sm:grid-cols-4">
+          {stats.map((s) => (
+            <div>
+              <dt class="text-2xl font-extrabold tracking-tight text-accent md:text-3xl">
+                {s.value}
+              </dt>
+              <dd class="mt-1 text-[11px] font-medium uppercase leading-snug tracking-wide text-gray-500">
+                {s.label}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE / FRISE CHRONOLOGIQUE -->
+  <section class="border-t border-gray-100 bg-[#fafafa] px-6 py-20 md:px-8 md:py-24">
+    <div class="mx-auto max-w-4xl">
+      <p class="reveal mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+        Un parcours d'exigence
+      </p>
+      <h2 class="reveal mb-14 text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
+        Parcours professionnel
+      </h2>
+
+      <ol class="relative ml-2 border-l-2 border-gray-200 md:ml-4">
+        {timeline.map((item) => (
+          <li class="reveal relative pb-12 pl-8 last:pb-0 md:pl-12">
+            <!-- Puce accent -->
+            <span
+              class="absolute -left-[9px] top-1 h-4 w-4 rounded-full border-2 border-white bg-accent ring-4 ring-accent/15"
+              aria-hidden="true"
+            ></span>
+            <p class="mb-2 text-xs font-black uppercase tracking-widest text-accent">
+              {item.period}
+            </p>
+            <p class="text-base leading-relaxed text-gray-700 md:text-lg">
+              {item.text}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- CITATION -->
+  <section class="reveal relative h-[60vh] min-h-[380px] w-full overflow-hidden">
+    <img
+      src="/images/home-intro.jpg"
+      alt=""
+      class="h-full w-full object-cover"
+      loading="lazy"
+      width="1200"
+      height="800"
+    />
+    <div class="absolute inset-0 flex items-center justify-center bg-black/65 px-6 text-center">
+      <div class="max-w-3xl">
+        <blockquote class="text-2xl font-light italic leading-relaxed text-white md:text-3xl">
+          « L'exigence, le dynamisme, la rigueur et la créativité autour d'un
+          projet — la passion et la volonté d'apporter le meilleur de soi à chaque
+          maître d'ouvrage. »
+        </blockquote>
+        <div class="mx-auto my-10 h-1 w-20 bg-accent"></div>
+        <p class="text-[11px] font-bold uppercase tracking-[0.35em] text-white">
+          Claudia Aubert-Paredes
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA CONTACT -->
+  <section class="mx-auto max-w-7xl px-6 py-24 text-center md:px-8">
+    <h2 class="reveal text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
+      Envie d'échanger ?
+    </h2>
+    <a
+      href="/contact"
+      class="reveal mt-8 inline-block border-2 border-black px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-black transition hover:bg-black hover:text-white"
+    >
+      Parlons de votre projet →
+    </a>
+  </section>
+</Layout>

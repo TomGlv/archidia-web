@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Message envoyé — ArchidiA"
+  description="Votre message a bien été envoyé à ArchidiA."
+  noindex={true}
+>
+  <section class="mx-auto flex min-h-[60vh] max-w-2xl flex-col items-center justify-center px-6 py-24 text-center">
+    <p class="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">Merci</p>
+    <h1 class="text-3xl font-extrabold uppercase tracking-tight text-black md:text-5xl">
+      Message bien envoyé
+    </h1>
+    <p class="mt-6 text-base leading-relaxed text-gray-500">
+      Merci pour votre message. Claudia Aubert-Paredes vous recontactera dans les
+      meilleurs délais, généralement sous 48&nbsp;heures ouvrées.
+    </p>
+    <a
+      href="/"
+      class="mt-10 inline-block border-2 border-black px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-black transition hover:bg-black hover:text-white"
+    >
+      Retour à l'accueil
+    </a>
+  </section>
+</Layout>

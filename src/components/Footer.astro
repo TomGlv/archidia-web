@@ -1,0 +1,34 @@
+---
+const links = [
+  { href: "/", label: "Accueil" },
+  { href: "/amo-moe", label: "AMO / MOE" },
+  { href: "/diagnostics", label: "Diagnostics" },
+  { href: "/maisons-individuelles", label: "Maisons" },
+  { href: "/autonomie", label: "Autonomie" },
+  { href: "/realisations", label: "Réalisations" },
+  { href: "/a-propos", label: "À propos" },
+  { href: "/contact", label: "Contact" },
+];
+const year = 2026;
+---
+
+<footer class="border-t border-gray-100 px-6 py-16 md:px-8">
+  <div class="mx-auto flex max-w-7xl flex-col items-center gap-10 md:flex-row md:justify-between">
+    <img src="/images/logo.jpg" alt="ArchidiA" class="h-10 w-auto grayscale transition hover:grayscale-0" width="128" height="40" />
+
+    <nav class="flex flex-wrap justify-center gap-6 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-400">
+      {links.map((l) => (
+        <a href={l.href} class="transition hover:text-black">{l.label}</a>
+      ))}
+    </nav>
+
+    <div class="text-center text-[11px] text-gray-500 md:text-right">
+      <a href="mailto:claudia.aubert@archidia.fr" class="transition hover:text-accent">claudia.aubert@archidia.fr</a>
+    </div>
+  </div>
+
+  <div class="mt-12 text-center text-[9px] font-medium uppercase tracking-[0.2em] text-gray-300">
+    © {year} <span class="text-accent">A</span>rchidi<span class="text-accent">A</span> — Architecture &amp; AMO ·
+    <a href="/mentions-legales" class="hover:text-gray-500">Mentions légales</a>
+  </div>
+</footer>

@@ -1,0 +1,318 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// ── Secteurs d'intervention (AMO / MOE) ─────────────────────────────
+const sectors = [
+  {
+    idx: "01",
+    title: "Bureaux & patrimoine",
+    text: "Rénovation, restructuration et réception d'immeubles tertiaires, du socle aux façades, y compris sur bâtiments protégés.",
+    href: "#bureaux",
+  },
+  {
+    idx: "02",
+    title: "Hôtellerie",
+    text: "Conduite d'opération et suivi de travaux d'hôtels : chambres, lobby, restauration, spa et espaces communs.",
+    href: "#hotellerie",
+  },
+  {
+    idx: "03",
+    title: "Logements collectifs & résidences",
+    text: "Livraison de logements en accession, de résidences seniors et de résidences de tourisme haut de gamme.",
+    href: "#logements",
+  },
+];
+
+// ── Fiches projets par secteur ──────────────────────────────────────
+const bureaux = [
+  {
+    name: "Pixel",
+    meta: "6 500 m² · Levallois-Perret · 2025",
+    text: "Aménagement des espaces intérieurs et extérieurs et rénovation des façades d'un immeuble R+7 et d'un immeuble R+4, au cœur de Levallois-Perret — 6 500 m², 16 M€ de travaux, livraison en septembre 2025. Mission de réception réalisée pour Delpha Conseil.",
+  },
+  {
+    name: "Valmy",
+    meta: "Montreuil · 2025",
+    text: "Rénovation des espaces intérieurs d'un bâtiment de bureaux construit en 2006, afin d'améliorer la qualité des espaces et d'augmenter le nombre d'usagers du bâtiment. Mission de livraison réalisée pour Delpha Conseil.",
+  },
+  {
+    name: "Courcelles",
+    meta: "Paris 17 · 2024",
+    text: "Restructuration d'un hôtel particulier construit à la fin du XIXe siècle, avec la création de 262 m² d'extension, une façade entièrement vitrée et une façade contemporaine sur rue aux niveaux R+4, R+5 et R+6. Labels visés : BREEAM RFO Very Good, WiredScore Silver, BiodiverCity et Effinergie Rénovation 2009. Mission de livraison réalisée pour Delpha Conseil.",
+  },
+  {
+    name: "Optima",
+    meta: "Ivry-sur-Seine · 2023",
+    text: "Rénovation d'un immeuble de bureaux : rénovation du socle avec intégration de nouveaux services en parties communes — parkings modernisés, hall repensé, R+1 transformé en lieu de vie hybride (restauration, réunion, wellness) — et création d'une terrasse au R+2. Labels visés : BREEAM Very Good, OSMOZ levier bâti et WiredScore Gold. Mission de réception réalisée pour Delpha Conseil.",
+  },
+  {
+    name: "Immeuble Wellcome",
+    meta: "14 200 m² · Malakoff · 2022",
+    text: "Immeuble neuf construit après la démolition de trois immeubles de bureaux et d'une maison individuelle, composé de neuf niveaux de superstructure et trois niveaux d'infrastructure — 14 200 m², livraison en octobre 2022. Certifié BREEAM NC 2016 Very Good, HQE Bâtiment Durable 2016 Très performant et Ready to OSMOZ. Mission de réception réalisée pour Delpha Conseil.",
+  },
+  {
+    name: "Immeuble Mondovi",
+    meta: "97 menuiseries · Paris 1",
+    text: "Projet de conception pour la Cour des comptes : remplacement de 97 menuiseries extérieures sur un immeuble inscrit et situé dans un périmètre de protection de monuments historiques — 1 177 m², 424 k€ de travaux. Le projet concilie économie d'énergie et respect de l'architecture protégée : menuiseries bois de type mouton et gueule de loup à deux vantaux ; porte cochère restaurée à l'identique.",
+  },
+  {
+    name: "LEMNYS — Siège La Poste",
+    meta: "40 000 m² · Paris · 2017",
+    text: "Chez Artelia, chef de projet pour le compte de Poste Immo, en charge du pilotage de l'aménagement de trois immeubles de bureaux connectés (40 000 m², 30 M€), livrés en trois tranches : sept étages de bureaux et deux restaurants, un espace ERP de 1 000 m², puis un espace de co-working. Coordination d'une équipe de dix ingénieurs, architectes et décorateurs.",
+  },
+  {
+    name: "BASALTE — Salles de marché",
+    meta: "78 000 m² · La Défense · 2012",
+    text: "Chez Artelia, ingénieur coordonnateur principal pour Nexity Entreprises sur un immeuble de salles de marché de 78 000 m² à La Défense (230 M€, livré en 2012), construit au-dessus d'un tunnel coupe-feu 4h : opérations préalables à la réception, suivi financier des fiches modificatives et navettes, études et pilotage de la salle à manger de direction.",
+  },
+  {
+    name: "Tour Generali",
+    meta: "90 000 m² · La Défense · 2008",
+    text: "Chez Artelia, pour Vinci Immobilier et Nexity, architecte coordonnateur des études sur un projet de tour de bureaux IGH R+50 de 90 000 m² à La Défense (300 M€ estimés), avec auditorium et RIE. Management des études mené sur 25 mois autour de trois variantes, visant HQE, LEED, BREEAM et le label BBC. Projet finalement abandonné avant réalisation.",
+  },
+];
+
+const hotellerie = [
+  {
+    name: "Hôtel VOCO",
+    meta: "9 600 m² · Clichy · 2023",
+    text: "Rénovation de 262 chambres et salles de bain, avec création de deux nouvelles chambres, relocalisation du fitness, restructuration du lobby, du restaurant et du bar en rez-de-chaussée, et rénovation des salles de réunion au R+1 — 9 600 m², 4,5 M€ de travaux, livraison en septembre 2023. Mission de conduite d'opération réalisée pour Delpha Conseil.",
+  },
+  {
+    name: "Hôtel Bellune",
+    meta: "105 chambres · Paris 15 · 2022",
+    text: "Hôtel de 105 chambres sur 10 étages, en face du Parc des expositions de la porte de Versailles, avec un bar, un spa avec piscine et un salon de réception — livraison en novembre 2022. Mission de réception réalisée pour Delpha Conseil.",
+  },
+  {
+    name: "Hôtel Melia",
+    meta: "La Défense · 2015",
+    text: "Chez Artelia, pour Vinci Immobilier, coordination et suivi des travaux tous corps d'état, de la phase de sous-œuvre jusqu'au parfait achèvement, ainsi que des interfaces avec l'Epadesa et les concessionnaires. Un hôtel construit sur l'emprise du tunnel de liaison du boulevard circulaire et du tunnel de ventilation de l'A14, réalisés dans le cadre de l'opération.",
+  },
+  {
+    name: "Hôtel Novotel",
+    meta: "7 000 m² · Le Havre · 2005",
+    text: "Au sein de l'agence Jean Paul Viguier, pour Novotel, architecte responsable des études sur un hôtel 3 étoiles de 7 000 m² (136 chambres) au Havre, livré en 2005, du permis de construire au dossier de marché. Un projet de forme triangulaire organisé autour d'un grand atrium central, avec une double façade — intérieure en béton et verre, extérieure entièrement vitrée.",
+  },
+];
+
+const logements = [
+  {
+    name: "Woodeum",
+    meta: "80 logements · La Garenne-Colombes · 2025",
+    text: "Livraison de 80 logements en accession et de deux commerces, RDC +10 à La Garenne-Colombes. La parcelle accueille trois bâtiments, l'ensemble formant un U et créant, en son centre, un cœur d'îlot protégé et paysagé. Mission de livraison réalisée pour Delpha Conseil.",
+  },
+  {
+    name: "Résidence senior Montana",
+    meta: "Dijon · 2024",
+    text: "Résidence senior avec appartements du studio au 3 pièces et des espaces communs : salon avec cheminée, salon de thé, atelier artistique, restaurant gastronomique, piscine et spa, salle de gym, bibliothèque, cinéma, espace beauté. Appartements avec douche de plain-pied et cuisine équipée. Mission de livraison réalisée pour Delpha Conseil.",
+  },
+  {
+    name: "Résidence senior Montana",
+    meta: "Compiègne · 2022",
+    text: "Résidence senior avec appartements du studio au 3 pièces et des espaces communs : salon avec cheminée, salon de thé, atelier artistique, restaurant gastronomique, piscine et spa, salle de gym, bibliothèque, cinéma, espace beauté. Mission de livraison des espaces communs réalisée pour Delpha Conseil.",
+  },
+  {
+    name: "Arietis",
+    meta: "15 appartements · Avoriaz · 2020",
+    text: "Pilotage de la livraison d'Arietis, une résidence de 15 appartements haut de gamme (37 à 90 m²) à la station de ski d'Avoriaz, dans la continuité du concept déployé à Méribel avec L'Hevana — intervention menée en parallèle de la mise en exploitation du site. Livraison en 2020, réalisée avec ChicagoMO pour Pierre et Vacances.",
+  },
+  {
+    name: "L'Hevana",
+    meta: "30 appartements · Méribel · 2019",
+    text: "Pilotage de la livraison de L'Hevana, une résidence de 30 appartements haut de gamme (37 à 112 m²) à la station de ski de Méribel — un nouveau concept de résidences de luxe, livré en 2019 en parallèle de la mise en exploitation du site, réalisé avec ChicagoMO pour Pierre et Vacances.",
+  },
+];
+---
+
+<Layout
+  title="AMO / MOE — Assistance à Maîtrise d'Ouvrage & Maîtrise d'Œuvre"
+  description="ArchidiA, AMO et maîtrise d'œuvre pour vos projets de bureaux, d'hôtellerie et de logements collectifs & résidences : de la conception à la réception, avec une double expertise reconnue."
+>
+  <!-- HERO / BANDEAU TITRE -->
+  <header class="relative flex h-[62vh] min-h-[400px] items-center justify-center overflow-hidden bg-[#20221f]">
+    <img
+      src="/images/hero-home.jpg"
+      alt="Réalisation architecturale ArchidiA"
+      class="absolute inset-0 h-full w-full object-cover opacity-60"
+      fetchpriority="high"
+      width="1920"
+      height="1080"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/30"></div>
+    <div class="relative z-10 mx-auto max-w-4xl px-6 text-center">
+      <p class="mb-5 text-[10px] font-bold uppercase tracking-[0.4em] text-accent md:text-xs">
+        AMO / MOE
+      </p>
+      <h1 class="mb-6 text-3xl font-extrabold uppercase leading-[1.08] tracking-tight text-white drop-shadow-lg sm:text-4xl md:text-6xl">
+        Assistance à Maîtrise d'Ouvrage<br class="hidden sm:block" /> & Maîtrise d'Œuvre
+      </h1>
+      <p class="text-[10px] font-bold uppercase tracking-[0.35em] text-gray-300 md:text-xs">
+        Bureaux · Hôtellerie · <span class="text-accent">Logements collectifs & résidences</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- INTRODUCTION / DOUBLE EXPERTISE -->
+  <section class="mx-auto max-w-3xl px-6 py-24 text-center md:py-32">
+    <p class="reveal mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+      Une double expertise AMO & MOE
+    </p>
+    <p class="reveal text-xl leading-relaxed text-gray-700 md:text-2xl">
+      Une mission d'AMO ou de MOE réussie suppose de maîtriser à la fois les enjeux
+      du maître d'ouvrage, les contraintes du projet et les réalités du chantier.
+    </p>
+    <p class="reveal mt-6 text-base leading-relaxed text-gray-500 md:text-lg">
+      Après dix ans passés dans des agences d'architecture et dix ans de management
+      de projet à côté de la maîtrise d'ouvrage, sur des opérations tertiaires et
+      hôtelières de grande envergure, l'agence met cette double expertise — AMO et
+      MOE — au service de vos projets, avec une pratique particulièrement développée
+      dans le tertiaire et l'hôtellerie.
+    </p>
+  </section>
+
+  <!-- SECTEURS D'INTERVENTION -->
+  <section class="border-t border-gray-100 px-6 py-20 md:px-8">
+    <div class="mx-auto max-w-7xl">
+      <h2 class="reveal mb-14 text-center text-2xl font-extrabold uppercase tracking-tight text-black md:text-3xl">
+        Nos secteurs d'intervention
+      </h2>
+      <div class="grid gap-12 md:grid-cols-3">
+        {sectors.map((s) => (
+          <a href={s.href} class="reveal group block">
+            <span class="mb-5 block border-l-4 border-accent pl-4 text-[11px] font-black uppercase tracking-widest text-black">
+              {s.idx} / {s.title}
+            </span>
+            <p class="pl-4 text-sm leading-relaxed text-gray-500">{s.text}</p>
+            <span class="mt-4 inline-block pl-4 text-[10px] font-bold uppercase tracking-widest text-accent transition group-hover:translate-x-1">
+              Voir les projets →
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BUREAUX & PATRIMOINE -->
+  <section id="bureaux" class="scroll-mt-24 border-t border-gray-100 bg-gray-50 px-6 py-20 md:px-8 md:py-24">
+    <div class="mx-auto max-w-7xl">
+      <div class="reveal mb-14">
+        <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">Secteur</p>
+        <h2 class="text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
+          Bureaux & patrimoine
+        </h2>
+      </div>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {bureaux.map((p) => (
+          <article class="reveal group flex flex-col overflow-hidden border border-gray-200 bg-white transition hover:border-accent">
+            <!-- PHOTO: visuel du projet « {p.name} » à fournir via Storyblok/JPEG -->
+            <div class="flex aspect-[4/3] items-center justify-center bg-gray-100 text-gray-300">
+              <span class="text-[10px] font-bold uppercase tracking-[0.3em]">ArchidiA</span>
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="text-lg font-extrabold uppercase tracking-tight text-black">{p.name}</h3>
+              <p class="mt-1 text-[11px] font-bold uppercase tracking-widest text-accent">{p.meta}</p>
+              <p class="mt-4 text-sm leading-relaxed text-gray-500">{p.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HÔTELLERIE -->
+  <section id="hotellerie" class="scroll-mt-24 border-t border-gray-100 px-6 py-20 md:px-8 md:py-24">
+    <div class="mx-auto max-w-7xl">
+      <div class="reveal mb-14">
+        <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">Secteur</p>
+        <h2 class="text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
+          Hôtellerie
+        </h2>
+      </div>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {hotellerie.map((p) => (
+          <article class="reveal group flex flex-col overflow-hidden border border-gray-200 bg-white transition hover:border-accent">
+            <!-- PHOTO: visuel du projet « {p.name} » à fournir via Storyblok/JPEG -->
+            <div class="flex aspect-[4/3] items-center justify-center bg-gray-100 text-gray-300">
+              <span class="text-[10px] font-bold uppercase tracking-[0.3em]">ArchidiA</span>
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="text-lg font-extrabold uppercase tracking-tight text-black">{p.name}</h3>
+              <p class="mt-1 text-[11px] font-bold uppercase tracking-widest text-accent">{p.meta}</p>
+              <p class="mt-4 text-sm leading-relaxed text-gray-500">{p.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGEMENTS COLLECTIFS & RÉSIDENCES -->
+  <section id="logements" class="scroll-mt-24 border-t border-gray-100 bg-gray-50 px-6 py-20 md:px-8 md:py-24">
+    <div class="mx-auto max-w-7xl">
+      <div class="reveal mb-14">
+        <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">Secteur</p>
+        <h2 class="text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
+          Logements collectifs & résidences
+        </h2>
+      </div>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {logements.map((p) => (
+          <article class="reveal group flex flex-col overflow-hidden border border-gray-200 bg-white transition hover:border-accent">
+            <!-- PHOTO: visuel du projet « {p.name} » à fournir via Storyblok/JPEG -->
+            <div class="flex aspect-[4/3] items-center justify-center bg-gray-100 text-gray-300">
+              <span class="text-[10px] font-bold uppercase tracking-[0.3em]">ArchidiA</span>
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="text-lg font-extrabold uppercase tracking-tight text-black">{p.name}</h3>
+              <p class="mt-1 text-[11px] font-bold uppercase tracking-widest text-accent">{p.meta}</p>
+              <p class="mt-4 text-sm leading-relaxed text-gray-500">{p.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="reveal mt-12 text-center">
+        <a
+          href="/autonomie"
+          class="inline-block text-[11px] font-bold uppercase tracking-[0.35em] text-black transition hover:text-accent"
+        >
+          Voir l'offre Autonomie →
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- MENTION PARCOURS -->
+  <section class="border-t border-gray-100 px-6 py-16 md:px-8">
+    <p class="reveal mx-auto max-w-3xl text-center text-xs leading-relaxed text-gray-400">
+      Les missions suivies « Artelia » (ou d'une autre agence) ont été réalisées
+      avant la création d'Archidi<span class="text-accent">A</span> (2019), au sein
+      du parcours de Claudia Aubert-Paredes. Elles restent affichées ici pour leur
+      pertinence directe avec l'expertise AMO et MOE, mais ne sont pas des missions
+      Archidi<span class="text-accent">A</span>.
+    </p>
+  </section>
+
+  <!-- CTA CONTACT -->
+  <section class="mx-auto max-w-7xl px-6 py-24 text-center md:px-8">
+    <h2 class="reveal text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
+      Un projet à piloter ?
+    </h2>
+    <p class="reveal mt-5 text-base leading-relaxed text-gray-500 md:text-lg">
+      Parlons de votre projet de bureaux, d'hôtellerie ou de logements.
+    </p>
+    <div class="reveal mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <a
+        href="/contact"
+        class="inline-block bg-black px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-white transition hover:bg-accent"
+      >
+        Parlons de votre projet →
+      </a>
+      <a
+        href="/realisations"
+        class="inline-block border-2 border-black px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-black transition hover:bg-black hover:text-white"
+      >
+        Voir nos réalisations →
+      </a>
+    </div>
+  </section>
+</Layout>
