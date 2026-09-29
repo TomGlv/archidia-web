@@ -1,0 +1,19 @@
+{
+  "name": "archidia-studio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Interface d'édition Sanity pour ArchidiA",
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sanity": "^3",
+    "styled-components": "^6"
+  }
+}

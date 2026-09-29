@@ -1,7 +1,7 @@
 # ArchidiA — Guide de mise en ligne
 
 Site construit avec **Astro** (générateur de site statique) + **Tailwind CSS**,
-CMS **Storyblok** pour les réalisations, hébergé sur **Netlify**, domaine
+CMS **Sanity** pour les réalisations, hébergé sur **Netlify**, domaine
 **archidia.fr** chez **OVH**.
 
 ---
@@ -10,7 +10,7 @@ CMS **Storyblok** pour les réalisations, hébergé sur **Netlify**, domaine
 
 ```bash
 npm install
-cp .env.example .env      # puis renseigner STORYBLOK_TOKEN
+cp .env.example .env      # puis renseigner SANITY_PROJECT_ID / SANITY_DATASET
 npm run dev               # http://localhost:4321
 npm run build             # génère le site dans dist/
 npm run preview           # prévisualise le build
@@ -24,44 +24,48 @@ node scripts/prepare-images.mjs
 
 ---
 
-## 2. Storyblok (CMS des réalisations)
+## 2. Sanity (CMS des réalisations — gratuit)
 
-1. Créer un compte sur https://app.storyblok.com (choisir la **région Europe / EU**).
-2. Créer un **Space** « ArchidiA ».
-3. **Créer le type de contenu `projet`** (Block library → New block → nommé `projet`,
-   type *Content type / Nestable*), avec les champs suivants :
+Le schéma du contenu est **déjà prêt** dans le dossier `studio/`. Il suffit de créer
+le projet Sanity et de le connecter.
 
-   | Champ | Nom technique | Type |
-   |---|---|---|
-   | Titre | `titre` | Text |
-   | Catégorie | `categorie` | Single-Option (AMO / MOE, Diagnostics & Copropriétés, Maison individuelle, Autonomie) |
-   | Lieu | `lieu` | Text |
-   | Année | `annee` | Text (ou Number) |
-   | Image de couverture | `cover` | Asset (image) |
-   | Galerie | `galerie` | Multi-Assets (images) |
-   | Lien vidéo | `video_url` | Text (URL YouTube ou Vimeo) |
-   | Description | `description` | Richtext |
-   | Description SEO | `meta_description` | Text (optionnel) |
+1. Créer un compte gratuit sur https://www.sanity.io (connexion Google/GitHub/email).
+2. Depuis le dossier `studio/` :
+   ```bash
+   cd studio
+   npm install
+   npx sanity login
+   npx sanity init --env    # crée le projet, écrit studio/.env (region UE au choix)
+   ```
+   > `--env` écrit `SANITY_STUDIO_PROJECT_ID` et `SANITY_STUDIO_DATASET` dans `studio/.env`.
+   > Choisir le dataset **production** et le laisser **public** (lecture seule côté site).
+3. Lancer le Studio en local pour vérifier : `npm run dev` → http://localhost:3333
+   (le type **« Projet / Réalisation »** apparaît, avec titre, catégorie, lieu, année,
+   photo de couverture, galerie, lien vidéo YouTube/Vimeo, description, SEO).
+4. **Mettre le Studio en ligne pour Claudia** (interface hébergée, connexion par email) :
+   ```bash
+   npx sanity deploy      # → https://<nom-choisi>.sanity.studio
+   ```
+   Inviter Claudia comme membre du projet (sanity.io/manage → Members) : elle se
+   connecte à cette URL, ajoute ses projets, clique **Publish**.
 
-4. Créer un **dossier `realisations`** (Content → New folder), puis y ajouter les
-   projets (chaque projet = une *story* de type `projet`).
-5. **Access Tokens** (Settings → Access Tokens) : copier le token **Preview**.
-   - En local : le mettre dans `.env` → `STORYBLOK_TOKEN=...`
-   - Sur Netlify : Site settings → Environment variables → `STORYBLOK_TOKEN`.
+### Connecter le site au CMS
+
+- Récupérer le **Project ID** (visible dans `studio/.env` ou sur sanity.io/manage).
+- En local : `.env` → `SANITY_PROJECT_ID=...` et `SANITY_DATASET=production`.
+- Sur Netlify : Site settings → Environment variables → mêmes deux variables.
 
 ### Publication automatique (sans redéploiement manuel)
 
-Pour que la mise en ligne se fasse toute seule quand Claudia publie un projet :
+1. Netlify : Site settings → Build & deploy → **Build hooks** → créer un hook, copier l'URL.
+2. Sanity : sanity.io/manage → projet → **API → Webhooks** → *Create webhook*,
+   coller l'URL du build hook, déclencheur *Create / Update / Delete*.
 
-1. Netlify : Site settings → Build & deploy → **Build hooks** → créer un hook,
-   copier l'URL.
-2. Storyblok : Settings → **Webhooks** → *Story published* → coller l'URL du build hook.
-
-Résultat : Claudia clique sur **Publier** dans Storyblok → Netlify reconstruit et met
-en ligne automatiquement (~1 min). Elle ne touche jamais au code.
+Résultat : Claudia clique sur **Publish** dans Sanity → Netlify reconstruit et met en
+ligne automatiquement (~1 min). Elle ne touche jamais au code.
 
 > Les vidéos s'ajoutent en collant simplement un lien **YouTube** ou **Vimeo** dans
-> le champ `video_url`.
+> le champ prévu. Les photos sont optimisées automatiquement par le CDN de Sanity.
 
 ---
 
@@ -70,7 +74,7 @@ en ligne automatiquement (~1 min). Elle ne touche jamais au code.
 1. Pousser le dépôt sur GitHub/GitLab.
 2. Netlify → **Add new site → Import from Git** → sélectionner le dépôt.
    Build command et publish dir sont déjà dans `netlify.toml`.
-3. Ajouter la variable d'environnement `STORYBLOK_TOKEN`.
+3. Ajouter les variables d'environnement `SANITY_PROJECT_ID` et `SANITY_DATASET`.
 4. Déployer.
 
 ### Formulaire de contact
@@ -119,10 +123,12 @@ src/
     merci.astro                Confirmation d'envoi (noindex)
     mentions-legales.astro
     realisations/
-      index.astro              Liste des projets (Storyblok)
-      [slug].astro             Page d'un projet (Storyblok)
-  storyblok/Projet.astro       Rendu d'une fiche projet
+      index.astro              Liste des projets (Sanity)
+      [slug].astro             Page d'un projet (Sanity)
+  components/Projet.astro      Rendu d'une fiche projet
+  lib/sanity.ts                Client Sanity + requêtes + images
   lib/video.ts                 YouTube/Vimeo → iframe
 scripts/prepare-images.mjs     Optimisation des photos
 public/images/                 Images du site (optimisées)
+studio/                        Sanity Studio (interface d'édition de Claudia)
 ```

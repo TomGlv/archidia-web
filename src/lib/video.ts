@@ -1,5 +1,5 @@
 /**
- * Convertit un lien YouTube ou Vimeo (collé par Claudia dans Storyblok)
+ * Convertit un lien YouTube ou Vimeo (collé par Claudia dans Sanity)
  * en URL d'intégration (iframe). Retourne null si le lien n'est pas reconnu.
  */
 export function toEmbedUrl(url?: string): string | null {

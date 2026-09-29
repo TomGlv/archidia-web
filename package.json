@@ -14,7 +14,9 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/inter": "^5.3.0",
-    "@storyblok/astro": "^10.3.2",
+    "@portabletext/to-html": "^6.0.0",
+    "@sanity/client": "^8.8.0",
+    "@sanity/image-url": "^2.1.1",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.5",
     "sharp": "^0.35.5",

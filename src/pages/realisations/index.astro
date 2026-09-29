@@ -1,26 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { getProjets, urlFor } from "../../lib/sanity";
 
-// Récupération des projets depuis Storyblok (si le CMS est connecté).
-// Sans token, la page se construit quand même avec un état « à venir ».
-const token = import.meta.env.STORYBLOK_TOKEN;
-let projets: any[] = [];
-
-if (token) {
-  const { useStoryblokApi } = await import("@storyblok/astro");
-  const storyblokApi = useStoryblokApi();
-  const { data } = await storyblokApi.get("cdn/stories", {
-    version: import.meta.env.PROD ? "published" : "draft",
-    content_type: "projet",
-    starts_with: "realisations/",
-    per_page: 100,
-    sort_by: "content.annee:desc",
-  });
-  projets = data?.stories ?? [];
-}
-
-const img = (filename?: string, size = "800x600", q = 78) =>
-  filename ? `${filename}/m/${size}/filters:quality(${q})` : "";
+const projets = await getProjets();
 ---
 
 <Layout
@@ -40,34 +22,31 @@ const img = (filename?: string, size = "800x600", q = 78) =>
   {projets.length > 0 ? (
     <section class="mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {projets.map((p) => {
-          const c = p.content;
-          return (
-            <a href={`/realisations/${p.slug}`} class="reveal group block overflow-hidden border border-gray-200 transition hover:border-accent">
-              <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                {c.cover?.filename && (
-                  <img
-                    src={img(c.cover.filename)}
-                    alt={c.cover.alt || c.titre}
-                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                )}
-              </div>
-              <div class="p-6">
-                {c.categorie && (
-                  <span class="text-[10px] font-black uppercase tracking-widest text-accent">{c.categorie}</span>
-                )}
-                <h2 class="mt-2 text-lg font-extrabold uppercase tracking-tight text-black">{c.titre}</h2>
-                {(c.lieu || c.annee) && (
-                  <p class="mt-1 text-xs uppercase tracking-[0.12em] text-gray-400">
-                    {[c.lieu, c.annee].filter(Boolean).join(" · ")}
-                  </p>
-                )}
-              </div>
-            </a>
-          );
-        })}
+        {projets.map((p) => (
+          <a href={`/realisations/${p.slug}`} class="reveal group block overflow-hidden border border-gray-200 transition hover:border-accent">
+            <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
+              {p.cover && (
+                <img
+                  src={urlFor(p.cover)?.width(800).height(600).quality(78).url()}
+                  alt={p.titre}
+                  class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              )}
+            </div>
+            <div class="p-6">
+              {p.categorie && (
+                <span class="text-[10px] font-black uppercase tracking-widest text-accent">{p.categorie}</span>
+              )}
+              <h2 class="mt-2 text-lg font-extrabold uppercase tracking-tight text-black">{p.titre}</h2>
+              {(p.lieu || p.annee) && (
+                <p class="mt-1 text-xs uppercase tracking-[0.12em] text-gray-400">
+                  {[p.lieu, p.annee].filter(Boolean).join(" · ")}
+                </p>
+              )}
+            </div>
+          </a>
+        ))}
       </div>
     </section>
   ) : (

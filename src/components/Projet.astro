@@ -1,47 +1,48 @@
 ---
-import { storyblokEditable, renderRichText } from "@storyblok/astro";
+import { toHTML } from "@portabletext/to-html";
+import { urlFor } from "../lib/sanity";
 import { toEmbedUrl } from "../lib/video";
+import type { Projet } from "../lib/sanity";
 
-const { blok } = Astro.props;
+interface Props {
+  projet: Projet;
+}
+const { projet } = Astro.props;
 
-// Service d'images Storyblok : redimensionnement + compression automatiques.
-const img = (filename?: string, size = "1600x0", q = 80) =>
-  filename ? `${filename}/m/${size}/filters:quality(${q})` : "";
-
-const cover = blok.cover?.filename;
-const galerie = (blok.galerie ?? []).filter((a: any) => a?.filename);
-const embed = toEmbedUrl(blok.video_url);
-const description = blok.description ? renderRichText(blok.description) : "";
+const cover = projet.cover ? urlFor(projet.cover)?.width(1920).quality(72).url() : null;
+const galerie = (projet.galerie ?? []).filter(Boolean);
+const embed = toEmbedUrl(projet.video_url);
+const description = projet.description ? toHTML(projet.description) : "";
 ---
 
-<article {...storyblokEditable(blok)}>
+<article>
   <!-- Bandeau projet -->
   <header class="relative flex h-[60vh] min-h-[380px] items-end overflow-hidden bg-[#20221f]">
     {cover && (
       <img
-        src={img(cover, "1920x0", 72)}
-        alt={blok.cover?.alt || blok.titre}
+        src={cover}
+        alt={projet.titre}
         class="absolute inset-0 h-full w-full object-cover opacity-75"
         fetchpriority="high"
       />
     )}
     <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
     <div class="relative z-10 mx-auto w-full max-w-5xl px-6 pb-12 md:px-8">
-      {blok.categorie && (
-        <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">{blok.categorie}</p>
+      {projet.categorie && (
+        <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">{projet.categorie}</p>
       )}
       <h1 class="text-3xl font-extrabold uppercase tracking-tight text-white md:text-5xl">
-        {blok.titre}
+        {projet.titre}
       </h1>
-      {(blok.lieu || blok.annee) && (
+      {(projet.lieu || projet.annee) && (
         <p class="mt-4 text-xs uppercase tracking-[0.15em] text-gray-300">
-          {[blok.lieu, blok.annee].filter(Boolean).join(" · ")}
+          {[projet.lieu, projet.annee].filter(Boolean).join(" · ")}
         </p>
       )}
     </div>
   </header>
 
-  <!-- Description -->
+  <!-- Description (texte riche) -->
   {description && (
     <section class="mx-auto max-w-3xl px-6 py-16 md:py-20">
       <div class="prose-archidia text-base leading-relaxed text-gray-700" set:html={description} />
@@ -54,7 +55,7 @@ const description = blok.description ? renderRichText(blok.description) : "";
       <div class="relative aspect-video w-full overflow-hidden bg-black">
         <iframe
           src={embed}
-          title={`Vidéo — ${blok.titre}`}
+          title={`Vidéo — ${projet.titre}`}
           class="absolute inset-0 h-full w-full"
           loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -70,8 +71,8 @@ const description = blok.description ? renderRichText(blok.description) : "";
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {galerie.map((a: any) => (
           <img
-            src={img(a.filename, "800x0", 78)}
-            alt={a.alt || blok.titre}
+            src={urlFor(a)?.width(800).quality(78).url()}
+            alt={a.alt || projet.titre}
             class="h-full w-full object-cover"
             loading="lazy"
           />

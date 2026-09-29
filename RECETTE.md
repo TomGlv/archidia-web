@@ -22,9 +22,10 @@ le domaine `archidia.fr`.
 - [ ] reCAPTCHA actif
 - [ ] Champs obligatoires vérifiés
 
-## CMS Storyblok
+## CMS Sanity
+- [ ] Studio en ligne accessible (`<nom>.sanity.studio`), Claudia peut se connecter
 - [ ] Création d'un projet test (photos + vidéo + texte)
-- [ ] Publication → mise à jour automatique du site (build hook)
+- [ ] Publish → mise à jour automatique du site (build hook)
 - [ ] Le projet apparaît dans /realisations et sa page dédiée
 
 ## Affichage responsive
@@ -48,7 +49,7 @@ le domaine `archidia.fr`.
 - [ ] Performance correcte (Lighthouse mobile)
 
 ## Mise en ligne
-- [ ] Variable `STORYBLOK_TOKEN` présente sur Netlify
+- [ ] Variables `SANITY_PROJECT_ID` / `SANITY_DATASET` présentes sur Netlify
 - [ ] Notification email du formulaire configurée
 - [ ] DNS OVH → Netlify
 - [ ] Redirection www ↔ apex

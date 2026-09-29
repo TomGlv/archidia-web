@@ -45,7 +45,7 @@ body {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
 
-/* Rendu du contenu riche (richtext Storyblok) sur les fiches projets */
+/* Rendu du contenu riche (Portable Text Sanity) sur les fiches projets */
 .prose-archidia > * + * { margin-top: 1.1em; }
 .prose-archidia h2 {
   font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em;

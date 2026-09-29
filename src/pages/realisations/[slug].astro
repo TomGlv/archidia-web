@@ -1,38 +1,28 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Projet from "../../storyblok/Projet.astro";
+import Projet from "../../components/Projet.astro";
+import { getProjets, getProjet, urlFor } from "../../lib/sanity";
 
 export async function getStaticPaths() {
-  const token = import.meta.env.STORYBLOK_TOKEN;
-  if (!token) return []; // Pas de token → aucune page projet générée pour l'instant.
-
-  const { useStoryblokApi } = await import("@storyblok/astro");
-  const storyblokApi = useStoryblokApi();
-  const { data } = await storyblokApi.get("cdn/stories", {
-    version: import.meta.env.PROD ? "published" : "draft",
-    content_type: "projet",
-    starts_with: "realisations/",
-    per_page: 100,
-  });
-
-  return (data?.stories ?? []).map((story: any) => ({
-    params: { slug: story.slug },
-    props: { story },
-  }));
+  const projets = await getProjets();
+  return projets.map((p) => ({ params: { slug: p.slug } }));
 }
 
-const { story } = Astro.props;
-const c = story.content;
+const { slug } = Astro.params;
+const projet = await getProjet(slug!);
 
-// Description courte pour le SEO (texte brut extrait du richtext si dispo).
+if (!projet) {
+  return Astro.redirect("/realisations");
+}
+
 const desc =
-  c.meta_description ||
-  `${c.titre}${c.lieu ? " — " + c.lieu : ""} : projet réalisé par ArchidiA (architecture & AMO).`;
-const ogImage = c.cover?.filename
-  ? `${c.cover.filename}/m/1200x630/filters:quality(80)`
+  projet.meta_description ||
+  `${projet.titre}${projet.lieu ? " — " + projet.lieu : ""} : projet réalisé par ArchidiA (architecture & AMO).`;
+const ogImage = projet.cover
+  ? urlFor(projet.cover)?.width(1200).height(630).quality(80).url() ?? undefined
   : undefined;
 ---
 
-<Layout title={`${c.titre} — Réalisations`} description={desc} image={ogImage}>
-  <Projet blok={c} />
+<Layout title={`${projet.titre} — Réalisations`} description={desc} image={ogImage}>
+  <Projet projet={projet} />
 </Layout>
