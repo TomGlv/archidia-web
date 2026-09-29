@@ -1,0 +1,40 @@
+---
+// Aperçu « Quelques réalisations » d'une page métier : 3 projets Sanity de la
+// catégorie (mis en avant d'abord) + lien vers la page Réalisations filtrée.
+import ProjetCard from "./ProjetCard.astro";
+import { CATEGORIES, getApercu, type Categorie } from "../lib/sanity";
+
+interface Props {
+  categorie: Categorie;
+  titre?: string;
+  class?: string;
+}
+const { categorie, titre = "Quelques réalisations", class: className } = Astro.props;
+
+const { projets, total } = await getApercu(categorie);
+const slug = CATEGORIES.find((c) => c.value === categorie)!.slug;
+---
+
+{projets.length > 0 && (
+  <section class:list={["border-t border-gray-100 px-6 py-20 md:px-8 md:py-24", className]}>
+    <div class="mx-auto max-w-7xl">
+      <div class="reveal mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div>
+          <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">Réalisations</p>
+          <h2 class="text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">{titre}</h2>
+        </div>
+        {total > projets.length && (
+          <a
+            href={`/realisations?cat=${slug}`}
+            class="text-[11px] font-bold uppercase tracking-[0.25em] text-black transition hover:text-accent"
+          >
+            Voir les {total} projets →
+          </a>
+        )}
+      </div>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {projets.map((p) => <ProjetCard projet={p} />)}
+      </div>
+    </div>
+  </section>
+)}

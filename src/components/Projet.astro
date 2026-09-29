@@ -1,6 +1,6 @@
 ---
 import { toHTML } from "@portabletext/to-html";
-import { urlFor } from "../lib/sanity";
+import { CATEGORIES, urlFor } from "../lib/sanity";
 import { toEmbedUrl } from "../lib/video";
 import type { Projet } from "../lib/sanity";
 
@@ -13,11 +13,18 @@ const cover = projet.cover ? urlFor(projet.cover)?.width(1920).quality(72).url()
 const galerie = (projet.galerie ?? []).filter(Boolean);
 const embed = toEmbedUrl(projet.video_url);
 const description = projet.description ? toHTML(projet.description) : "";
+const meta = [projet.chiffres, projet.lieu, projet.annee].filter(Boolean).join(" · ");
+const cats = CATEGORIES.filter((c) => projet.categories.includes(c.value));
 ---
 
 <article>
   <!-- Bandeau projet -->
-  <header class="relative flex h-[60vh] min-h-[380px] items-end overflow-hidden bg-[#20221f]">
+  <header
+    class:list={[
+      "relative flex items-end overflow-hidden bg-[#20221f]",
+      cover ? "h-[60vh] min-h-[380px]" : "pt-24 md:pt-32",
+    ]}
+  >
     {cover && (
       <img
         src={cover}
@@ -28,17 +35,13 @@ const description = projet.description ? toHTML(projet.description) : "";
     )}
     <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
     <div class="relative z-10 mx-auto w-full max-w-5xl px-6 pb-12 md:px-8">
-      {projet.categorie && (
-        <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">{projet.categorie}</p>
-      )}
+      <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+        {[cats.map((c) => c.value).join(" · "), projet.secteur].filter(Boolean).join(" — ")}
+      </p>
       <h1 class="text-3xl font-extrabold uppercase tracking-tight text-white md:text-5xl">
         {projet.titre}
       </h1>
-      {(projet.lieu || projet.annee) && (
-        <p class="mt-4 text-xs uppercase tracking-[0.15em] text-gray-300">
-          {[projet.lieu, projet.annee].filter(Boolean).join(" · ")}
-        </p>
-      )}
+      {meta && <p class="mt-4 text-xs uppercase tracking-[0.15em] text-gray-300">{meta}</p>}
     </div>
   </header>
 
@@ -46,6 +49,12 @@ const description = projet.description ? toHTML(projet.description) : "";
   {description && (
     <section class="mx-auto max-w-3xl px-6 py-16 md:py-20">
       <div class="prose-archidia text-base leading-relaxed text-gray-700" set:html={description} />
+      {projet.avantArchidia && (
+        <p class="mt-10 border-l-4 border-gray-200 pl-4 text-xs leading-relaxed text-gray-400">
+          Mission menée avant la création d'Archidi<span class="text-accent">A</span> (2019), au sein
+          du parcours de Claudia Aubert-Paredes.
+        </p>
+      )}
     </section>
   )}
 
@@ -82,12 +91,20 @@ const description = projet.description ? toHTML(projet.description) : "";
   )}
 
   <!-- CTA -->
-  <section class="border-t border-gray-100 px-6 py-16 text-center">
+  <section class="flex flex-col items-center justify-center gap-4 border-t border-gray-100 px-6 py-16 text-center sm:flex-row sm:gap-10">
+    {cats.map((c) => (
+      <a
+        href={`/realisations?cat=${c.slug}`}
+        class="text-[10px] font-bold uppercase tracking-widest text-gray-400 transition hover:text-accent"
+      >
+        ← Autres projets {c.value}
+      </a>
+    ))}
     <a
       href="/realisations"
       class="text-[10px] font-bold uppercase tracking-widest text-gray-400 transition hover:text-accent"
     >
-      ← Toutes les réalisations
+      Toutes les réalisations
     </a>
   </section>
 </article>

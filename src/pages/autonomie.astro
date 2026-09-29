@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ApercuRealisations from "../components/ApercuRealisations.astro";
 
 const steps = [
   {
@@ -16,19 +17,6 @@ const steps = [
     idx: "03",
     title: "Suivi de chantier",
     text: "Coordination des intervenants, contrôle de la qualité d'exécution et réception des travaux aux côtés du bénéficiaire.",
-  },
-];
-
-const residences = [
-  {
-    name: "Résidence senior Montana",
-    place: "Dijon · 2024",
-    text: "Résidence senior avec des appartements du studio à 3 pièces et de nombreux espaces communs : salon avec cheminée, salon de thé, atelier artistique, restaurant gastronomique, piscine et spa, salle de gym, bibliothèque, cinéma, espace beauté. Appartements avec douche de plain-pied et cuisine équipée. Mission de livraison réalisée pour Delpha Conseil.",
-  },
-  {
-    name: "Résidence senior Montana",
-    place: "Compiègne · 2022",
-    text: "Résidence senior avec des appartements du studio à 3 pièces et de nombreux espaces communs : salon avec cheminée, salon de thé, atelier artistique, restaurant gastronomique, piscine et spa, salle de gym, bibliothèque, cinéma, espace beauté. Appartements avec douche de plain-pied et cuisine équipée. Mission de livraison des espaces communs réalisée pour Delpha Conseil.",
   },
 ];
 ---
@@ -72,32 +60,7 @@ const residences = [
     </p>
   </section>
 
-  <!-- LES RÉSIDENCES SENIORS -->
-  <section class="border-t border-gray-100 bg-gray-50 px-6 py-20 md:px-8 md:py-24">
-    <div class="mx-auto max-w-6xl">
-      <p class="reveal mb-4 text-center text-[11px] font-bold uppercase tracking-[0.3em] text-accent">
-        Notre expérience
-      </p>
-      <h2 class="reveal mb-14 text-center text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
-        Les résidences seniors
-      </h2>
-      <div class="grid gap-8 md:grid-cols-2">
-        {residences.map((r) => (
-          <article class="reveal flex flex-col border-t-4 border-accent bg-white p-8 shadow-sm md:p-10">
-            <h3 class="text-2xl font-extrabold uppercase tracking-tight text-black">
-              {r.name}
-            </h3>
-            <p class="mt-2 text-sm font-bold uppercase tracking-[0.2em] text-accent">
-              {r.place}
-            </p>
-            <p class="mt-6 text-base leading-relaxed text-gray-600 md:text-lg md:leading-relaxed">
-              {r.text}
-            </p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+  <ApercuRealisations categorie="Autonomie" titre="Les résidences seniors" class="bg-gray-50" />
 
   <!-- POUR LES PARTICULIERS / ÉTAPES -->
   <section class="px-6 py-20 md:px-8 md:py-24">

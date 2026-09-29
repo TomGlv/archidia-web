@@ -28,14 +28,36 @@ export function urlFor(source: any) {
   return builder.image(source);
 }
 
+export const CATEGORIES = [
+  { value: "AMO / MOE", slug: "amo-moe", page: "/amo-moe" },
+  { value: "Diagnostics & Copropriétés", slug: "diagnostics", page: "/diagnostics" },
+  { value: "Maison individuelle", slug: "maisons", page: "/maisons-individuelles" },
+  { value: "Autonomie", slug: "autonomie", page: "/autonomie" },
+] as const;
+
+export type Categorie = (typeof CATEGORIES)[number]["value"];
+
+export const slugify = (s: string) =>
+  s
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
 export interface ProjetListItem {
   _id: string;
   titre: string;
   slug: string;
-  categorie?: string;
+  categories: string[];
+  secteur?: string;
   lieu?: string;
   annee?: string;
+  chiffres?: string;
+  enAvant?: boolean;
+  avantArchidia?: boolean;
   cover?: any;
+  extrait?: string;
 }
 
 export interface Projet extends ProjetListItem {
@@ -45,21 +67,39 @@ export interface Projet extends ProjetListItem {
   meta_description?: string;
 }
 
-export async function getProjets(): Promise<ProjetListItem[]> {
-  if (!sanity) return [];
-  return sanity.fetch(
-    `*[_type == "projet"] | order(annee desc, _createdAt desc){
-      _id, titre, "slug": slug.current, categorie, lieu, annee, cover
-    }`,
+// `categorie` (ancien champ simple) reste lu pour les documents créés avant le passage à `categories`.
+const LIST_FIELDS = `
+  _id, titre, "slug": slug.current,
+  "categories": coalesce(categories, select(defined(categorie) => [categorie], [])),
+  secteur, lieu, annee, chiffres, enAvant, avantArchidia, cover,
+  "extrait": pt::text(description)
+`;
+
+let cache: Promise<ProjetListItem[]> | null = null;
+
+/** Tous les projets, du plus récent au plus ancien (les projets sans année en dernier).
+ *  Mis en cache pour la durée du build : plusieurs pages l'appellent. */
+export function getProjets(): Promise<ProjetListItem[]> {
+  if (!sanity) return Promise.resolve([]);
+  cache ??= sanity.fetch(
+    `*[_type == "projet" && defined(slug.current)] | order(coalesce(annee, "0") desc, _createdAt desc){${LIST_FIELDS}}`,
   );
+  return cache;
+}
+
+/** Aperçu pour une page métier : projets « mis en avant » d'abord, puis les plus récents. */
+export async function getApercu(categorie: Categorie, limit = 3) {
+  const all = (await getProjets()).filter((p) => p.categories.includes(categorie));
+  const featured = all.filter((p) => p.enAvant);
+  const rest = all.filter((p) => !p.enAvant);
+  return { projets: [...featured, ...rest].slice(0, limit), total: all.length };
 }
 
 export async function getProjet(slug: string): Promise<Projet | null> {
   if (!sanity) return null;
   return sanity.fetch(
     `*[_type == "projet" && slug.current == $slug][0]{
-      _id, titre, "slug": slug.current, categorie, lieu, annee,
-      cover, galerie, video_url, description, meta_description
+      ${LIST_FIELDS}, galerie, video_url, description, meta_description
     }`,
     { slug },
   );

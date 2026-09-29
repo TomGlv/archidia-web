@@ -64,6 +64,25 @@ le projet Sanity et de le connecter.
 Résultat : Claudia clique sur **Publish** dans Sanity → Netlify reconstruit et met en
 ligne automatiquement (~1 min). Elle ne touche jamais au code.
 
+### Réalisations : une seule source
+
+Tous les projets vivent dans Sanity. Les pages métier (AMO / MOE, Diagnostics,
+Maisons, Autonomie) n'en contiennent plus : elles affichent un aperçu de 3 projets
+de leur catégorie (ceux cochés « Mettre en avant » d'abord) et renvoient vers
+`/realisations?cat=…`, qui liste et filtre tout le portfolio.
+
+- Un projet peut apparaître dans plusieurs catégories (ex. résidences seniors :
+  AMO / MOE + Autonomie).
+- La photo de couverture est facultative : sans photo, le projet s'affiche en fiche texte.
+- Import initial des projets historiques (une seule fois) :
+
+  ```sh
+  SANITY_WRITE_TOKEN=xxx node scripts/import-projets.mjs
+  ```
+
+  Token : sanity.io/manage → API → Tokens (droits *Editor*). Le script ne remplace
+  jamais un projet existant (sauf avec `--force`).
+
 > Les vidéos s'ajoutent en collant simplement un lien **YouTube** ou **Vimeo** dans
 > le champ prévu. Les photos sont optimisées automatiquement par le CDN de Sanity.
 

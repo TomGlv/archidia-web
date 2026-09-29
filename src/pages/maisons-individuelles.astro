@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ApercuRealisations from "../components/ApercuRealisations.astro";
 
 // Frise du processus — étapes chronologiques d'un projet de maison individuelle
 const steps = [
@@ -39,43 +40,6 @@ const steps = [
     title: "Le suivi de chantier",
     text: "Consultation et choix des entreprises, suivi hebdomadaire du chantier, contrôle qualité et budgétaire, jusqu'à la réception des travaux.",
     livrable: "Comptes rendus & réception des travaux",
-  },
-];
-
-// Réalisations — constructions, extensions, rénovations
-const constructions = [
-  {
-    title: "Maison Bougival",
-    meta: "Construction & restructuration de façade · Véranda · 2024 · Bougival",
-    text: "Une maison construite en 1974, avec une toiture en ardoise, pensée autour de la transparence et de l'ouverture sur le jardin. Le projet intègre le volume de la véranda pour créer une continuité des façades et de la toiture ; côté Sud, la modification d'une baie existante et la création de deux baies, conservant la largeur d'origine, dessinent une forme fine et élancée qui épouse les lignes de la toiture et apporte de la lumière à la pièce de vie.",
-  },
-];
-
-const renovations = [
-  {
-    title: "Buzenval / Rueil-Malmaison",
-    meta: "Restructuration de façade et des espaces de vie · 200 m² · Chantier janvier 2026 · Rueil-Malmaison",
-    text: "La maison existante, construite en 1940, présente une façade longue de 26,50 m, résultat du rassemblement de plusieurs petites maisons de l'époque. Le projet restructure l'espace de vie — cuisine, salle à manger, salon et salle de piano — avec le déplacement des poteaux existants vers la façade pour dégager la pièce et laisser entrer la lumière, à travers la création de deux verrières et de deux portes-fenêtres. Toutes les menuiseries extérieures et les volets sont en cours de changement.",
-  },
-  {
-    title: "Maison Boulogne-Billancourt",
-    meta: "Avant-projet · Isolation thermique par l'extérieur · 2025 · Boulogne-Billancourt",
-    text: "Une maison de 1936 (surélevée en 1993) en zone inondable, dont l'isolation thermique par l'extérieur — fibre de bois et enduit minéral — est à l'étude sur tous les étages sauf le rez-de-chaussée. La véranda existante sera conservée, les baies traitées avec des modénatures, et la façade reprise dans des tonalités de gris.",
-  },
-  {
-    title: "Maison Varengeville",
-    meta: "Réaménagement d'un sous-sol semi-enterré · 50 m² · Livraison 2021 · Varengeville-sur-Mer",
-    text: "Le réaménagement d'un sous-sol semi-enterré, au sein d'une demeure construite en 1936 au-dessus d'une falaise, qui logeait jusqu'alors une salle de billard et l'ensemble des équipements techniques de la maison. L'objectif était de regrouper la chaudière et le chauffe-eau dans un seul local, pour libérer un maximum de surface côté façades et profiter de la lumière naturelle dans les pièces à vivre — avec, entre le local technique et la chambre voisine, un passage secret dissimulé dans la cloison acoustique. Le programme prévoyait deux chambres, une kitchenette et une salle de bain, sans modification structurelle de la maison.",
-  },
-  {
-    title: "Appartement New Hall",
-    meta: "Rénovation & réaménagement d'un garage en habitation · 46 m² · Livraison mars 2022 · New Hall, Californie, États-Unis",
-    text: "La création d'un appartement indépendant à l'emplacement d'un garage existant, au sein d'une maison californienne de 200 m² — chambre, walking-closet, salle d'eau, cuisine et salon, privilégiant la lumière naturelle et des matériaux nobles. Un projet à l'anecdote singulière, mené à distance depuis la France, qui illustre la capacité d'ArchidiA à suivre un projet en dehors de sa zone d'intervention habituelle.",
-  },
-  {
-    title: "Maison Denise",
-    meta: "Restructuration de deux logements · 180 m² · 2020 · Régusse, Haut Var",
-    text: "La maison était abandonnée depuis 20 ans et se trouvait dans un état délabré : elle était composée de deux logements imbriqués entre eux. Trois planchers ont été démolis, ainsi qu'une citerne au sous-sol. Lors de la démolition, un volume important a été découvert entre la toiture et le faux-plafond, ce qui a permis de créer une mezzanine et des espaces plus lumineux.",
   },
 ];
 ---
@@ -207,61 +171,7 @@ const renovations = [
     </div>
   </section>
 
-  <!-- CONSTRUCTIONS & EXTENSIONS -->
-  <section class="mx-auto max-w-7xl px-6 py-20 md:px-8 md:py-24">
-    <p class="reveal mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
-      Constructions & extensions
-    </p>
-    <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
-      <!-- PHOTO: réalisation Maison Bougival (construction / véranda) -->
-      <div class="reveal relative aspect-[4/3] overflow-hidden bg-[#20221f]">
-        <img
-          src="/images/hero-home.jpg"
-          alt="Construction et extension d'une maison individuelle"
-          class="h-full w-full object-cover opacity-90"
-          loading="lazy"
-          width="1200"
-          height="900"
-        />
-      </div>
-      {constructions.map((p) => (
-        <div class="reveal">
-          <h3 class="text-2xl font-extrabold uppercase tracking-tight text-black md:text-3xl">
-            {p.title}
-          </h3>
-          <p class="mt-3 text-[11px] font-bold uppercase tracking-widest text-accent">
-            {p.meta}
-          </p>
-          <p class="mt-5 text-base leading-relaxed text-gray-500">{p.text}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- RÉNOVATIONS & RÉAMÉNAGEMENTS -->
-  <section class="border-t border-gray-100 bg-[#fafafa] px-6 py-20 md:px-8 md:py-24">
-    <div class="mx-auto max-w-7xl">
-      <p class="reveal mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
-        Rénovations & réaménagements
-      </p>
-      <h2 class="reveal mb-12 text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
-        Redonner vie<br class="hidden sm:block" /> à l'existant
-      </h2>
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {renovations.map((p) => (
-          <article class="reveal flex flex-col border-t-4 border-accent bg-white p-7 shadow-sm">
-            <h3 class="text-lg font-extrabold uppercase tracking-tight text-black">
-              {p.title}
-            </h3>
-            <p class="mt-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-              {p.meta}
-            </p>
-            <p class="mt-4 text-sm leading-relaxed text-gray-500">{p.text}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+  <ApercuRealisations categorie="Maison individuelle" titre="Nos projets de maisons" />
 
   <!-- CTA CONTACT -->
   <section class="mx-auto max-w-7xl px-6 py-24 text-center md:px-8">

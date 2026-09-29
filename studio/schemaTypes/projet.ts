@@ -20,9 +20,11 @@ export const projet = defineType({
       validation: (r) => r.required(),
     }),
     defineField({
-      name: "categorie",
-      title: "Catégorie",
-      type: "string",
+      name: "categories",
+      title: "Catégories",
+      type: "array",
+      of: [{ type: "string" }],
+      description: "Pages du site où le projet peut apparaître (plusieurs choix possibles).",
       options: {
         list: [
           { title: "AMO / MOE", value: "AMO / MOE" },
@@ -30,8 +32,16 @@ export const projet = defineType({
           { title: "Maison individuelle", value: "Maison individuelle" },
           { title: "Autonomie", value: "Autonomie" },
         ],
-        layout: "dropdown",
+        layout: "grid",
       },
+      validation: (r) => r.required().min(1),
+    }),
+    defineField({
+      name: "secteur",
+      title: "Secteur / type de mission",
+      type: "string",
+      description:
+        "Sert de filtre sur la page Réalisations. Ex. « Bureaux & patrimoine », « Hôtellerie », « Copropriétés (PPPT / DTG) », « Rénovation & réaménagement »…",
     }),
     defineField({ name: "lieu", title: "Lieu", type: "string" }),
     defineField({
@@ -41,12 +51,33 @@ export const projet = defineType({
       description: "Ex. 2024",
     }),
     defineField({
+      name: "chiffres",
+      title: "Chiffres clés (facultatif)",
+      type: "string",
+      description: "Affiché sous le titre. Ex. « 6 500 m² » ou « 105 chambres ».",
+    }),
+    defineField({
+      name: "enAvant",
+      title: "Mettre en avant",
+      type: "boolean",
+      description: "Affiché en priorité dans l'aperçu « Quelques réalisations » des pages métier.",
+      initialValue: false,
+    }),
+    defineField({
+      name: "avantArchidia",
+      title: "Mission antérieure à ArchidiA",
+      type: "boolean",
+      description:
+        "À cocher pour les missions menées avant 2019 (Artelia, agence Viguier…) : une mention l'indique sur le site.",
+      initialValue: false,
+    }),
+    defineField({
       name: "cover",
       title: "Photo de couverture",
       type: "image",
       options: { hotspot: true },
+      description: "Facultative : sans photo, le projet s'affiche sous forme de fiche texte.",
       fields: [{ name: "alt", title: "Texte alternatif", type: "string" }],
-      validation: (r) => r.required(),
     }),
     defineField({
       name: "galerie",
@@ -90,6 +121,11 @@ export const projet = defineType({
     },
   ],
   preview: {
-    select: { title: "titre", subtitle: "categorie", media: "cover" },
+    select: { title: "titre", secteur: "secteur", lieu: "lieu", annee: "annee", media: "cover" },
+    prepare: ({ title, secteur, lieu, annee, media }) => ({
+      title,
+      subtitle: [secteur, lieu, annee].filter(Boolean).join(" · "),
+      media,
+    }),
   },
 });
