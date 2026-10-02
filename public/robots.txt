@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /merci
-Disallow: /mentions-legales
+
+# /merci et /mentions-legales ne sont pas bloquées ici : elles portent une balise
+# <meta name="robots" content="noindex">, que les moteurs doivent pouvoir lire
+# pour les retirer de l'index (un Disallow les en empêcherait).
 
 Sitemap: https://archidia.fr/sitemap-index.xml

@@ -47,6 +47,15 @@ const steps = [
 <Layout
   title="Maisons individuelles"
   description="Construction de maison individuelle, rénovation et extension : maîtrise d'œuvre et suivi de chantier de A à Z, de la visite conseil à la réception des travaux."
+  breadcrumbs={[{ name: "Maisons individuelles", path: "/maisons-individuelles/" }]}
+  jsonLd={{
+    "@type": "Service",
+    name: "Maîtrise d'œuvre de maisons individuelles : construction, rénovation, extension",
+    serviceType: "Maisons individuelles",
+    provider: { "@id": "https://archidia.fr/#organisation" },
+    areaServed: { "@type": "AdministrativeArea", name: "Île-de-France" },
+    url: "https://archidia.fr/maisons-individuelles/",
+  }}
 >
   <!-- HERO DE SECTION -->
   <header class="relative flex h-[62vh] min-h-[400px] items-center justify-center overflow-hidden bg-[#20221f]">

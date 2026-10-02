@@ -28,6 +28,15 @@ const sectors = [
 <Layout
   title="AMO / MOE — Assistance à Maîtrise d'Ouvrage & Maîtrise d'Œuvre"
   description="ArchidiA, AMO et maîtrise d'œuvre pour vos projets de bureaux, d'hôtellerie et de logements collectifs & résidences : de la conception à la réception, avec une double expertise reconnue."
+  breadcrumbs={[{ name: "AMO / MOE", path: "/amo-moe/" }]}
+  jsonLd={{
+    "@type": "Service",
+    name: "Assistance à maîtrise d'ouvrage et maîtrise d'œuvre",
+    serviceType: "AMO / MOE",
+    provider: { "@id": "https://archidia.fr/#organisation" },
+    areaServed: { "@type": "AdministrativeArea", name: "Île-de-France" },
+    url: "https://archidia.fr/amo-moe/",
+  }}
 >
   <!-- HERO / BANDEAU TITRE -->
   <header class="relative flex h-[62vh] min-h-[400px] items-center justify-center overflow-hidden bg-[#20221f]">

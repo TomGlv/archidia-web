@@ -38,6 +38,15 @@ const certifications = [
 <Layout
   title="Diagnostics & Copropriétés"
   description="Diagnostic technique global (DTG), projet de plan pluriannuel de travaux (PPPT) et diagnostic architectural et énergétique (DAE) : ArchidiA accompagne copropriétés et particuliers."
+  breadcrumbs={[{ name: "Diagnostics & Copropriétés", path: "/diagnostics/" }]}
+  jsonLd={{
+    "@type": "Service",
+    name: "Diagnostics de copropriétés (DTG, PPPT, DAE)",
+    serviceType: "Diagnostics & Copropriétés",
+    provider: { "@id": "https://archidia.fr/#organisation" },
+    areaServed: { "@type": "AdministrativeArea", name: "Île-de-France" },
+    url: "https://archidia.fr/diagnostics/",
+  }}
 >
   <!-- HERO -->
   <header class="relative flex h-[52vh] min-h-[360px] items-end overflow-hidden bg-[#20221f]">

@@ -12,6 +12,12 @@ const coords = [
 <Layout
   title="Contact — Parlons de votre projet"
   description="Contactez ArchidiA (Bougival, Île-de-France) pour votre projet : AMO/MOE, diagnostics et copropriétés, maison individuelle ou adaptation du logement. Réponse sous 48 h."
+  breadcrumbs={[{ name: "Contact", path: "/contact/" }]}
+  jsonLd={{
+    "@type": "ContactPage",
+    url: "https://archidia.fr/contact/",
+    about: { "@id": "https://archidia.fr/#organisation" },
+  }}
 >
   <!-- Bandeau titre -->
   <section class="border-b border-gray-100 px-6 py-20 text-center md:px-8 md:py-28">

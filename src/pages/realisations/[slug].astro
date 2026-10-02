@@ -21,8 +21,32 @@ const desc =
 const ogImage = projet.cover
   ? urlFor(projet.cover)?.width(1200).height(630).quality(80).url() ?? undefined
   : undefined;
+const url = `https://archidia.fr/realisations/${projet.slug}/`;
+const jsonLd = {
+  "@type": "CreativeWork",
+  "@id": `${url}#projet`,
+  name: projet.titre,
+  description: desc,
+  url,
+  inLanguage: "fr-FR",
+  ...(ogImage && { image: ogImage }),
+  ...(projet.annee && { dateCreated: projet.annee }),
+  ...(projet.lieu && { locationCreated: { "@type": "Place", name: projet.lieu } }),
+  ...(projet.categories.length && { genre: projet.categories }),
+  ...(!projet.avantArchidia && { creator: { "@id": "https://archidia.fr/#organisation" } }),
+};
 ---
 
-<Layout title={`${projet.titre} — Réalisations`} description={desc} image={ogImage}>
+<Layout
+  title={`${projet.titre} — Réalisations`}
+  description={desc}
+  image={ogImage}
+  imageAlt={projet.titre}
+  breadcrumbs={[
+    { name: "Réalisations", path: "/realisations/" },
+    { name: projet.titre, path: `/realisations/${projet.slug}/` },
+  ]}
+  jsonLd={jsonLd}
+>
   <Projet projet={projet} />
 </Layout>

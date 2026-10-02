@@ -8,21 +8,100 @@ interface Props {
   description: string;
   /** Image de partage (Open Graph), chemin absolu depuis /public */
   image?: string;
+  /** Texte alternatif de l'image de partage */
+  imageAlt?: string;
   /** Empêcher l'indexation (ex. page de remerciement) */
   noindex?: boolean;
+  /** Fil d'Ariane (hors accueil), pour les données structurées */
+  breadcrumbs?: { name: string; path: string }[];
+  /** Données structurées schema.org supplémentaires (JSON-LD) */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
   title,
   description,
   image = "/images/og-default.jpg",
+  imageAlt = "ArchidiA — architecture et assistance à maîtrise d'ouvrage",
   noindex = false,
+  breadcrumbs = [],
+  jsonLd = [],
 } = Astro.props;
 
 const siteName = "ArchidiA";
 const fullTitle = title.includes("ArchidiA") ? title : `${title} — ${siteName}`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 const ogImage = new URL(image, Astro.site ?? Astro.url).href;
+const siteUrl = new URL("/", Astro.site ?? Astro.url).href;
+const abs = (path: string) => new URL(path, Astro.site ?? Astro.url).href;
+
+// Données structurées schema.org : l'agence (entreprise locale) et le site,
+// présents sur toutes les pages, + fil d'Ariane et données propres à la page.
+const organisation = {
+  "@type": "ProfessionalService",
+  "@id": `${siteUrl}#organisation`,
+  name: siteName,
+  legalName: "ArchidiA",
+  description:
+    "Agence d'architecture et d'assistance à maîtrise d'ouvrage : AMO/MOE, diagnostics et copropriétés, maisons individuelles, adaptation du logement.",
+  url: siteUrl,
+  logo: abs("/images/logo.jpg"),
+  image: abs("/images/og-default.jpg"),
+  email: "claudia.aubert@archidia.fr",
+  telephone: "+33614600663",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "8, avenue des Fauvettes",
+    postalCode: "78380",
+    addressLocality: "Bougival",
+    addressRegion: "Île-de-France",
+    addressCountry: "FR",
+  },
+  areaServed: { "@type": "AdministrativeArea", name: "Île-de-France" },
+  founder: {
+    "@type": "Person",
+    "@id": `${siteUrl}a-propos/#claudia`,
+    name: "Claudia Aubert-Paredes",
+    jobTitle: "Architecte",
+    url: abs("/a-propos/"),
+    image: abs("/images/claudia.jpg"),
+  },
+  foundingDate: "2019",
+  vatID: "FR81878483239",
+  identifier: { "@type": "PropertyValue", propertyID: "SIREN", value: "878483239" },
+  knowsAbout: [
+    "Assistance à maîtrise d'ouvrage (AMO)",
+    "Maîtrise d'œuvre (MOE)",
+    "Diagnostic technique global (DTG)",
+    "Projet de plan pluriannuel de travaux (PPPT)",
+    "Rénovation énergétique",
+    "Maison individuelle",
+    "Adaptation du logement",
+  ],
+};
+const website = {
+  "@type": "WebSite",
+  "@id": `${siteUrl}#website`,
+  url: siteUrl,
+  name: siteName,
+  inLanguage: "fr-FR",
+  publisher: { "@id": `${siteUrl}#organisation` },
+};
+const breadcrumbList = breadcrumbs.length
+  ? {
+      "@type": "BreadcrumbList",
+      itemListElement: [{ name: "Accueil", path: "/" }, ...breadcrumbs].map((b, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: b.name,
+        item: abs(b.path),
+      })),
+    }
+  : null;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [organisation, website, breadcrumbList, ...[jsonLd].flat()].filter(Boolean),
+};
 ---
 
 <!doctype html>
@@ -32,11 +111,16 @@ const ogImage = new URL(image, Astro.site ?? Astro.url).href;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    <meta
+      name="robots"
+      content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1"}
+    />
+    <meta name="author" content="Claudia Aubert-Paredes — ArchidiA" />
 
     <!-- Open Graph / réseaux sociaux -->
     <meta property="og:type" content="website" />
@@ -45,8 +129,16 @@ const ogImage = new URL(image, Astro.site ?? Astro.url).href;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={imageAlt} />
     <meta property="og:locale" content="fr_FR" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
+    <!-- Données structurées (Google, Bing…) -->
+    {!noindex && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
   </head>
   <body class="text-ink antialiased">
     <Header />

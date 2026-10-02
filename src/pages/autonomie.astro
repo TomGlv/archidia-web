@@ -24,6 +24,15 @@ const steps = [
 <Layout
   title="Autonomie — Adaptation du logement"
   description="Adaptation du logement senior pour le maintien à domicile : diagnostic, accessibilité et suivi des travaux, avec l'accompagnement MaPrimeAdapt'. Bien vieillir chez soi."
+  breadcrumbs={[{ name: "Autonomie", path: "/autonomie/" }]}
+  jsonLd={{
+    "@type": "Service",
+    name: "Adaptation du logement pour le maintien à domicile",
+    serviceType: "Autonomie",
+    provider: { "@id": "https://archidia.fr/#organisation" },
+    areaServed: { "@type": "AdministrativeArea", name: "Île-de-France" },
+    url: "https://archidia.fr/autonomie/",
+  }}
 >
   <!-- HERO -->
   <header class="relative flex h-[72vh] min-h-[420px] items-center justify-center overflow-hidden bg-[#20221f]">

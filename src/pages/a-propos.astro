@@ -35,6 +35,12 @@ const timeline = [
 <Layout
   title="À propos — Claudia Aubert-Paredes"
   description="Claudia Aubert-Paredes, architecte fondatrice d'ArchidiA : plus de 20 ans d'expérience en agences et en management de projet. Parcours, formation et engagements."
+  breadcrumbs={[{ name: "À propos", path: "/a-propos/" }]}
+  jsonLd={{
+    "@type": "ProfilePage",
+    url: "https://archidia.fr/a-propos/",
+    mainEntity: { "@id": "https://archidia.fr/a-propos/#claudia" },
+  }}
 >
   <!-- EN-TÊTE -->
   <section class="border-b border-gray-100 px-6 py-20 md:px-8 md:py-24">
