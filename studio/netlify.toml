@@ -1,0 +1,20 @@
+# Site Netlify dédié au Studio Sanity (admin.archidia.fr).
+# Dans Netlify : Base directory = "studio" (ce fichier est alors pris en compte).
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Le Studio est une application monopage : toutes les routes renvoient index.html.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Robots-Tag = "noindex, nofollow"
