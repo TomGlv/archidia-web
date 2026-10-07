@@ -195,11 +195,11 @@ export const projets = [
       "Pilotage de la livraison de L'Hevana, une résidence de 30 appartements haut de gamme (37 à 112 m²) à la station de ski de Méribel — un nouveau concept de résidences de luxe, livré en 2019 en parallèle de la mise en exploitation du site, réalisé avec ChicagoMO pour Pierre et Vacances.",
   },
 
-  // ── Diagnostics — Copropriétés (PPPT / DTG) ──────────────────────
+  // ── Diagnostics — Copropriétés (PPPT / DTG / audit)────────────────────
   {
     titre: "Copropriété Serrurier",
     categories: [DIAG],
-    secteur: "Copropriétés (PPPT / DTG)",
+    secteur: "Copropriétés (DTG)",
     lieu: "Paris 19",
     annee: "2026",
     enAvant: true,
@@ -209,25 +209,25 @@ export const projets = [
   {
     titre: "Copropriété Championnière",
     categories: [DIAG],
-    secteur: "Copropriétés (PPPT / DTG)",
+    secteur: "Copropriétés (PPPT)",
     lieu: "Paris 13",
     annee: "2026",
     texte:
-      "Projet de Plan Pluriannuel de Travaux (PPT) pour la copropriété Championnière, construite en 1935. 47 lots dont 45 appartements.",
+      "Projet de Plan Pluriannuel de Travaux (PPPT) pour la copropriété Championnière, construite en 1935. 47 lots dont 45 appartements.",
   },
   {
     titre: "Copropriété Poliveau",
     categories: [DIAG],
-    secteur: "Copropriétés (PPPT / DTG)",
+    secteur: "Copropriétés (PPPT)",
     lieu: "Paris 5",
     annee: "2026",
     texte:
-      "Projet de Plan Pluriannuel de Travaux (PPT) pour la copropriété Poliveau, construite en 1965. 45 lots, tous appartements.",
+      "Projet de Plan Pluriannuel de Travaux (PPPT) pour la copropriété Poliveau, construite en 1965. 45 lots, tous appartements.",
   },
   {
     titre: "Copropriété La Jonchère",
     categories: [DIAG],
-    secteur: "Copropriétés (PPPT / DTG)",
+    secteur: "Copropriétés (DTG)",
     lieu: "Bougival",
     annee: "2025",
     chiffres: "5 180 m²",
@@ -238,7 +238,7 @@ export const projets = [
   {
     titre: "Copropriété Entrepreneurs",
     categories: [DIAG],
-    secteur: "Copropriétés (PPPT / DTG)",
+    secteur: "Copropriétés (DTG)",
     lieu: "Paris 15",
     annee: "2025",
     texte:
@@ -247,7 +247,7 @@ export const projets = [
   {
     titre: "Copropriété Le Concerto",
     categories: [DIAG],
-    secteur: "Copropriétés (PPPT / DTG)",
+    secteur: "Copropriétés (audit)",
     lieu: "Franconville",
     annee: "2024",
     texte:
@@ -256,11 +256,11 @@ export const projets = [
   {
     titre: "Copropriété Ferrus",
     categories: [DIAG],
-    secteur: "Copropriétés (PPPT / DTG)",
+    secteur: "Copropriétés (PPPT)",
     lieu: "Paris 14",
     annee: "2024",
     texte:
-      "Projet de Plan Pluriannuel de Travaux (PPT) pour la copropriété Ferrus, construite en 1965. 288 lots dont 102 logements.",
+      "Projet de Plan Pluriannuel de Travaux (PPPT) pour la copropriété Ferrus, construite en 1965. 288 lots dont 102 logements.",
   },
 
   // ── Diagnostics — DAE maisons individuelles / petits collectifs ──

@@ -3,14 +3,15 @@ import Layout from "../layouts/Layout.astro";
 import ReferencesParLigne from "../components/ReferencesParLigne.astro";
 import { getLigne, lienRealisations, type ProjetListItem } from "../lib/sanity";
 
-// Nos références : 3 projets par type de mission. Le type est déduit du
-// secteur (DAE) ou de la description du projet dans Sanity (PPPT / DTG).
+// Nos références : 3 projets par type de mission, d'après le secteur saisi
+// dans Sanity (« Copropriétés (PPPT) », « Copropriétés (DTG) », « … (DAE) »).
 const CAT = "Diagnostics & Copropriétés";
-const texte = (p: ProjetListItem) => `${p.secteur ?? ""} ${p.extrait ?? ""}`;
+const aLeSigle = (sigle: string) => (p: ProjetListItem) =>
+  new RegExp(`\\b${sigle}\\b`).test(p.secteur ?? "");
 const types = [
-  { sigle: "PPPT", libelle: "Projet de plan pluriannuel de travaux", test: (p: ProjetListItem) => /pluriannuel|PPPT/i.test(p.extrait ?? "") },
-  { sigle: "DTG", libelle: "Diagnostic technique global", test: (p: ProjetListItem) => /Diagnostic Technique Global|\bDTG\b/i.test(p.extrait ?? "") },
-  { sigle: "DAE", libelle: "Diagnostic architectural & énergétique", test: (p: ProjetListItem) => /\bDAE\b/.test(texte(p)) },
+  { sigle: "PPPT", libelle: "Projet de plan pluriannuel de travaux", test: aLeSigle("PPPT") },
+  { sigle: "DTG", libelle: "Diagnostic technique global", test: aLeSigle("DTG") },
+  { sigle: "DAE", libelle: "Diagnostic architectural & énergétique", test: aLeSigle("DAE") },
 ];
 const references = await Promise.all(
   types.map(async ({ test, ...t }) => {

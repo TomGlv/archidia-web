@@ -41,7 +41,7 @@ export const projet = defineType({
       title: "Secteur / type de mission",
       type: "string",
       description:
-        "Sert de filtre sur la page Réalisations. Ex. « Bureaux & patrimoine », « Hôtellerie », « Copropriétés (PPPT / DTG) », « Rénovation & réaménagement »…",
+        "Sert de filtre sur la page Réalisations. Ex. « Bureaux & patrimoine », « Hôtellerie », « Copropriétés (PPPT) », « Copropriétés (DTG) », « Maisons & petits collectifs (DAE) », « Rénovation & réaménagement »…",
     }),
     defineField({ name: "lieu", title: "Lieu", type: "string" }),
     defineField({
