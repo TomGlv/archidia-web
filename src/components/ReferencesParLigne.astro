@@ -1,0 +1,54 @@
+---
+// Références d'une page métier, présentées en lignes de 3 projets (une ligne
+// par secteur ou type de mission), chacune avec son lien « Voir tous les projets ».
+import ProjetCard from "./ProjetCard.astro";
+import type { ProjetListItem } from "../lib/sanity";
+
+interface Ligne {
+  /** Sigle affiché en orange devant le libellé (ex. « PPPT ») */
+  sigle?: string;
+  libelle: string;
+  projets: ProjetListItem[];
+  /** Page Réalisations filtrée correspondante */
+  href: string;
+}
+interface Props {
+  titre: string;
+  surtitre?: string;
+  lignes: Ligne[];
+  class?: string;
+}
+const { titre, surtitre, lignes, class: className } = Astro.props;
+const visibles = lignes.filter((l) => l.projets.length > 0);
+---
+
+{visibles.length > 0 && (
+  <section class:list={["border-t border-gray-100 px-6 py-12 md:px-8", className]}>
+    <div class="mx-auto max-w-7xl">
+      <div class="reveal mb-8">
+        {surtitre && <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">{surtitre}</p>}
+        <h2 class="text-3xl font-normal uppercase tracking-tight text-anthracite md:text-4xl">{titre}</h2>
+      </div>
+      <div class="space-y-12">
+        {visibles.map((l) => (
+          <div>
+            <div class="reveal mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <h3 class="border-l-4 border-accent pl-4 text-lg font-normal uppercase tracking-tight text-anthracite md:text-xl">
+                {l.sigle && <><span class="text-accent">{l.sigle}</span> · </>}{l.libelle}
+              </h3>
+              <a
+                href={l.href}
+                class="inline-block self-start border-2 border-black px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-black transition hover:bg-black hover:text-white sm:self-auto"
+              >
+                Voir tous les projets →
+              </a>
+            </div>
+            <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {l.projets.map((p) => <ProjetCard projet={p} />)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

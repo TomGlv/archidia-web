@@ -58,7 +58,7 @@ const steps = [
   }}
 >
   <!-- HERO DE SECTION -->
-  <header class="relative flex h-[62vh] min-h-[400px] items-end overflow-hidden bg-[#20221f]">
+  <header class="relative flex h-[62vh] min-h-[400px] items-center overflow-hidden bg-[#20221f]">
     <img
       src="/images/home-intro.jpg"
       alt="Projet d'habitat accompagné par ArchidiA"
@@ -68,7 +68,7 @@ const steps = [
       height="1080"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/30"></div>
-    <div class="relative z-10 mx-auto w-full max-w-7xl px-6 pb-14 md:px-8">
+    <div class="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-8">
       <p class="mb-5 text-[10px] font-bold uppercase tracking-[0.4em] text-accent">
         Habitats
       </p>
@@ -94,88 +94,60 @@ const steps = [
     </p>
   </section>
 
-  <!-- FRISE DU PROCESSUS -->
+  <!-- DÉROULÉ D'UN PROJET : grille d'étapes + point d'arrivée -->
   <section class="px-6 py-12 md:px-8">
-    <div class="mx-auto max-w-6xl">
-      <div class="mb-8 text-center md:mb-20">
-        <p class="reveal mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-8">
+        <p class="reveal mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
           Notre méthode
         </p>
         <h2 class="reveal text-3xl font-normal uppercase tracking-tight text-anthracite md:text-4xl">
-          Le déroulé d'un projet,<br class="hidden sm:block" /> étape par étape
+          Le déroulé d'un projet, étape par étape
         </h2>
       </div>
 
-      <!-- Timeline : verticale sur mobile, colonne rythmée par l'accent -->
-      <ol class="relative mx-auto max-w-4xl">
-        <!-- Ligne verticale continue -->
-        <span
-          class="absolute left-[15px] top-2 bottom-2 w-px bg-gray-200 md:left-1/2 md:-translate-x-1/2"
-          aria-hidden="true"></span>
-
-        {steps.map((s, i) => (
-          <li
-            class:list={[
-              "reveal relative mb-4 last:mb-0 pl-12 md:w-1/2 md:pl-0",
-              i > 0 && "md:-mt-14",
-              i % 2 === 0
-                ? "md:mr-auto md:pr-8 md:text-right"
-                : "md:ml-auto md:pl-8",
-            ]}
-          >
-            <!-- Pastille numérotée -->
-            <span
-              class:list={[
-                "absolute top-0 flex h-8 w-8 items-center justify-center rounded-full bg-accent text-[11px] font-bold text-white shadow-md",
-                "left-0",
-                i % 2 === 0
-                  ? "md:left-auto md:-right-4"
-                  : "md:-left-4",
-              ]}
-            >
-              {s.idx}
-            </span>
-
-            <div class="border-l-4 border-accent bg-white px-4 py-3 shadow-sm md:border-l-0 md:border-t-4">
-              <h3 class="text-base font-normal uppercase tracking-tight text-anthracite">
-                {s.title}
-              </h3>
-              <p class="mt-1.5 text-[13px] leading-snug text-gray-500">{s.text}</p>
-              <p class="mt-2 text-[10px] font-bold uppercase tracking-widest text-black">
-                Livrable · <span class="text-accent">{s.livrable}</span>
-              </p>
-              {s.prix && (
-                <p class="mt-1 text-[11px] font-bold uppercase tracking-widest text-gray-400">
-                  {s.prix}
-                </p>
-              )}
+      <ol class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {steps.map((s) => (
+          <li class="reveal flex h-full flex-col border border-gray-200 bg-white p-6 transition hover:border-accent">
+            <div class="mb-4 flex items-center gap-4">
+              <span class="text-3xl font-light leading-none text-accent">{s.idx}</span>
+              <span class="h-px flex-1 bg-gray-200" aria-hidden="true"></span>
+            </div>
+            <h3 class="text-base font-normal uppercase tracking-tight text-anthracite md:text-lg">
+              {s.title}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-gray-500">{s.text}</p>
+            <div class="mt-auto pt-5">
+              <div class="border-t border-gray-100 pt-4">
+                <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">Livrable</p>
+                <p class="mt-1 text-sm text-anthracite">{s.livrable}</p>
+                {s.prix && (
+                  <p class="mt-3 inline-block bg-accent/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-accent">
+                    {s.prix}
+                  </p>
+                )}
+              </div>
             </div>
           </li>
         ))}
-
-        <!-- Point d'arrivée -->
-        <li class="reveal relative mt-6 pl-12 md:mx-auto md:w-full md:pl-0 md:text-center">
-          <span
-            class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full border-2 border-accent bg-white text-accent shadow-md md:left-1/2 md:-translate-x-1/2"
-            aria-hidden="true"
-          >
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
-          </span>
-          <div class="md:pt-10">
-            <span class="block text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400 md:mt-0">
-              Point d'arrivée
-            </span>
-            <h3 class="mt-2 text-xl font-normal uppercase tracking-tight text-anthracite">
-              Votre nouvelle maison
-            </h3>
-          </div>
-        </li>
       </ol>
 
-      <p class="reveal mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-gray-500">
-        Hors visite conseil, chaque étape fait l'objet d'un devis à la demande,
-        établi sur une base de <span class="font-semibold text-black">800 € HT/jour</span>.
-      </p>
+      <!-- Point d'arrivée -->
+      <div class="reveal mt-5 flex flex-col gap-6 bg-anthracite px-6 py-6 text-white md:flex-row md:items-center md:justify-between md:px-8">
+        <div class="flex items-center gap-5">
+          <span class="flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-accent text-accent" aria-hidden="true">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
+          </span>
+          <div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-accent">Point d'arrivée</p>
+            <p class="mt-1 text-xl font-normal uppercase tracking-tight md:text-2xl">Votre nouvel habitat</p>
+          </div>
+        </div>
+        <p class="max-w-md text-sm leading-relaxed text-gray-200 md:text-right">
+          Hors visite conseil, chaque étape fait l'objet d'un devis à la demande,
+          établi sur une base de <span class="font-semibold text-white">800 € HT/jour</span>.
+        </p>
+      </div>
     </div>
   </section>
 

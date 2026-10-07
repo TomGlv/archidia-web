@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ApercuRealisations from "../components/ApercuRealisations.astro";
+import ReferencesParLigne from "../components/ReferencesParLigne.astro";
+import { getLigne, lienRealisations } from "../lib/sanity";
 import Piliers from "../components/Piliers.astro";
 
 // ── Secteurs d'intervention (AMO / MOE) ─────────────────────────────
@@ -24,6 +25,15 @@ const sectors = [
     href: "/realisations?cat=amo-moe&secteur=logements-collectifs-residences",
   },
 ];
+
+// Quelques réalisations : une ligne de 3 projets par secteur
+const references = await Promise.all(
+  ["Bureaux & patrimoine", "Logements collectifs & résidences", "Hôtellerie"].map(async (secteur) => ({
+    libelle: secteur,
+    projets: await getLigne("AMO / MOE", (p) => p.secteur === secteur),
+    href: lienRealisations("AMO / MOE", secteur),
+  })),
+);
 ---
 
 <Layout
@@ -40,7 +50,7 @@ const sectors = [
   }}
 >
   <!-- HERO / BANDEAU TITRE -->
-  <header class="relative flex h-[62vh] min-h-[400px] items-end overflow-hidden bg-[#20221f]">
+  <header class="relative flex h-[62vh] min-h-[400px] items-center overflow-hidden bg-[#20221f]">
     <img
       src="/images/hero-home.jpg"
       alt="Réalisation architecturale ArchidiA"
@@ -50,7 +60,7 @@ const sectors = [
       height="1080"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/30"></div>
-    <div class="relative z-10 mx-auto w-full max-w-7xl px-6 pb-14 md:px-8">
+    <div class="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-8">
       <p class="mb-5 text-[10px] font-bold uppercase tracking-[0.4em] text-accent md:text-xs">
         AMO & MOE
       </p>
@@ -91,7 +101,7 @@ const sectors = [
     </div>
   </section>
 
-  <ApercuRealisations categorie="AMO / MOE" class="bg-gray-50" />
+  <ReferencesParLigne titre="Quelques réalisations" lignes={references} class="bg-gray-50" />
 
   <!-- CTA CONTACT -->
   <section class="mx-auto max-w-7xl px-6 py-12 text-center md:px-8">

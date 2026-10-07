@@ -96,6 +96,19 @@ export async function getApercu(categorie: Categorie, limit = 3) {
   return { projets: [...featured, ...rest].slice(0, limit), total: all.length };
 }
 
+/** Une ligne de références : projets d'une catégorie répondant au filtre,
+ *  « mis en avant » d'abord puis les plus récents. */
+export async function getLigne(categorie: Categorie, filtre: (p: ProjetListItem) => boolean, limit = 3) {
+  const all = (await getProjets()).filter((p) => p.categories.includes(categorie) && filtre(p));
+  return [...all.filter((p) => p.enAvant), ...all.filter((p) => !p.enAvant)].slice(0, limit);
+}
+
+/** Lien vers la page Réalisations filtrée sur une catégorie (et un secteur). */
+export function lienRealisations(categorie: Categorie, secteur?: string) {
+  const cat = CATEGORIES.find((c) => c.value === categorie)!.slug;
+  return `/realisations?cat=${cat}${secteur ? `&secteur=${slugify(secteur)}` : ""}`;
+}
+
 export async function getProjet(slug: string): Promise<Projet | null> {
   if (!sanity) return null;
   return sanity.fetch(
