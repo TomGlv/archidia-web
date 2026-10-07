@@ -28,11 +28,12 @@ export function urlFor(source: any) {
   return builder.image(source);
 }
 
+// `value` = valeur enregistrée dans Sanity (ne pas modifier) ; `label` = libellé affiché.
 export const CATEGORIES = [
-  { value: "AMO / MOE", slug: "amo-moe", page: "/amo-moe" },
-  { value: "Diagnostics & Copropriétés", slug: "diagnostics", page: "/diagnostics" },
-  { value: "Maison individuelle", slug: "maisons", page: "/maisons-individuelles" },
-  { value: "Autonomie", slug: "autonomie", page: "/autonomie" },
+  { value: "AMO / MOE", label: "AMO & MOE", slug: "amo-moe", page: "/amo-moe" },
+  { value: "Diagnostics & Copropriétés", label: "Diagnostics & Copropriétés", slug: "diagnostics", page: "/diagnostics" },
+  { value: "Maison individuelle", label: "Habitats", slug: "habitats", page: "/habitats" },
+  { value: "Autonomie", label: "Autonomie", slug: "autonomie", page: "/autonomie" },
 ] as const;
 
 export type Categorie = (typeof CATEGORIES)[number]["value"];

@@ -29,7 +29,7 @@ export const projet = defineType({
         list: [
           { title: "AMO / MOE", value: "AMO / MOE" },
           { title: "Diagnostics & Copropriétés", value: "Diagnostics & Copropriétés" },
-          { title: "Maison individuelle", value: "Maison individuelle" },
+          { title: "Habitats", value: "Maison individuelle" },
           { title: "Autonomie", value: "Autonomie" },
         ],
         layout: "grid",

@@ -20,7 +20,7 @@ const chip =
 
 <Layout
   title="Réalisations — Nos projets"
-  description="Découvrez les réalisations d'ArchidiA : AMO/MOE (bureaux, hôtellerie, logements), diagnostics de copropriétés, maisons individuelles et adaptation du logement."
+  description="Découvrez les réalisations d'ArchidiA : AMO/MOE (bureaux, hôtellerie, logements), diagnostics de copropriétés, habitats et adaptation du logement."
   breadcrumbs={[{ name: "Réalisations", path: "/realisations/" }]}
 >
   <section class="border-b border-gray-100 px-6 py-12 md:px-8 md:py-12">
@@ -43,7 +43,7 @@ const chip =
           <a href="/realisations" data-cat="" class={chip}>Tous · {projets.length}</a>
           {filtres.map((c) => (
             <a href={`/realisations?cat=${c.slug}`} data-cat={c.slug} class={chip}>
-              {c.value} · {c.total}
+              {c.label} · {c.total}
             </a>
           ))}
         </div>

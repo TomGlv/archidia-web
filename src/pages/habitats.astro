@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import ApercuRealisations from "../components/ApercuRealisations.astro";
 
-// Frise du processus — étapes chronologiques d'un projet de maison individuelle
+// Frise du processus — étapes chronologiques d'un projet d'habitat
 const steps = [
   {
     idx: "01",
@@ -45,23 +45,23 @@ const steps = [
 ---
 
 <Layout
-  title="Maisons individuelles"
-  description="Construction de maison individuelle, rénovation et extension : maîtrise d'œuvre et suivi de chantier de A à Z, de la visite conseil à la réception des travaux."
-  breadcrumbs={[{ name: "Maisons individuelles", path: "/maisons-individuelles/" }]}
+  title="Habitats"
+  description="Construction, extension et rénovation de votre habitat : maîtrise d'œuvre et suivi de chantier de A à Z, de la visite conseil à la réception des travaux."
+  breadcrumbs={[{ name: "Habitats", path: "/habitats/" }]}
   jsonLd={{
     "@type": "Service",
-    name: "Maîtrise d'œuvre de maisons individuelles : construction, rénovation, extension",
-    serviceType: "Maisons individuelles",
+    name: "Maîtrise d'œuvre d'habitats : construction, rénovation, extension",
+    serviceType: "Habitats",
     provider: { "@id": "https://archidia.fr/#organisation" },
     areaServed: { "@type": "AdministrativeArea", name: "Île-de-France" },
-    url: "https://archidia.fr/maisons-individuelles/",
+    url: "https://archidia.fr/habitats/",
   }}
 >
   <!-- HERO DE SECTION -->
   <header class="relative flex h-[62vh] min-h-[400px] items-end overflow-hidden bg-[#20221f]">
     <img
       src="/images/home-intro.jpg"
-      alt="Projet de maison individuelle accompagné par ArchidiA"
+      alt="Projet d'habitat accompagné par ArchidiA"
       class="absolute inset-0 h-full w-full object-cover opacity-60"
       fetchpriority="high"
       width="1920"
@@ -70,7 +70,7 @@ const steps = [
     <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/30"></div>
     <div class="relative z-10 mx-auto w-full max-w-7xl px-6 pb-14 md:px-8">
       <p class="mb-5 text-[10px] font-bold uppercase tracking-[0.4em] text-accent">
-        Maisons individuelles
+        Habitats
       </p>
       <h1 class="mb-6 text-4xl font-normal uppercase leading-[1.05] tracking-tight text-white drop-shadow-lg sm:text-5xl md:text-6xl">
         Construire, agrandir,<br />rénover.

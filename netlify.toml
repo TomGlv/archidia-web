@@ -6,6 +6,17 @@
   # Netlify ne supporte pas encore Node 26 ; on fige une LTS compatible.
   NODE_VERSION = "22"
 
+# Ancienne adresse de la page Habitats
+[[redirects]]
+  from = "/maisons-individuelles/*"
+  to = "/habitats/"
+  status = 301
+
+[[redirects]]
+  from = "/maisons-individuelles"
+  to = "/habitats/"
+  status = 301
+
 # En-têtes de sécurité de base
 [[headers]]
   for = "/*"

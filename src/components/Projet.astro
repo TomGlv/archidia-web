@@ -36,7 +36,7 @@ const cats = CATEGORIES.filter((c) => projet.categories.includes(c.value));
     <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
     <div class="relative z-10 mx-auto w-full max-w-5xl px-6 pb-12 md:px-8">
       <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
-        {[cats.map((c) => c.value).join(" · "), projet.secteur].filter(Boolean).join(" — ")}
+        {[cats.map((c) => c.label).join(" · "), projet.secteur].filter(Boolean).join(" — ")}
       </p>
       <h1 class="text-3xl font-normal uppercase tracking-tight text-white md:text-5xl">
         {projet.titre}
@@ -97,7 +97,7 @@ const cats = CATEGORIES.filter((c) => projet.categories.includes(c.value));
         href={`/realisations?cat=${c.slug}`}
         class="text-[10px] font-bold uppercase tracking-widest text-gray-400 transition hover:text-accent"
       >
-        ← Autres projets {c.value}
+        ← Autres projets {c.label}
       </a>
     ))}
     <a
