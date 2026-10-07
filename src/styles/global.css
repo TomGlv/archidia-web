@@ -16,6 +16,50 @@
   --color-anthracite: #5d5d5d;  /* gris anthracite du logo : titres */
 }
 
+/* ---------------------------------------------------------------
+   Mode sombre — activé par le bouton du menu (classe .dark sur <html>).
+   Plutôt que d'ajouter des variantes dark: partout, on inverse la palette :
+   blanc/noir/gris/encre/anthracite sont redéfinis sous .dark.
+   .theme-fixe rétablit les couleurs claires dans les zones qui ne doivent
+   pas changer (bandeaux photo, bandeaux anthracite).
+--------------------------------------------------------------- */
+@custom-variant dark (&:where(.dark, .dark *));
+
+.dark {
+  color-scheme: dark;
+  --color-white: #141414;
+  --color-black: #f0f0f0;
+  --color-gray-50: #1b1b1b;
+  --color-gray-100: #262626;
+  --color-gray-200: #333333;
+  --color-gray-300: #4a4a4a;
+  --color-gray-400: #8f8f8f;
+  --color-gray-500: #a6a6a6;
+  --color-gray-600: #bebebe;
+  --color-gray-700: #d2d2d2;
+  --color-gray-800: #e4e4e4;
+  --color-ink: #ececec;
+  --color-anthracite: #c8c8c8;
+}
+.dark .theme-fixe {
+  color-scheme: light;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-gray-50: oklch(98.5% 0.002 247.839);
+  --color-gray-100: oklch(96.7% 0.003 264.542);
+  --color-gray-200: oklch(92.8% 0.006 264.531);
+  --color-gray-300: oklch(87.2% 0.01 258.338);
+  --color-gray-400: oklch(70.7% 0.022 261.325);
+  --color-gray-500: oklch(55.1% 0.027 264.364);
+  --color-gray-600: oklch(44.6% 0.03 256.802);
+  --color-gray-700: oklch(37.3% 0.034 259.733);
+  --color-gray-800: oklch(27.8% 0.033 256.848);
+  --color-ink: #171614;
+  --color-anthracite: #5d5d5d;
+}
+/* Bandeaux anthracite : un peu plus sombres que le gris du texte en mode sombre */
+.dark .bg-anthracite { background-color: #3a3a3a; }
+
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
@@ -23,8 +67,9 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: #ffffff;
+  background: var(--color-white);
   color: var(--color-ink);
+  transition: background-color 0.3s ease, color 0.3s ease;
   margin: 0;
 }
 
@@ -61,6 +106,6 @@ body {
 .prose-archidia li + li { margin-top: 0.4em; }
 .prose-archidia blockquote {
   border-left: 3px solid var(--color-accent); padding-left: 1em;
-  font-style: italic; color: #5c5952;
+  font-style: italic; color: var(--color-gray-500);
 }
 .prose-archidia img { margin: 1.5em 0; }

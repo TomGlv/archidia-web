@@ -108,6 +108,10 @@ const structuredData = {
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
+    <!-- Thème mémorisé appliqué avant l'affichage (évite un flash blanc) -->
+    <script is:inline>
+      try { if (localStorage.getItem("theme") === "sombre") document.documentElement.classList.add("dark"); } catch {}
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/icon.svg" />

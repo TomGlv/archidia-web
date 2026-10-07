@@ -43,7 +43,7 @@ const certifications = [
   }}
 >
   <!-- HERO -->
-  <header class="relative flex h-[52vh] min-h-[360px] items-center overflow-hidden bg-[#20221f]">
+  <header class="theme-fixe relative flex h-[52vh] min-h-[360px] items-center overflow-hidden bg-[#20221f]">
     <img
       src="/images/hero-home.jpg"
       alt="Diagnostics techniques et copropriétés ArchidiA"
@@ -108,7 +108,7 @@ const certifications = [
         <ul class="grid grid-cols-2 gap-6">
           {certifications.map((c) => (
             <li class="flex flex-col items-start gap-3">
-              <span class="flex h-14 items-center">
+              <span class="flex h-16 items-center rounded bg-[#fff] px-3 py-2">
                 <img src={c.logo} alt={c.nom} class="max-h-14 w-auto max-w-full object-contain" loading="lazy" />
               </span>
               <span class="text-sm font-semibold text-black">{c.nom}</span>
@@ -123,7 +123,7 @@ const certifications = [
         </p>
         <ul class="space-y-6">
           <li class="flex flex-col items-start gap-3">
-            <span class="flex h-14 items-center">
+            <span class="flex h-16 items-center rounded bg-[#fff] px-3 py-2">
               <img src="/images/logos/tribu-energie.webp" alt="Tribu Énergie" class="max-h-14 w-auto object-contain" loading="lazy" />
             </span>
             <span class="text-sm font-semibold text-black">Tribu Énergie</span>

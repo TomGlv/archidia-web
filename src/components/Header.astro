@@ -18,11 +18,12 @@ const isActive = (href: string) =>
 <header class="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/95 backdrop-blur">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
     <a href="/" class="flex items-center" aria-label="ArchidiA — accueil">
-      <img src="/images/logo.jpg" alt="ArchidiA" class="h-11 w-auto" width="140" height="44" />
+      <img src="/images/logo.jpg" alt="ArchidiA" class="h-11 w-auto dark:hidden" width="140" height="44" />
+      <img src="/images/logo-sombre.png" alt="ArchidiA" class="hidden h-11 w-auto dark:block" width="140" height="44" />
     </a>
 
     <!-- Menu desktop -->
-    <nav class="hidden items-center gap-4 whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.12em] text-gray-400 lg:flex xl:gap-6 xl:text-[11px] xl:tracking-[0.18em]">
+    <nav class="hidden items-center gap-4 whitespace-nowrap lg:ml-auto text-[10px] font-bold uppercase tracking-[0.12em] text-gray-400 lg:flex xl:gap-6 xl:text-[11px] xl:tracking-[0.18em]">
       {links.map((l) => (
         <a
           href={l.href}
@@ -36,6 +37,21 @@ const isActive = (href: string) =>
       ))}
     </nav>
 
+    <div class="flex items-center gap-1">
+    <!-- Bouton mode clair / sombre -->
+    <button
+      type="button"
+      data-theme-toggle
+      class="ml-4 inline-flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition hover:bg-gray-100 hover:text-accent xl:ml-6"
+      aria-label="Activer le mode sombre"
+      title="Mode clair / sombre"
+    >
+      <!-- Lune (affichée en mode clair) -->
+      <svg class="h-[18px] w-[18px] dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <!-- Soleil (affiché en mode sombre) -->
+      <svg class="hidden h-[18px] w-[18px] dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+
     <!-- Bouton hamburger mobile -->
     <button
       id="menu-toggle"
@@ -48,6 +64,7 @@ const isActive = (href: string) =>
       <span class="block h-0.5 w-6 bg-black transition"></span>
       <span class="block h-0.5 w-6 bg-black transition"></span>
     </button>
+    </div>
   </div>
 
   <!-- Menu mobile -->
@@ -70,6 +87,20 @@ const isActive = (href: string) =>
 </header>
 
 <script>
+  // Mode clair / sombre : clair par défaut, choix mémorisé dans le navigateur.
+  const themeBtn = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+  const majLibelle = () =>
+    themeBtn?.setAttribute(
+      "aria-label",
+      document.documentElement.classList.contains("dark") ? "Activer le mode clair" : "Activer le mode sombre",
+    );
+  majLibelle();
+  themeBtn?.addEventListener("click", () => {
+    const sombre = document.documentElement.classList.toggle("dark");
+    try { localStorage.setItem("theme", sombre ? "sombre" : "clair"); } catch {}
+    majLibelle();
+  });
+
   const toggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("mobile-menu");
   toggle?.addEventListener("click", () => {
