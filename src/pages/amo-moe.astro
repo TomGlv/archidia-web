@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ApercuRealisations from "../components/ApercuRealisations.astro";
+import Piliers from "../components/Piliers.astro";
 
 // ── Secteurs d'intervention (AMO / MOE) ─────────────────────────────
 const sectors = [
@@ -39,7 +40,7 @@ const sectors = [
   }}
 >
   <!-- HERO / BANDEAU TITRE -->
-  <header class="relative flex h-[62vh] min-h-[400px] items-center justify-center overflow-hidden bg-[#20221f]">
+  <header class="relative flex h-[62vh] min-h-[400px] items-end overflow-hidden bg-[#20221f]">
     <img
       src="/images/hero-home.jpg"
       alt="Réalisation architecturale ArchidiA"
@@ -49,11 +50,11 @@ const sectors = [
       height="1080"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/30"></div>
-    <div class="relative z-10 mx-auto max-w-4xl px-6 text-center">
+    <div class="relative z-10 mx-auto w-full max-w-7xl px-6 pb-14 md:px-8">
       <p class="mb-5 text-[10px] font-bold uppercase tracking-[0.4em] text-accent md:text-xs">
-        AMO / MOE
+        AMO & MOE
       </p>
-      <h1 class="mb-6 text-3xl font-extrabold uppercase leading-[1.08] tracking-tight text-white drop-shadow-lg sm:text-4xl md:text-6xl">
+      <h1 class="mb-6 text-3xl font-normal uppercase leading-[1.08] tracking-tight text-white drop-shadow-lg sm:text-4xl md:text-6xl">
         Assistance à Maîtrise d'Ouvrage<br class="hidden sm:block" /> & Maîtrise d'Œuvre
       </h1>
       <p class="text-[10px] font-bold uppercase tracking-[0.35em] text-gray-300 md:text-xs">
@@ -63,7 +64,7 @@ const sectors = [
   </header>
 
   <!-- INTRODUCTION / DOUBLE EXPERTISE -->
-  <section class="mx-auto max-w-3xl px-6 py-24 text-center md:py-32">
+  <section class="mx-auto max-w-3xl px-6 py-12 text-center md:py-14">
     <p class="reveal mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
       Une double expertise AMO & MOE
     </p>
@@ -81,32 +82,20 @@ const sectors = [
   </section>
 
   <!-- SECTEURS D'INTERVENTION -->
-  <section class="border-t border-gray-100 px-6 py-20 md:px-8">
+  <section class="border-t border-gray-100 px-6 py-12 md:px-8">
     <div class="mx-auto max-w-7xl">
-      <h2 class="reveal mb-14 text-center text-2xl font-extrabold uppercase tracking-tight text-black md:text-3xl">
+      <h2 class="reveal mb-8 text-2xl font-normal uppercase tracking-tight text-anthracite md:text-3xl">
         Nos secteurs d'intervention
       </h2>
-      <div class="grid gap-12 md:grid-cols-3">
-        {sectors.map((s) => (
-          <a href={s.href} class="reveal group block">
-            <span class="mb-5 block border-l-4 border-accent pl-4 text-[11px] font-black uppercase tracking-widest text-black">
-              {s.idx} / {s.title}
-            </span>
-            <p class="pl-4 text-sm leading-relaxed text-gray-500">{s.text}</p>
-            <span class="mt-4 inline-block pl-4 text-[10px] font-bold uppercase tracking-widest text-accent transition group-hover:translate-x-1">
-              Voir les projets →
-            </span>
-          </a>
-        ))}
-      </div>
+      <Piliers items={sectors} cta="Voir les projets →" class="md:grid-cols-3" />
     </div>
   </section>
 
   <ApercuRealisations categorie="AMO / MOE" class="bg-gray-50" />
 
   <!-- CTA CONTACT -->
-  <section class="mx-auto max-w-7xl px-6 py-24 text-center md:px-8">
-    <h2 class="reveal text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
+  <section class="mx-auto max-w-7xl px-6 py-12 text-center md:px-8">
+    <h2 class="reveal text-3xl font-normal uppercase tracking-tight text-anthracite md:text-4xl">
       Un projet à piloter ?
     </h2>
     <p class="reveal mt-5 text-base leading-relaxed text-gray-500 md:text-lg">

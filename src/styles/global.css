@@ -13,6 +13,7 @@
   --color-accent: #e96928;      /* orange ArchidiA */
   --color-accent-dark: #cf5417; /* hover */
   --color-ink: #171614;         /* noir chaud pour le texte */
+  --color-anthracite: #5d5d5d;  /* gris anthracite du logo : titres */
 }
 
 html {
@@ -48,11 +49,11 @@ body {
 /* Rendu du contenu riche (Portable Text Sanity) sur les fiches projets */
 .prose-archidia > * + * { margin-top: 1.1em; }
 .prose-archidia h2 {
-  font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em;
-  font-size: 1.5rem; margin-top: 1.8em; color: #171614;
+  font-weight: 400; text-transform: uppercase; letter-spacing: -0.01em;
+  font-size: 1.5rem; margin-top: 1.8em; color: var(--color-anthracite);
 }
 .prose-archidia h3 {
-  font-weight: 700; font-size: 1.2rem; margin-top: 1.4em; color: #171614;
+  font-weight: 400; font-size: 1.2rem; margin-top: 1.4em; color: var(--color-anthracite);
 }
 .prose-archidia a { color: var(--color-accent); text-decoration: underline; }
 .prose-archidia ul { list-style: disc; padding-left: 1.4em; }

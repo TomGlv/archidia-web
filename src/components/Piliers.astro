@@ -1,0 +1,36 @@
+---
+// Liste numérotée « 01 / Titre » avec filet orange : piliers de l'accueil,
+// secteurs AMO & MOE, étapes Autonomie. Lien facultatif sur chaque bloc.
+interface Item {
+  idx: string;
+  title: string;
+  text: string;
+  href?: string;
+}
+interface Props {
+  items: Item[];
+  /** Libellé du lien sous chaque bloc (si `href`) */
+  cta?: string;
+  class?: string;
+}
+const { items, cta = "Découvrir →", class: className = "sm:grid-cols-2 lg:grid-cols-4" } = Astro.props;
+---
+
+<div class:list={["grid gap-10", className]}>
+  {items.map((p) => {
+    const Tag = p.href ? "a" : "div";
+    return (
+      <Tag href={p.href} class="reveal group block">
+        <h3 class="mb-4 border-l-4 border-accent pl-4 text-lg font-normal uppercase tracking-tight text-anthracite md:text-xl">
+          {p.idx} / {p.title}
+        </h3>
+        <p class="pl-5 text-base leading-relaxed text-gray-600 md:text-lg md:leading-relaxed">{p.text}</p>
+        {p.href && (
+          <span class="mt-4 inline-block pl-5 text-[11px] font-bold uppercase tracking-widest text-accent transition group-hover:translate-x-1">
+            {cta}
+          </span>
+        )}
+      </Tag>
+    );
+  })}
+</div>

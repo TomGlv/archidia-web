@@ -43,25 +43,25 @@ const timeline = [
   }}
 >
   <!-- EN-TÊTE -->
-  <section class="border-b border-gray-100 px-6 py-20 md:px-8 md:py-24">
+  <section class="border-b border-gray-100 px-6 py-12 md:px-8 md:py-12">
     <div class="mx-auto max-w-7xl">
       <p class="reveal mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
         À propos
       </p>
-      <h1 class="reveal max-w-4xl text-4xl font-extrabold uppercase leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl">
+      <h1 class="reveal max-w-4xl text-3xl font-normal uppercase leading-[1.1] tracking-tight text-anthracite md:text-4xl">
         Claudia<br />Aubert-Paredes
       </h1>
-      <p class="reveal mt-6 max-w-2xl text-base font-medium uppercase tracking-wide text-gray-500 md:text-lg">
+      <p class="reveal mt-4 max-w-2xl text-sm font-medium uppercase tracking-wide text-gray-500">
         Architecture et assistance à la maîtrise d'ouvrage
       </p>
     </div>
   </section>
 
   <!-- BIO : PORTRAIT + TEXTE -->
-  <section class="px-6 py-20 md:px-8 md:py-24">
-    <div class="mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-12 lg:gap-16">
+  <section class="px-6 py-12 md:px-8 md:py-12">
+    <div class="mx-auto grid max-w-7xl items-start gap-10 lg:grid-cols-12 lg:gap-12">
       <!-- Portrait -->
-      <div class="reveal lg:col-span-5">
+      <div class="reveal mx-auto w-full max-w-sm lg:col-span-4">
         <img
           src="/images/claudia.jpg"
           alt="Claudia Aubert-Paredes, architecte fondatrice d'ArchidiA"
@@ -73,13 +73,13 @@ const timeline = [
       </div>
 
       <!-- Texte -->
-      <div class="reveal lg:col-span-7">
-        <h2 class="mb-8 text-2xl font-extrabold uppercase tracking-tight text-black md:text-3xl">
+      <div class="reveal lg:col-span-8">
+        <h2 class="mb-5 text-xl font-normal uppercase tracking-tight text-anthracite md:text-2xl">
           Parcours
         </h2>
-        <div class="space-y-6 text-base leading-relaxed text-gray-600 md:text-lg">
+        <div class="space-y-4 text-sm leading-relaxed text-gray-600 md:text-base">
           <p>
-            Architecte, fondatrice d'Archidi<span class="text-accent">A</span>,
+            Architecte, fondatrice d'<span class="text-accent">A</span>rchidi<span class="text-accent">A</span>,
             société d'architecture et d'assistance à maîtrise d'ouvrage créée en
             novembre 2019. Diplômée de l'Université Ricardo Palma (Lima, Pérou),
             titulaire d'un CEA (Certificat d'Études Approfondies) en Architecture
@@ -98,13 +98,13 @@ const timeline = [
         </div>
 
         <!-- Chiffres clés -->
-        <dl class="mt-10 grid grid-cols-2 gap-6 border-t border-gray-100 pt-8 sm:grid-cols-4">
+        <dl class="mt-8 grid grid-cols-2 gap-5 border-t border-gray-100 pt-6 sm:grid-cols-4">
           {stats.map((s) => (
             <div>
-              <dt class="text-2xl font-extrabold tracking-tight text-accent md:text-3xl">
+              <dt class="text-xl font-semibold tracking-tight text-accent md:text-2xl">
                 {s.value}
               </dt>
-              <dd class="mt-1 text-[11px] font-medium uppercase leading-snug tracking-wide text-gray-500">
+              <dd class="mt-1 text-[10px] font-medium uppercase leading-snug tracking-wide text-gray-500">
                 {s.label}
               </dd>
             </div>
@@ -115,27 +115,27 @@ const timeline = [
   </section>
 
   <!-- TIMELINE / FRISE CHRONOLOGIQUE -->
-  <section class="border-t border-gray-100 bg-[#fafafa] px-6 py-20 md:px-8 md:py-24">
+  <section class="border-t border-gray-100 bg-[#fafafa] px-6 py-12 md:px-8 md:py-12">
     <div class="mx-auto max-w-4xl">
       <p class="reveal mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
         Un parcours d'exigence
       </p>
-      <h2 class="reveal mb-14 text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
+      <h2 class="reveal mb-6 text-xl font-normal uppercase tracking-tight text-anthracite md:text-2xl">
         Parcours professionnel
       </h2>
 
       <ol class="relative ml-2 border-l-2 border-gray-200 md:ml-4">
         {timeline.map((item) => (
-          <li class="reveal relative pb-12 pl-8 last:pb-0 md:pl-12">
+          <li class="reveal relative pb-6 pl-7 last:pb-0 md:pl-10">
             <!-- Puce accent -->
             <span
               class="absolute -left-[9px] top-1 h-4 w-4 rounded-full border-2 border-white bg-accent ring-4 ring-accent/15"
               aria-hidden="true"
             ></span>
-            <p class="mb-2 text-xs font-black uppercase tracking-widest text-accent">
+            <p class="mb-1 text-[11px] font-bold uppercase tracking-widest text-accent">
               {item.period}
             </p>
-            <p class="text-base leading-relaxed text-gray-700 md:text-lg">
+            <p class="text-sm leading-relaxed text-gray-700 md:text-base">
               {item.text}
             </p>
           </li>
@@ -145,7 +145,7 @@ const timeline = [
   </section>
 
   <!-- CITATION -->
-  <section class="reveal relative h-[60vh] min-h-[380px] w-full overflow-hidden">
+  <section class="reveal relative h-[42vh] min-h-[300px] w-full overflow-hidden">
     <img
       src="/images/home-intro.jpg"
       alt=""
@@ -156,12 +156,12 @@ const timeline = [
     />
     <div class="absolute inset-0 flex items-center justify-center bg-black/65 px-6 text-center">
       <div class="max-w-3xl">
-        <blockquote class="text-2xl font-light italic leading-relaxed text-white md:text-3xl">
+        <blockquote class="text-lg font-light italic leading-relaxed text-white md:text-2xl">
           « L'exigence, le dynamisme, la rigueur et la créativité autour d'un
           projet — la passion et la volonté d'apporter le meilleur de soi à chaque
           maître d'ouvrage. »
         </blockquote>
-        <div class="mx-auto my-10 h-1 w-20 bg-accent"></div>
+        <div class="mx-auto my-6 h-1 w-16 bg-accent"></div>
         <p class="text-[11px] font-bold uppercase tracking-[0.35em] text-white">
           Claudia Aubert-Paredes
         </p>
@@ -170,8 +170,8 @@ const timeline = [
   </section>
 
   <!-- CTA CONTACT -->
-  <section class="mx-auto max-w-7xl px-6 py-24 text-center md:px-8">
-    <h2 class="reveal text-3xl font-extrabold uppercase tracking-tight text-black md:text-4xl">
+  <section class="mx-auto max-w-7xl px-6 py-12 text-center md:px-8">
+    <h2 class="reveal text-2xl font-normal uppercase tracking-tight text-anthracite md:text-3xl">
       Envie d'échanger ?
     </h2>
     <a

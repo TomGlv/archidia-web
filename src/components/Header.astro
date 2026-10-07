@@ -1,11 +1,10 @@
 ---
 const links = [
   { href: "/", label: "Accueil" },
-  { href: "/amo-moe", label: "AMO / MOE" },
-  { href: "/diagnostics", label: "Diagnostics" },
-  { href: "/maisons-individuelles", label: "Maisons" },
+  { href: "/amo-moe", label: "AMO & MOE" },
+  { href: "/diagnostics", label: "Diagnostics & Copropriétés" },
+  { href: "/maisons-individuelles", label: "Habitats" },
   { href: "/autonomie", label: "Autonomie" },
-  { href: "/realisations", label: "Réalisations" },
   { href: "/a-propos", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ];
@@ -23,7 +22,7 @@ const isActive = (href: string) =>
     </a>
 
     <!-- Menu desktop -->
-    <nav class="hidden items-center gap-7 text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400 lg:flex">
+    <nav class="hidden items-center gap-4 whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.12em] text-gray-400 lg:flex xl:gap-6 xl:text-[11px] xl:tracking-[0.18em]">
       {links.map((l) => (
         <a
           href={l.href}

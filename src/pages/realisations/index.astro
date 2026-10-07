@@ -23,18 +23,20 @@ const chip =
   description="Découvrez les réalisations d'ArchidiA : AMO/MOE (bureaux, hôtellerie, logements), diagnostics de copropriétés, maisons individuelles et adaptation du logement."
   breadcrumbs={[{ name: "Réalisations", path: "/realisations/" }]}
 >
-  <section class="border-b border-gray-100 px-6 py-20 text-center md:px-8 md:py-28">
+  <section class="border-b border-gray-100 px-6 py-12 md:px-8 md:py-12">
+    <div class="mx-auto max-w-7xl">
     <p class="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">Réalisations</p>
-    <h1 class="text-4xl font-extrabold uppercase tracking-tight text-black md:text-6xl">
+    <h1 class="text-4xl font-normal uppercase tracking-tight text-anthracite md:text-6xl">
       Nos projets
     </h1>
-    <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-gray-500">
-      Une sélection de projets menés par ArchidiA, de la conception au suivi de chantier.
+    <p class="mt-6 max-w-2xl text-base leading-relaxed text-gray-500">
+      Une sélection de projets menés par <span class="text-accent">A</span>rchidi<span class="text-accent">A</span>, de la conception au suivi de chantier.
     </p>
+    </div>
   </section>
 
   {projets.length > 0 ? (
-    <section class="mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
+    <section class="mx-auto max-w-7xl px-6 py-10 md:px-8 md:py-14">
       <!-- Filtres (fonctionnent via ?cat=…&secteur=… ; sans JS, tout est affiché) -->
       <nav id="filtres" class="mb-12 space-y-4" aria-label="Filtrer les réalisations">
         <div class="flex flex-wrap gap-2">
@@ -71,15 +73,15 @@ const chip =
       {hasAvantArchidia && (
         <p class="mx-auto mt-16 max-w-3xl text-center text-xs leading-relaxed text-gray-400">
           Les projets marqués « Parcours antérieur » ont été menés avant la création
-          d'Archidi<span class="text-accent">A</span> (2019), au sein du parcours de Claudia
+          d'<span class="text-accent">A</span>rchidi<span class="text-accent">A</span> (2019), au sein du parcours de Claudia
           Aubert-Paredes (Artelia, agence Jean Paul Viguier…). Ils sont présentés pour leur
           pertinence avec l'expertise AMO et MOE, mais ne sont pas des missions
-          Archidi<span class="text-accent">A</span>.
+          <span class="text-accent">A</span>rchidi<span class="text-accent">A</span>.
         </p>
       )}
     </section>
   ) : (
-    <section class="mx-auto max-w-2xl px-6 py-24 text-center">
+    <section class="mx-auto max-w-2xl px-6 py-12 text-center">
       <p class="text-lg text-gray-500">
         Nos réalisations seront présentées ici très prochainement.
       </p>

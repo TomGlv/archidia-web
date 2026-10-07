@@ -15,17 +15,22 @@ const blocks = [
   {
     title: "Architecte",
     rows: [
-      ["Ordre des architectes", "Inscrite au tableau de l'Ordre des architectes d'Île-de-France depuis le 10/09/2019 — n° S21000"],
-      ["Assurance", "Police d'assurance MAF n° 168786/B"],
+      ["Ordre des architectes", "Tableau de l'Ordre des architectes d'Île-de-France, inscrite depuis le 10/09/2019 - n° S21000"],
+      ["Assurance", "N° police assurance MAF : 168786/B"],
     ],
   },
   {
-    title: "Informations légales",
+    title: "SASU d'architecture",
     rows: [
       ["RCS / SIREN", "RCS Versailles n° 878 483 239"],
-      ["APE", "7111Z"],
-      ["Capital social", "5 000 €"],
-      ["N° TVA intracommunautaire", "FR81 878 483 239"],
+      ["APE / Capital", "APE 7111Z · Capital de 5 000 €"],
+      ["N° TVA", "TVA intracommunautaire FR81 878 483 239"],
+    ],
+  },
+  {
+    title: "Réseaux sociaux",
+    rows: [
+      ["LinkedIn", "linkedin.com/in/claudia-aubert-paredes-90141a16", "https://www.linkedin.com/in/claudia-aubert-paredes-90141a16"],
     ],
   },
   {
@@ -43,23 +48,25 @@ const blocks = [
   description="Mentions légales du site ArchidiA — architecture et assistance à maîtrise d'ouvrage, Bougival (78)."
   noindex={true}
 >
-  <section class="mx-auto max-w-3xl px-6 py-20 md:py-28">
-    <p class="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">Informations légales</p>
-    <h1 class="text-3xl font-extrabold uppercase tracking-tight text-black md:text-5xl">
-      Mentions légales
+  <section class="mx-auto max-w-3xl px-6 py-12 md:py-12">
+    <p class="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">Mentions</p>
+    <h1 class="text-3xl font-normal uppercase tracking-tight text-anthracite md:text-5xl">
+      Informations légales
     </h1>
 
-    <div class="mt-14 space-y-12">
+    <div class="mt-8 space-y-12">
       {blocks.map((b) => (
         <div class="reveal">
-          <h2 class="mb-5 border-l-4 border-accent pl-4 text-sm font-black uppercase tracking-widest text-black">
+          <h2 class="mb-5 border-l-4 border-accent pl-4 text-sm font-normal uppercase tracking-widest text-anthracite">
             {b.title}
           </h2>
           <dl class="divide-y divide-gray-100">
-            {b.rows.map(([k, v]) => (
+            {b.rows.map(([k, v, href]) => (
               <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-[220px_1fr] sm:gap-4">
                 <dt class="text-[11px] font-bold uppercase tracking-widest text-gray-400">{k}</dt>
-                <dd class="text-sm text-gray-700">{v}</dd>
+                <dd class="text-sm text-gray-700">
+                  {href ? <a href={href} target="_blank" rel="noopener" class="transition hover:text-accent">{v}</a> : v}
+                </dd>
               </div>
             ))}
           </dl>
@@ -67,7 +74,7 @@ const blocks = [
       ))}
 
       <div class="reveal">
-        <h2 class="mb-5 border-l-4 border-accent pl-4 text-sm font-black uppercase tracking-widest text-black">
+        <h2 class="mb-5 border-l-4 border-accent pl-4 text-sm font-normal uppercase tracking-widest text-anthracite">
           Propriété intellectuelle
         </h2>
         <p class="text-sm leading-relaxed text-gray-600">
