@@ -15,7 +15,7 @@ const filtres = CATEGORIES.map((c) => {
 const hasAvantArchidia = projets.some((p) => p.avantArchidia);
 
 const chip =
-  "filtre border px-4 py-2 text-[10px] font-bold uppercase tracking-widest transition hover:border-black hover:text-black";
+  "filtre border px-4 py-2 text-[10px] font-bold uppercase tracking-widest transition hover:border-anthracite hover:text-anthracite";
 ---
 
 <Layout
@@ -23,10 +23,10 @@ const chip =
   description="Découvrez les réalisations d'ArchidiA : AMO/MOE (bureaux, hôtellerie, logements), diagnostics de copropriétés, habitats et adaptation du logement."
   breadcrumbs={[{ name: "Réalisations", path: "/realisations/" }]}
 >
-  <section class="border-b border-gray-100 px-6 py-12 md:px-8 md:py-12">
+  <section class="border-b border-gray-100 px-6 py-8 md:px-8 md:py-10">
     <div class="mx-auto max-w-7xl">
     <p class="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">Réalisations</p>
-    <h1 class="text-4xl font-normal uppercase tracking-tight text-anthracite md:text-6xl">
+    <h1 class="titre-1 text-anthracite">
       Nos projets
     </h1>
     <p class="mt-6 max-w-2xl text-base leading-relaxed text-gray-500">
@@ -87,7 +87,7 @@ const chip =
       </p>
       <a
         href="/contact"
-        class="mt-8 inline-block border-2 border-black px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-black transition hover:bg-black hover:text-white"
+        class="mt-8 inline-block border-2 border-anthracite px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-anthracite transition hover:bg-anthracite hover:text-white"
       >
         Parlons de votre projet →
       </a>
@@ -120,8 +120,8 @@ const chip =
       const active = isSecteurChip
         ? a.dataset.cat === cat && a.dataset.secteur === secteur
         : a.dataset.cat === cat;
-      a.classList.toggle("border-black", active);
-      a.classList.toggle("bg-black", active);
+      a.classList.toggle("border-anthracite", active);
+      a.classList.toggle("bg-anthracite", active);
       a.classList.toggle("text-white", active);
       a.classList.toggle("border-gray-200", !active);
       a.classList.toggle("text-gray-500", !active);

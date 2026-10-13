@@ -38,7 +38,7 @@ const cats = CATEGORIES.filter((c) => projet.categories.includes(c.value));
       <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
         {[cats.map((c) => c.label).join(" · "), projet.secteur].filter(Boolean).join(" — ")}
       </p>
-      <h1 class="text-3xl font-normal uppercase tracking-tight text-white md:text-5xl">
+      <h1 class="titre-1 text-white">
         {projet.titre}
       </h1>
       {meta && <p class="mt-4 text-xs uppercase tracking-[0.15em] text-gray-300">{meta}</p>}
@@ -48,7 +48,7 @@ const cats = CATEGORIES.filter((c) => projet.categories.includes(c.value));
   <!-- Description (texte riche) -->
   {description && (
     <section class="mx-auto max-w-3xl px-6 py-10 md:py-14">
-      <div class="prose-archidia text-base leading-relaxed text-gray-700" set:html={description} />
+      <div class="prose-archidia text-base leading-relaxed text-anthracite" set:html={description} />
       {projet.avantArchidia && (
         <p class="mt-10 border-l-4 border-gray-200 pl-4 text-xs leading-relaxed text-gray-400">
           Mission menée avant la création d'<span class="text-accent">A</span>rchidi<span class="text-accent">A</span> (2019), au sein

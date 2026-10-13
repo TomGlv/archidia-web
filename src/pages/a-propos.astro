@@ -43,22 +43,26 @@ const timeline = [
   }}
 >
   <!-- EN-TÊTE -->
-  <section class="border-b border-gray-100 px-6 py-12 md:px-8 md:py-12">
+  <section class="px-6 pb-5 pt-8 md:px-8 md:pt-10">
     <div class="mx-auto max-w-7xl">
       <p class="reveal mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
         À propos
       </p>
-      <h1 class="reveal max-w-4xl text-3xl font-normal uppercase leading-[1.1] tracking-tight text-anthracite md:text-4xl">
+      <h1 class="titre-1 reveal max-w-4xl text-anthracite">
         Claudia<br />Aubert-Paredes
       </h1>
-      <p class="reveal mt-4 max-w-2xl text-sm font-medium uppercase tracking-wide text-gray-500">
-        Architecture et assistance à la maîtrise d'ouvrage
-      </p>
+      <!-- Même grille que la section suivante : la phrase occupe exactement
+           la largeur du portrait placé juste en dessous. -->
+      <div class="reveal mt-4 grid lg:grid-cols-12 lg:gap-12">
+        <p class="mx-auto w-full max-w-sm text-sm font-medium text-gray-500 sm:whitespace-nowrap sm:[text-align-last:justify] lg:col-span-4">
+          Architecture et assistance à la maîtrise d'ouvrage
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- BIO : PORTRAIT + TEXTE -->
-  <section class="px-6 py-12 md:px-8 md:py-12">
+  <section class="px-6 pb-12 pt-0 md:px-8">
     <div class="mx-auto grid max-w-7xl items-start gap-10 lg:grid-cols-12 lg:gap-12">
       <!-- Portrait -->
       <div class="reveal mx-auto w-full max-w-sm lg:col-span-4">
@@ -74,7 +78,7 @@ const timeline = [
 
       <!-- Texte -->
       <div class="reveal lg:col-span-8">
-        <h2 class="mb-5 text-xl font-normal uppercase tracking-tight text-anthracite md:text-2xl">
+        <h2 class="titre-2 mb-5 text-anthracite">
           Parcours
         </h2>
         <div class="space-y-4 text-sm leading-relaxed text-gray-600 md:text-base">
@@ -120,7 +124,7 @@ const timeline = [
       <p class="reveal mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
         Un parcours d'exigence
       </p>
-      <h2 class="reveal mb-6 text-xl font-normal uppercase tracking-tight text-anthracite md:text-2xl">
+      <h2 class="titre-2 reveal mb-6 text-anthracite">
         Parcours professionnel
       </h2>
 
@@ -135,7 +139,7 @@ const timeline = [
             <p class="mb-1 text-[11px] font-bold uppercase tracking-widest text-accent">
               {item.period}
             </p>
-            <p class="text-sm leading-relaxed text-gray-700 md:text-base">
+            <p class="text-sm leading-relaxed text-anthracite md:text-base">
               {item.text}
             </p>
           </li>
@@ -145,7 +149,7 @@ const timeline = [
   </section>
 
   <!-- CITATION -->
-  <section class="theme-fixe reveal w-full bg-anthracite px-6 py-10 md:py-12">
+  <section class="citation-bande theme-fixe reveal w-full bg-anthracite px-6 py-10 md:py-12">
     <div class="flex items-center justify-center text-center">
       <div class="max-w-3xl">
         <blockquote class="text-lg font-light italic leading-relaxed text-white md:text-2xl">
@@ -163,12 +167,12 @@ const timeline = [
 
   <!-- CTA CONTACT -->
   <section class="mx-auto max-w-7xl px-6 py-12 text-center md:px-8">
-    <h2 class="reveal text-2xl font-normal uppercase tracking-tight text-anthracite md:text-3xl">
+    <h2 class="titre-2 reveal text-anthracite">
       Envie d'échanger ?
     </h2>
     <a
       href="/contact"
-      class="reveal mt-8 inline-block border-2 border-black px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-black transition hover:bg-black hover:text-white"
+      class="reveal mt-8 inline-block border-2 border-anthracite px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-anthracite transition hover:bg-anthracite hover:text-white"
     >
       Parlons de votre projet →
     </a>

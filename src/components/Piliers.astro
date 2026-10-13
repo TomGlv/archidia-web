@@ -21,7 +21,7 @@ const { items, cta = "Découvrir →", class: className = "sm:grid-cols-2 lg:gri
     const Tag = p.href ? "a" : "div";
     return (
       <Tag href={p.href} class="reveal group block">
-        <h3 class="mb-4 border-l-4 border-accent pl-4 text-lg font-normal uppercase tracking-tight text-anthracite md:text-xl">
+        <h3 class="titre-3 mb-4 border-l-4 border-accent pl-4 text-anthracite">
           {p.idx} / {p.title}
         </h3>
         <p class="pl-5 text-base leading-relaxed text-gray-600 md:text-lg md:leading-relaxed">{p.text}</p>

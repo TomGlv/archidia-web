@@ -50,21 +50,21 @@ const blocks = [
 >
   <section class="mx-auto max-w-3xl px-6 py-12 md:py-12">
     <p class="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">Mentions</p>
-    <h1 class="text-3xl font-normal uppercase tracking-tight text-anthracite md:text-5xl">
+    <h1 class="titre-1 text-anthracite">
       Informations légales
     </h1>
 
     <div class="mt-8 space-y-12">
       {blocks.map((b) => (
         <div class="reveal">
-          <h2 class="mb-5 border-l-4 border-accent pl-4 text-sm font-normal uppercase tracking-widest text-anthracite">
+          <h2 class="titre-3 mb-5 border-l-4 border-accent pl-4 text-anthracite">
             {b.title}
           </h2>
           <dl class="divide-y divide-gray-100">
             {b.rows.map(([k, v, href]) => (
               <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-[220px_1fr] sm:gap-4">
                 <dt class="text-[11px] font-bold uppercase tracking-widest text-gray-400">{k}</dt>
-                <dd class="text-sm text-gray-700">
+                <dd class="text-sm text-anthracite">
                   {href ? <a href={href} target="_blank" rel="noopener" class="transition hover:text-accent">{v}</a> : v}
                 </dd>
               </div>
@@ -74,7 +74,7 @@ const blocks = [
       ))}
 
       <div class="reveal">
-        <h2 class="mb-5 border-l-4 border-accent pl-4 text-sm font-normal uppercase tracking-widest text-anthracite">
+        <h2 class="titre-3 mb-5 border-l-4 border-accent pl-4 text-anthracite">
           Propriété intellectuelle
         </h2>
         <p class="text-sm leading-relaxed text-gray-600">

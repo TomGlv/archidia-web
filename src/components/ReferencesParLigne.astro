@@ -27,18 +27,18 @@ const visibles = lignes.filter((l) => l.projets.length > 0);
     <div class="mx-auto max-w-7xl">
       <div class="reveal mb-8">
         {surtitre && <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">{surtitre}</p>}
-        <h2 class="text-3xl font-normal uppercase tracking-tight text-anthracite md:text-4xl">{titre}</h2>
+        <h2 class="titre-2 text-anthracite">{titre}</h2>
       </div>
       <div class="space-y-12">
         {visibles.map((l) => (
           <div>
             <div class="reveal mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <h3 class="border-l-4 border-accent pl-4 text-lg font-normal uppercase tracking-tight text-anthracite md:text-xl">
+              <h3 class="titre-3 border-l-4 border-accent pl-4 text-anthracite">
                 {l.sigle && <><span class="text-accent">{l.sigle}</span> · </>}{l.libelle}
               </h3>
               <a
                 href={l.href}
-                class="inline-block self-start border-2 border-black px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-black transition hover:bg-black hover:text-white sm:self-auto"
+                class="inline-block self-start border-2 border-anthracite px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-anthracite transition hover:bg-anthracite hover:text-white sm:self-auto"
               >
                 Voir tous les projets →
               </a>

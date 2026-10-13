@@ -23,12 +23,12 @@ const slug = CATEGORIES.find((c) => c.value === categorie)!.slug;
       <div class="reveal mb-8 flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div>
           {surtitre && <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">{surtitre}</p>}
-          <h2 class="text-3xl font-normal uppercase tracking-tight text-anthracite md:text-4xl">{titre}</h2>
+          <h2 class="titre-2 text-anthracite">{titre}</h2>
         </div>
         {total > projets.length && (
           <a
             href={`/realisations?cat=${slug}`}
-            class="inline-block self-start border-2 border-black px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-black transition hover:bg-black hover:text-white md:self-auto"
+            class="inline-block self-start border-2 border-anthracite px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-anthracite transition hover:bg-anthracite hover:text-white md:self-auto"
           >
             Voir tous les projets →
           </a>

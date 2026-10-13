@@ -57,7 +57,7 @@ const certifications = [
       <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.35em] text-accent">
         Diagnostics & Copropriétés
       </p>
-      <h1 class="max-w-3xl text-3xl font-normal uppercase leading-[1.1] tracking-tight text-white drop-shadow-lg sm:text-4xl md:text-5xl">
+      <h1 class="titre-1 max-w-4xl text-white drop-shadow-lg">
         Diagnostics techniques & accompagnement des copropriétés
       </h1>
       <p class="mt-5 text-[10px] font-bold uppercase tracking-[0.4em] text-gray-300 md:text-xs">
@@ -71,12 +71,12 @@ const certifications = [
     <p class="reveal mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
       Notre expertise
     </p>
-    <p class="reveal text-lg leading-relaxed text-gray-700 md:text-xl">
-      Formée à la rénovation énergétique, <span class="font-semibold text-black">Claudia Aubert-Paredes</span>{" "}
+    <p class="reveal text-lg leading-relaxed text-anthracite md:text-xl">
+      Formée à la rénovation énergétique, <span class="font-semibold text-anthracite">Claudia Aubert-Paredes</span>{" "}
       a élargi son champ d'intervention aux diagnostics techniques et à l'accompagnement des copropriétés.
     </p>
     <p class="reveal mt-6 text-base leading-relaxed text-gray-500 md:text-lg">
-      <span class="font-semibold text-black"><span class="text-accent">A</span>rchidi<span class="text-accent">A</span></span> accompagne
+      <span class="font-semibold text-anthracite"><span class="text-accent">A</span>rchidi<span class="text-accent">A</span></span> accompagne
       les copropriétés et leurs syndics sur des missions de Diagnostic Technique Global (DTG) et de Projet
       de Plan Pluriannuel de Travaux (PPPT), ainsi que les maisons individuelles et les petits collectifs
       sur des missions de diagnostics architecturaux et énergétiques (DAE).
@@ -93,7 +93,7 @@ const certifications = [
     </p>
     <p class="reveal max-w-3xl text-base leading-relaxed text-gray-500 md:text-lg">
       Nos honoraires pour les diagnostics et études de faisabilité sont établis sur la base d'un{" "}
-      <span class="font-semibold text-black">tarif journalier de 800 € HT</span>, dont le montant final
+      <span class="font-semibold text-anthracite">tarif journalier de 800 € HT</span>, dont le montant final
       est déterminé selon le type de bien et la taille du bien.
     </p>
   </section>
@@ -108,10 +108,10 @@ const certifications = [
         <ul class="grid grid-cols-2 gap-6">
           {certifications.map((c) => (
             <li class="flex flex-col items-start gap-3">
-              <span class="flex h-16 items-center rounded bg-[#fff] px-3 py-2">
-                <img src={c.logo} alt={c.nom} class="max-h-14 w-auto max-w-full object-contain" loading="lazy" />
+              <span class="flex h-11 items-center rounded bg-[#fff] px-2 py-1">
+                <img src={c.logo} alt={c.nom} class="max-h-9 w-auto max-w-full object-contain" loading="lazy" />
               </span>
-              <span class="text-sm font-semibold text-black">{c.nom}</span>
+              <span class="text-sm font-semibold text-anthracite">{c.nom}</span>
             </li>
           ))}
         </ul>
@@ -123,12 +123,12 @@ const certifications = [
         </p>
         <ul class="space-y-6">
           <li class="flex flex-col items-start gap-3">
-            <span class="flex h-16 items-center rounded bg-[#fff] px-3 py-2">
-              <img src="/images/logos/tribu-energie.webp" alt="Tribu Énergie" class="max-h-14 w-auto object-contain" loading="lazy" />
+            <span class="flex h-11 items-center rounded bg-[#fff] px-2 py-1">
+              <img src="/images/logos/tribu-energie.webp" alt="Tribu Énergie" class="max-h-9 w-auto object-contain" loading="lazy" />
             </span>
-            <span class="text-sm font-semibold text-black">Tribu Énergie</span>
+            <span class="text-sm font-semibold text-anthracite">Tribu Énergie</span>
           </li>
-          <li class="flex items-start gap-3 text-sm font-semibold text-black">
+          <li class="flex items-start gap-3 text-sm font-semibold text-anthracite">
             <span class="mt-1.5 block h-1.5 w-1.5 flex-none bg-accent"></span>
             Qualifications OPQIBI et RGE
           </li>
@@ -144,7 +144,7 @@ const certifications = [
     </p>
     <a
       href="/contact"
-      class="reveal inline-block bg-black px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-white transition hover:bg-accent"
+      class="reveal inline-block bg-anthracite px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-white transition hover:bg-accent"
     >
       Parlons de votre projet →
     </a>
