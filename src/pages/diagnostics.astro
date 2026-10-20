@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import ReferencesParLigne from "../components/ReferencesParLigne.astro";
 import { getLigne, lienRealisations, type ProjetListItem } from "../lib/sanity";
 
-// Nos références : 3 projets par type de mission, d'après le secteur saisi
+// Nos réalisations : 3 projets par type de mission, d'après le secteur saisi
 // dans Sanity (« Copropriétés (PPPT) », « Copropriétés (DTG) », « … (DAE) »).
 const CAT = "Diagnostics & Copropriétés";
 const aLeSigle = (sigle: string) => (p: ProjetListItem) =>
@@ -84,7 +84,7 @@ const certifications = [
   </section>
 
   <!-- NOS RÉFÉRENCES : une ligne par type de mission -->
-  <ReferencesParLigne titre="Nos références" surtitre="Nos réalisations" lignes={references} />
+  <ReferencesParLigne titre="Nos réalisations" lignes={references} />
 
   <!-- HONORAIRES -->
   <section class="mx-auto max-w-7xl px-6 py-12 md:px-8">

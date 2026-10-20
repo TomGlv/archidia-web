@@ -10,8 +10,8 @@ const meta = [p.chiffres, p.lieu, p.annee].filter(Boolean).join(" · ");
 const cats = CATEGORIES.filter((c) => p.categories.includes(c.value))
   .map((c) => c.slug)
   .join(" ");
-// Étiquette orange sur les projets menés en AMO & MOE
-const amoMoe = p.categories.includes("AMO / MOE");
+// Étiquette orange « AMO » ou « MOE » selon le type de mission du projet
+const mission = p.categories.includes("AMO / MOE") ? p.mission : undefined;
 const etiquette = "bg-accent px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-[#fff]";
 ---
 
@@ -29,13 +29,13 @@ const etiquette = "bg-accent px-2.5 py-1 text-[10px] font-bold uppercase trackin
         class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
         loading="lazy"
       />
-      {amoMoe && <span class:list={["absolute left-3 top-3", etiquette]}>AMO &amp; MOE</span>}
+      {mission && <span class:list={["absolute left-3 top-3", etiquette]}>{mission}</span>}
     </div>
   ) : (
     <div class="h-1 bg-accent"></div>
   )}
   <div class="flex flex-1 flex-col p-6">
-    {amoMoe && !p.cover && <span class:list={["mb-3 self-start", etiquette]}>AMO &amp; MOE</span>}
+    {mission && !p.cover && <span class:list={["mb-3 self-start", etiquette]}>{mission}</span>}
     {p.secteur && (
       <span class="text-[10px] font-black uppercase tracking-widest text-accent">{p.secteur}</span>
     )}

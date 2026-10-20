@@ -51,6 +51,8 @@ export interface ProjetListItem {
   titre: string;
   slug: string;
   categories: string[];
+  mission?: "AMO" | "MOE";
+  ordre?: number;
   secteur?: string;
   lieu?: string;
   annee?: string;
@@ -76,15 +78,66 @@ const LIST_FIELDS = `
   "extrait": pt::text(description)
 `;
 
+// Ajustements gérés dans le code (pas dans Sanity), par slug de projet :
+//  - `mission` : étiquette « AMO » ou « MOE » affichée sur la carte ;
+//  - `ordre` : place le projet en tête des listes (1 = en premier) ;
+//  - `enAvant` : force la mise en avant.
+const AJUSTEMENTS: Record<string, Partial<Pick<ProjetListItem, "mission" | "ordre" | "enAvant">>> = {
+  // Bureaux & patrimoine
+  "pixel": { mission: "AMO" },
+  "courcelles": { mission: "AMO" },
+  "basalte-salles-de-marche": { mission: "MOE" },
+  "valmy": { mission: "AMO", ordre: 2 },
+  "optima": { mission: "AMO" },
+  "immeuble-wellcome": { mission: "AMO" },
+  "lemnys-siege-la-poste": { mission: "MOE" },
+  "tour-generali": { mission: "MOE" },
+  "immeuble-mondovi": { mission: "MOE", ordre: 1, enAvant: true },
+  // Logements collectifs & résidences
+  "arietis": { mission: "AMO" },
+  "l-hevana": { mission: "AMO" },
+  "woodeum": { mission: "AMO" },
+  "residence-senior-montana-compiegne": { mission: "AMO" },
+  "residence-senior-montana-dijon": { mission: "AMO" },
+  // Hôtellerie
+  "hotel-voco": { mission: "AMO" },
+  "hotel-bellune": { mission: "AMO" },
+  "hotel-melia": { mission: "MOE" },
+};
+
+// Photos de couverture interverties entre deux projets (paires de slugs).
+const COUVERTURES_INTERVERTIES: [string, string][] = [
+  ["residence-senior-montana-compiegne", "residence-senior-montana-dijon"],
+];
+
+function ajuster<T extends ProjetListItem>(projets: T[]): T[] {
+  const parSlug = new Map(projets.map((p) => [p.slug, p]));
+  const covers = new Map<string, any>();
+  for (const [a, b] of COUVERTURES_INTERVERTIES) {
+    const pa = parSlug.get(a);
+    const pb = parSlug.get(b);
+    if (pa && pb) covers.set(a, pb.cover).set(b, pa.cover);
+  }
+  return projets.map((p) => ({
+    ...p,
+    ...AJUSTEMENTS[p.slug],
+    ...(covers.has(p.slug) && { cover: covers.get(p.slug) }),
+  }));
+}
+
 let cache: Promise<ProjetListItem[]> | null = null;
 
-/** Tous les projets, du plus récent au plus ancien (les projets sans année en dernier).
- *  Mis en cache pour la durée du build : plusieurs pages l'appellent. */
+/** Tous les projets : ceux ayant un `ordre` d'abord, puis du plus récent au plus ancien
+ *  (les projets sans année en dernier). Mis en cache pour la durée du build : plusieurs pages l'appellent. */
 export function getProjets(): Promise<ProjetListItem[]> {
   if (!sanity) return Promise.resolve([]);
-  cache ??= sanity.fetch(
-    `*[_type == "projet" && defined(slug.current)] | order(coalesce(annee, "0") desc, _createdAt desc){${LIST_FIELDS}}`,
-  );
+  cache ??= sanity
+    .fetch<ProjetListItem[]>(
+      `*[_type == "projet" && defined(slug.current)] | order(coalesce(annee, "0") desc, _createdAt desc){${LIST_FIELDS}}`,
+    )
+    .then((projets) =>
+      ajuster(projets).sort((a, b) => (a.ordre ?? Infinity) - (b.ordre ?? Infinity)),
+    );
   return cache;
 }
 
@@ -111,10 +164,14 @@ export function lienRealisations(categorie: Categorie, secteur?: string) {
 
 export async function getProjet(slug: string): Promise<Projet | null> {
   if (!sanity) return null;
-  return sanity.fetch(
+  const projet = await sanity.fetch<Projet | null>(
     `*[_type == "projet" && slug.current == $slug][0]{
       ${LIST_FIELDS}, galerie, video_url, description, meta_description
     }`,
     { slug },
   );
+  if (!projet) return null;
+  // Reprend les ajustements du code (étiquette, couverture intervertie…)
+  const ajuste = (await getProjets()).find((p) => p.slug === slug);
+  return ajuste ? { ...projet, ...ajuste } : projet;
 }
