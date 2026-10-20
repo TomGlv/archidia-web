@@ -43,7 +43,7 @@ const organisation = {
   name: siteName,
   legalName: "ArchidiA",
   description:
-    "Agence d'architecture et d'assistance à maîtrise d'ouvrage : AMO/MOE, diagnostics et copropriétés, habitats, adaptation du logement.",
+    "Agence d'architecture et d'assistance à maîtrise d'ouvrage installée à Bougival (Yvelines), fondée par Claudia Aubert-Paredes, architecte inscrite à l'Ordre des architectes d'Île-de-France, plus de 20 ans d'expérience. AMO et maîtrise d'œuvre (bureaux, hôtels, logements collectifs), DTG et PPPT de copropriétés, construction, extension et rénovation de maisons, adaptation du logement. Interventions dans l'ouest parisien, à Paris et en Île-de-France.",
   url: siteUrl,
   logo: abs("/images/logo.jpg"),
   image: abs("/images/og-default.jpg"),
@@ -61,7 +61,16 @@ const organisation = {
   geo: { "@type": "GeoCoordinates", latitude: 48.86721, longitude: 2.15226 },
   hasMap: "https://www.google.com/maps/search/?api=1&query=8+avenue+des+Fauvettes+78380+Bougival",
   areaServed: [
-    { "@type": "City", name: "Bougival" },
+    ...[
+      "Bougival",
+      "Rueil-Malmaison",
+      "La Celle-Saint-Cloud",
+      "Louveciennes",
+      "Croissy-sur-Seine",
+      "Saint-Germain-en-Laye",
+      "Versailles",
+      "Boulogne-Billancourt",
+    ].map((name) => ({ "@type": "City", name })),
     { "@type": "AdministrativeArea", name: "Yvelines" },
     { "@type": "AdministrativeArea", name: "Hauts-de-Seine" },
     { "@type": "City", name: "Paris" },

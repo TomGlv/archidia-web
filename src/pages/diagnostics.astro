@@ -39,13 +39,13 @@ const certifications = [
     "@type": "Service",
     "@id": "https://archidia.fr/diagnostics/#service",
     name: "Diagnostics de copropriétés (DTG, PPPT, DAE)",
-    description: "Diagnostic technique global (DTG), projet de plan pluriannuel de travaux (PPPT) pour les copropriétés, et diagnostic architectural et énergétique (DAE) des maisons et petits collectifs.",
+    description: "Diagnostic technique global (DTG) et projet de plan pluriannuel de travaux (PPPT) pour les copropriétés à Paris, dans les Yvelines et les Hauts-de-Seine ; diagnostic architectural et énergétique (DAE) des maisons et petits collectifs.",
     serviceType: "Diagnostics & Copropriétés",
     provider: { "@id": "https://archidia.fr/#organisation" },
     areaServed: [
-      { "@type": "City", name: "Paris" },
       { "@type": "AdministrativeArea", name: "Yvelines" },
       { "@type": "AdministrativeArea", name: "Hauts-de-Seine" },
+      { "@type": "City", name: "Paris" },
       { "@type": "AdministrativeArea", name: "Île-de-France" },
     ],
     url: "https://archidia.fr/diagnostics/",
@@ -87,48 +87,6 @@ const certifications = [
       de Plan Pluriannuel de Travaux (PPPT), ainsi que les maisons individuelles et les petits collectifs
       sur des missions de diagnostics architecturaux et énergétiques (DAE).
     </p>
-  </section>
-
-  <!-- LES TROIS MISSIONS EXPLIQUÉES -->
-  <section class="border-t border-gray-100 bg-gray-50 px-6 py-12 md:px-8">
-    <div class="mx-auto max-w-7xl">
-      <h2 class="titre-2 reveal mb-8 text-anthracite">PPPT, DTG, DAE : quel diagnostic pour quel bâtiment ?</h2>
-      <div class="grid gap-6 md:grid-cols-3">
-        <article class="reveal flex flex-col border border-gray-200 bg-white p-6">
-          <h3 class="titre-3 mb-3 text-anthracite"><span class="text-accent">PPPT</span> · Plan pluriannuel de travaux</h3>
-          <p class="text-sm leading-relaxed text-gray-600">
-            Obligatoire depuis la loi Climat et Résilience pour les copropriétés d'habitation de plus de
-            15 ans — y compris, depuis le 1<sup>er</sup> janvier 2025, celles de 50 lots ou moins. Il liste
-            et chiffre les travaux à mener sur dix ans, dont la rénovation énergétique.
-          </p>
-          <a href="/diagnostics/pppt/" class="mt-auto inline-flex min-h-11 items-center pt-4 text-[11px] font-bold uppercase tracking-widest text-accent">Le PPPT expliqué →</a>
-        </article>
-        <article class="reveal flex flex-col border border-gray-200 bg-white p-6">
-          <h3 class="titre-3 mb-3 text-anthracite"><span class="text-accent">DTG</span> · Diagnostic technique global</h3>
-          <p class="text-sm leading-relaxed text-gray-600">
-            Un état complet de l'immeuble : parties communes, équipements, obligations réglementaires,
-            performance énergétique et travaux nécessaires. Il est soumis au vote de l'assemblée générale
-            et peut dispenser du PPPT s'il ne révèle aucun besoin de travaux sur dix ans.
-          </p>
-          <a href="/diagnostics/dtg/" class="mt-auto inline-flex min-h-11 items-center pt-4 text-[11px] font-bold uppercase tracking-widest text-accent">Le DTG expliqué →</a>
-        </article>
-        <article class="reveal flex flex-col border border-gray-200 bg-white p-6">
-          <h3 class="titre-3 mb-3 text-anthracite"><span class="text-accent">DAE</span> · Diagnostic architectural &amp; énergétique</h3>
-          <p class="text-sm leading-relaxed text-gray-600">
-            Pour une maison ou un petit collectif : visite du bâti, repérage des désordres et des déperditions,
-            puis scénarios de travaux hiérarchisés. Une base solide avant une rénovation énergétique ou une
-            demande d'aides.
-          </p>
-          <a href="/contact/" class="mt-auto inline-flex min-h-11 items-center pt-4 text-[11px] font-bold uppercase tracking-widest text-accent">Demander un DAE →</a>
-        </article>
-      </div>
-      <p class="reveal mt-8 max-w-3xl text-base leading-relaxed text-gray-600">
-        Copropriétés suivies à Paris (5<sup>e</sup>, 13<sup>e</sup>, 14<sup>e</sup>, 15<sup>e</sup>, 19<sup>e</sup>),
-        à Bougival ou à Franconville ; maisons diagnostiquées à Rueil-Malmaison, Boulogne-Billancourt, Sèvres
-        ou Ville-d'Avray : les références ci-dessous montrent des missions menées pour des syndics, des
-        conseils syndicaux et des particuliers.
-      </p>
-    </div>
   </section>
 
   <!-- NOS RÉFÉRENCES : une ligne par type de mission -->
@@ -189,10 +147,6 @@ const certifications = [
   <section class="mx-auto max-w-7xl px-6 py-12 text-center md:px-8">
     <p class="reveal mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
       Un diagnostic à réaliser ?
-    </p>
-    <p class="reveal mx-auto mb-8 max-w-xl text-base leading-relaxed text-gray-500">
-      Indiquez le nombre de lots, l'année de construction et l'adresse de l'immeuble :
-      nous vous adressons une proposition d'honoraires.
     </p>
     <a
       href="/contact/"

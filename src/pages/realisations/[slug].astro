@@ -30,11 +30,6 @@ const tronquer = (texte: string, max: number) =>
   texte.length <= max ? texte : texte.slice(0, texte.lastIndexOf(" ", max - 1)).replace(/[\s,;:.—-]+$/, "") + "…";
 const desc = projet.meta_description || tronquer(extrait ? `${base} ${extrait}` : base, 158);
 
-// Projets similaires (même catégorie) pour le maillage interne
-const similaires = (await getProjets())
-  .filter((p) => p.slug !== projet.slug && p.categories.some((c) => projet.categories.includes(c)))
-  .sort((a, b) => Number(b.secteur === projet.secteur) - Number(a.secteur === projet.secteur))
-  .slice(0, 3);
 const ogImage = projet.cover
   ? urlFor(projet.cover)?.width(1200).height(630).quality(80).url() ?? undefined
   : undefined;
@@ -65,5 +60,5 @@ const jsonLd = {
   ]}
   jsonLd={jsonLd}
 >
-  <Projet projet={projet} similaires={similaires} />
+  <Projet projet={projet} />
 </Layout>

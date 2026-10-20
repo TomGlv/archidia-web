@@ -9,7 +9,7 @@ const links = [
   { href: "/contact/", label: "Contact" },
 ];
 
-// Chemin courant pour surligner l'onglet actif (liens avec barre oblique finale)
+// Chemin courant pour surligner l'onglet actif
 const path = Astro.url.pathname.replace(/\/?$/, "/");
 const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
 ---
@@ -37,20 +37,11 @@ const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWit
     </nav>
 
     <div class="flex items-center gap-1">
-    <!-- Appel direct (visible sur toutes les pages) -->
-    <a
-      href="tel:+33614600663"
-      class="ml-4 inline-flex h-11 items-center gap-2 rounded-full px-3 text-[11px] font-bold tracking-widest text-accent transition hover:bg-gray-100 xl:ml-6"
-      aria-label="Appeler ArchidiA au 06 14 60 06 63"
-    >
-      <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-      <span class="hidden whitespace-nowrap 2xl:inline">06 14 60 06 63</span>
-    </a>
     <!-- Bouton mode clair / sombre -->
     <button
       type="button"
       data-theme-toggle
-      class="inline-flex h-11 w-11 items-center justify-center rounded-full text-gray-400 transition hover:bg-gray-100 hover:text-accent xl:ml-6"
+      class="ml-4 inline-flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition hover:bg-gray-100 hover:text-accent xl:ml-6"
       aria-label="Activer le mode sombre"
       title="Mode clair / sombre"
     >
@@ -63,7 +54,7 @@ const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWit
     <!-- Bouton hamburger mobile -->
     <button
       id="menu-toggle"
-      class="inline-flex h-11 w-11 flex-col items-center justify-center gap-[5px] lg:hidden"
+      class="inline-flex flex-col gap-[5px] p-2 lg:hidden"
       aria-label="Ouvrir le menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
