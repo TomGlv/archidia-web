@@ -12,12 +12,29 @@ const { slug } = Astro.params;
 const projet = await getProjet(slug!);
 
 if (!projet) {
-  return Astro.redirect("/realisations");
+  return Astro.redirect("/realisations/");
 }
 
-const desc =
-  projet.meta_description ||
-  `${projet.titre}${projet.lieu ? " — " + projet.lieu : ""} : projet réalisé par ArchidiA (architecture & AMO).`;
+// Description par défaut (si aucune n'est saisie dans Sanity) : elle ne doit pas
+// attribuer à ArchidiA les projets du parcours antérieur, ni dire « réalisé »
+// d'un projet en cours. On la complète avec le début du texte du projet.
+const role = projet.avantArchidia
+  ? "mission menée par Claudia Aubert-Paredes avant la création d'ArchidiA"
+  : projet.mission
+    ? `mission ${projet.mission} d'ArchidiA`
+    : "projet suivi par ArchidiA";
+const contexte = [projet.lieu, projet.annee].filter(Boolean).join(", ");
+const base = `${projet.titre}${contexte ? ` (${contexte})` : ""}${projet.secteur ? ` — ${projet.secteur}` : ""}, ${role}.`;
+const extrait = (projet.extrait ?? "").replace(/\s+/g, " ").trim();
+const tronquer = (texte: string, max: number) =>
+  texte.length <= max ? texte : texte.slice(0, texte.lastIndexOf(" ", max - 1)).replace(/[\s,;:.—-]+$/, "") + "…";
+const desc = projet.meta_description || tronquer(extrait ? `${base} ${extrait}` : base, 158);
+
+// Projets similaires (même catégorie) pour le maillage interne
+const similaires = (await getProjets())
+  .filter((p) => p.slug !== projet.slug && p.categories.some((c) => projet.categories.includes(c)))
+  .sort((a, b) => Number(b.secteur === projet.secteur) - Number(a.secteur === projet.secteur))
+  .slice(0, 3);
 const ogImage = projet.cover
   ? urlFor(projet.cover)?.width(1200).height(630).quality(80).url() ?? undefined
   : undefined;
@@ -38,7 +55,7 @@ const jsonLd = {
 ---
 
 <Layout
-  title={`${projet.titre} — Réalisations`}
+  title={`${projet.titre}${projet.lieu ? `, ${projet.lieu}` : ""} — Réalisations`}
   description={desc}
   image={ogImage}
   imageAlt={projet.titre}
@@ -48,5 +65,5 @@ const jsonLd = {
   ]}
   jsonLd={jsonLd}
 >
-  <Projet projet={projet} />
+  <Projet projet={projet} similaires={similaires} />
 </Layout>

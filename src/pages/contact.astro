@@ -2,16 +2,16 @@
 import Layout from "../layouts/Layout.astro";
 
 const coords = [
-  { label: "Adresse", value: "8, av. des Fauvettes<br/>78380 Bougival" },
+  { label: "Adresse", value: '8, av. des Fauvettes<br/>78380 Bougival<br/><a href="https://www.google.com/maps/search/?api=1&query=8+avenue+des+Fauvettes+78380+Bougival" target="_blank" rel="noopener" class="inline-flex min-h-11 items-center text-sm font-semibold text-accent hover:underline">Voir sur Google Maps →</a>' },
   { label: "Téléphone", value: '<a href="tel:+33614600663" class="hover:text-accent transition">06 14 60 06 63</a>' },
   { label: "Email", value: '<a href="mailto:claudia.aubert@archidia.fr" class="hover:text-accent transition">claudia.aubert@archidia.fr</a>' },
-  { label: "Zone d'intervention", value: "Île-de-France" },
+  { label: "Zone d'intervention", value: "Bougival, Yvelines, Hauts-de-Seine, Paris et Île-de-France" },
 ];
 ---
 
 <Layout
-  title="Contact — Parlons de votre projet"
-  description="Contactez ArchidiA (Bougival, Île-de-France) pour votre projet : AMO/MOE, diagnostics et copropriétés, habitat ou adaptation du logement. Réponse sous 48 h."
+  title="Contact — Architecte à Bougival (78) | ArchidiA"
+  description="Contactez ArchidiA, architecte à Bougival (Yvelines) : AMO/MOE, diagnostic de copropriété, maison ou adaptation du logement. 06 14 60 06 63."
   breadcrumbs={[{ name: "Contact", path: "/contact/" }]}
   jsonLd={{
     "@type": "ContactPage",
@@ -49,8 +49,8 @@ const coords = [
       </dl>
 
       <div class="mt-8 flex gap-6 text-[11px] font-bold uppercase tracking-widest text-gray-400">
-        <a href="https://www.linkedin.com/in/claudia-aubert-paredes-90141a16" target="_blank" rel="noopener" class="transition hover:text-accent">LinkedIn</a>
-        <a href="https://www.instagram.com/archidia_architecture" target="_blank" rel="noopener" class="transition hover:text-accent">Instagram</a>
+        <a href="https://www.linkedin.com/in/claudia-aubert-paredes-90141a16" target="_blank" rel="noopener" class="inline-flex min-h-11 items-center transition hover:text-accent">LinkedIn</a>
+        <a href="https://www.instagram.com/archidia_architecture" target="_blank" rel="noopener" class="inline-flex min-h-11 items-center transition hover:text-accent">Instagram</a>
       </div>
     </div>
 
@@ -73,7 +73,7 @@ const coords = [
         <form
           name="contact"
           method="POST"
-          action="/merci"
+          action="/merci/"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
           data-netlify-recaptcha="true"

@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import ApercuRealisations from "../components/ApercuRealisations.astro";
 import Piliers from "../components/Piliers.astro";
+import HeroImage from "../components/HeroImage.astro";
+import heroAutonomie from "../assets/hero-autonomie.jpg";
 
 const steps = [
   {
@@ -23,27 +25,31 @@ const steps = [
 ---
 
 <Layout
-  title="Autonomie — Adaptation du logement"
-  description="Adaptation du logement senior pour le maintien à domicile : diagnostic, accessibilité et suivi des travaux, avec l'accompagnement MaPrimeAdapt'. Bien vieillir chez soi."
+  title="Adaptation du logement senior et MaPrimeAdapt' (78) | ArchidiA"
+  description="Adapter le logement d'un proche pour bien vieillir chez soi : diagnostic à domicile, aménagements, aide MaPrimeAdapt' et suivi des travaux en Île-de-France."
   breadcrumbs={[{ name: "Autonomie", path: "/autonomie/" }]}
   jsonLd={{
     "@type": "Service",
+    "@id": "https://archidia.fr/autonomie/#service",
     name: "Adaptation du logement pour le maintien à domicile",
+    description: "Diagnostic du logement, plan d'aménagement, orientation vers les aides (dont MaPrimeAdapt') et suivi des travaux d'adaptation.",
     serviceType: "Autonomie",
     provider: { "@id": "https://archidia.fr/#organisation" },
-    areaServed: { "@type": "AdministrativeArea", name: "Île-de-France" },
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "Yvelines" },
+      { "@type": "AdministrativeArea", name: "Hauts-de-Seine" },
+      { "@type": "City", name: "Paris" },
+      { "@type": "AdministrativeArea", name: "Île-de-France" },
+    ],
     url: "https://archidia.fr/autonomie/",
   }}
 >
   <!-- HERO -->
   <header class="theme-fixe relative flex h-[72vh] min-h-[420px] items-center overflow-hidden bg-[#20221f]">
-    <img
-      src="/images/hero-autonomie.jpg"
+    <HeroImage
+      src={heroAutonomie}
       alt="Douche de plain-pied adaptée avec siège rabattable et barres d'appui"
       class="absolute inset-0 h-full w-full object-cover opacity-70"
-      fetchpriority="high"
-      width="1408"
-      height="768"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/30"></div>
     <div class="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-8">
@@ -66,8 +72,6 @@ const steps = [
       maîtrise d'ouvrage.
     </p>
   </section>
-
-  <ApercuRealisations categorie="Autonomie" titre="Les résidences seniors" surtitre="" class="bg-gray-50" />
 
   <!-- POUR LES PARTICULIERS / ÉTAPES -->
   <section class="px-6 py-12 md:px-8 md:py-12">
@@ -99,14 +103,70 @@ const steps = [
         Un premier échange téléphonique, gratuit, permet de faire le point sur votre
         situation et d'envisager une visite conseil à domicile.
       </p>
+    </div>
+
+    <!-- MaPrimeAdapt' en bref -->
+    <div class="mx-auto mt-12 max-w-3xl text-left">
+      <h2 class="titre-2 reveal mb-6 text-anthracite">MaPrimeAdapt' : l'essentiel</h2>
+      <div class="reveal space-y-4 text-base leading-relaxed text-gray-600">
+        <p>
+          <strong class="text-anthracite">MaPrimeAdapt' est une aide de l'Anah, en place depuis le 1<sup>er</sup> janvier 2024,
+          qui finance une partie des travaux d'adaptation du logement à la perte d'autonomie.</strong>{" "}
+          Elle s'adresse, sous conditions de ressources (revenus modestes ou très modestes), aux propriétaires
+          occupants et aux locataires :
+        </p>
+        <ul class="list-disc space-y-1 pl-5">
+          <li>âgés de 70 ans ou plus ;</li>
+          <li>âgés de 60 à 69 ans et en situation de perte d'autonomie évaluée ;</li>
+          <li>ou en situation de handicap, sous conditions.</li>
+        </ul>
+        <p>
+          L'aide couvre une part du montant des travaux, plus élevée pour les ménages aux revenus très modestes,
+          dans la limite d'un plafond de dépenses fixé par l'Anah. Le dossier se monte avec un assistant à maîtrise
+          d'ouvrage habilité, obligatoire pour ce dispositif, et <strong class="text-anthracite">avant</strong> le
+          démarrage des travaux.
+        </p>
+        <p>
+          Travaux typiques : douche de plain-pied à la place d'une baignoire, WC rehaussés, barres d'appui,
+          monte-escalier, élargissement des portes, rampe d'accès, volets roulants motorisés, éclairage
+          renforcé des circulations.
+        </p>
+      </div>
+
+      <h2 class="titre-2 reveal mb-6 mt-12 text-anthracite">Questions fréquentes</h2>
+      <div class="reveal space-y-6 text-base leading-relaxed text-gray-600">
+        <div>
+          <h3 class="titre-3 mb-2 text-anthracite">Faut-il attendre l'accord de l'aide pour commencer les travaux ?</h3>
+          <p>Oui. Pour MaPrimeAdapt', la demande doit être déposée et accordée avant le début des travaux : signer un devis trop tôt peut faire perdre l'aide.</p>
+        </div>
+        <div>
+          <h3 class="titre-3 mb-2 text-anthracite">Pourquoi faire appel à une architecte plutôt qu'à une entreprise ?</h3>
+          <p>Le diagnostic à domicile part des habitudes de vie de la personne, pas d'un catalogue de produits. L'architecte conçoit l'aménagement, vérifie les devis des entreprises et contrôle la bonne exécution jusqu'à la réception.</p>
+        </div>
+        <div>
+          <h3 class="titre-3 mb-2 text-anthracite">Et si nous ne sommes pas éligibles aux aides ?</h3>
+          <p>L'accompagnement reste le même : diagnostic, plan d'aménagement et suivi de chantier, à partir d'une visite conseil à domicile.</p>
+        </div>
+      </div>
+      <div class="mt-10 text-center">
       <a
-        href="/contact"
-        class="reveal mt-10 inline-block bg-anthracite px-10 py-5 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-accent"
+        href="/contact/"
+        class="reveal inline-block bg-anthracite px-10 py-5 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-accent"
       >
         Être recontacté →
       </a>
+      <a
+        href="tel:+33614600663"
+        class="reveal mt-4 ml-0 inline-block border-2 border-anthracite px-10 py-5 text-xs font-bold uppercase tracking-widest text-anthracite transition hover:bg-anthracite hover:text-white sm:ml-4"
+      >
+        06 14 60 06 63
+      </a>
+      </div>
     </div>
   </section>
+
+  <ApercuRealisations categorie="Autonomie" titre="Les résidences seniors" surtitre="" class="bg-gray-50" />
+
 
   <!-- CITATION -->
   <section class="citation-bande theme-fixe reveal w-full bg-anthracite px-6 py-10 text-center md:py-12">

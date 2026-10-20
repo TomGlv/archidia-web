@@ -28,12 +28,33 @@ export function urlFor(source: any) {
   return builder.image(source);
 }
 
+/** `srcset` d'une image Sanity aux largeurs données, au meilleur format accepté
+ *  par le navigateur (AVIF/WebP). `ratio` = hauteur / largeur pour recadrer. */
+export function srcsetFor(source: any, widths: number[], ratio?: number, quality = 75) {
+  const img = urlFor(source);
+  if (!img) return undefined;
+  return widths
+    .map((w) => {
+      const sized = ratio ? img.width(w).height(Math.round(w * ratio)) : img.width(w);
+      return `${sized.quality(quality).auto("format").url()} ${w}w`;
+    })
+    .join(", ");
+}
+
+/** Dimensions d'origine d'une image Sanity, lues dans la référence de l'asset
+ *  (« image-<id>-1200x800-jpg ») : évite les décalages de mise en page. */
+export function dimensionsOf(source: any): { width: number; height: number } | undefined {
+  const ref: string | undefined = source?.asset?._ref;
+  const m = ref?.match(/-(\d+)x(\d+)-[a-z]+$/);
+  return m ? { width: Number(m[1]), height: Number(m[2]) } : undefined;
+}
+
 // `value` = valeur enregistrée dans Sanity (ne pas modifier) ; `label` = libellé affiché.
 export const CATEGORIES = [
-  { value: "AMO / MOE", label: "AMO & MOE", slug: "amo-moe", page: "/amo-moe" },
-  { value: "Diagnostics & Copropriétés", label: "Diagnostics & Copropriétés", slug: "diagnostics", page: "/diagnostics" },
-  { value: "Maison individuelle", label: "Habitats", slug: "habitats", page: "/habitats" },
-  { value: "Autonomie", label: "Autonomie", slug: "autonomie", page: "/autonomie" },
+  { value: "AMO / MOE", label: "AMO & MOE", slug: "amo-moe", page: "/amo-moe/" },
+  { value: "Diagnostics & Copropriétés", label: "Diagnostics & Copropriétés", slug: "diagnostics", page: "/diagnostics/" },
+  { value: "Maison individuelle", label: "Habitats", slug: "habitats", page: "/habitats/" },
+  { value: "Autonomie", label: "Autonomie", slug: "autonomie", page: "/autonomie/" },
 ] as const;
 
 export type Categorie = (typeof CATEGORIES)[number]["value"];
@@ -160,7 +181,7 @@ export async function getLigne(categorie: Categorie, filtre: (p: ProjetListItem)
 /** Lien vers la page Réalisations filtrée sur une catégorie (et un secteur). */
 export function lienRealisations(categorie: Categorie, secteur?: string) {
   const cat = CATEGORIES.find((c) => c.value === categorie)!.slug;
-  return `/realisations?cat=${cat}${secteur ? `&secteur=${slugify(secteur)}` : ""}`;
+  return `/realisations/?cat=${cat}${secteur ? `&secteur=${slugify(secteur)}` : ""}`;
 }
 
 export async function getProjet(slug: string): Promise<Projet | null> {

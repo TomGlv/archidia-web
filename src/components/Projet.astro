@@ -1,15 +1,19 @@
 ---
 import { toHTML } from "@portabletext/to-html";
-import { CATEGORIES, urlFor } from "../lib/sanity";
+import { CATEGORIES, dimensionsOf, srcsetFor, urlFor } from "../lib/sanity";
 import { toEmbedUrl } from "../lib/video";
-import type { Projet } from "../lib/sanity";
+import type { Projet, ProjetListItem } from "../lib/sanity";
+import ProjetCard from "./ProjetCard.astro";
 
 interface Props {
   projet: Projet;
+  /** Projets de la même catégorie, affichés en bas de page */
+  similaires?: ProjetListItem[];
 }
-const { projet } = Astro.props;
+const { projet, similaires = [] } = Astro.props;
 
-const cover = projet.cover ? urlFor(projet.cover)?.width(1920).quality(72).url() : null;
+const cover = projet.cover ? urlFor(projet.cover)?.width(1920).quality(72).auto("format").url() : null;
+const coverSrcset = projet.cover ? srcsetFor(projet.cover, [640, 1024, 1440, 1920], undefined, 72) : undefined;
 const galerie = (projet.galerie ?? []).filter(Boolean);
 const embed = toEmbedUrl(projet.video_url);
 const description = projet.description ? toHTML(projet.description) : "";
@@ -28,7 +32,9 @@ const cats = CATEGORIES.filter((c) => projet.categories.includes(c.value));
     {cover && (
       <img
         src={cover}
-        alt={projet.titre}
+        srcset={coverSrcset}
+        sizes="100vw"
+        alt={projet.cover?.alt || [projet.titre, projet.secteur, projet.lieu].filter(Boolean).join(" — ")}
         class="absolute inset-0 h-full w-full object-cover opacity-75"
         fetchpriority="high"
       />
@@ -80,12 +86,28 @@ const cats = CATEGORIES.filter((c) => projet.categories.includes(c.value));
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {galerie.map((a: any) => (
           <img
-            src={urlFor(a)?.width(800).quality(78).url()}
-            alt={a.alt || projet.titre}
+            src={urlFor(a)?.width(800).quality(75).auto("format").url()}
+            srcset={srcsetFor(a, [400, 800])}
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            alt={a.alt || `${projet.titre} — ${projet.lieu ?? "photo du projet"}`}
             class="h-full w-full object-cover"
+            width={dimensionsOf(a)?.width}
+            height={dimensionsOf(a)?.height}
             loading="lazy"
           />
         ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Projets similaires -->
+  {similaires.length > 0 && (
+    <section class="border-t border-gray-100 bg-gray-50 px-6 py-12 md:px-8">
+      <div class="mx-auto max-w-7xl">
+        <h2 class="titre-2 mb-8 text-anthracite">Projets similaires</h2>
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {similaires.map((p) => <ProjetCard projet={p} />)}
+        </div>
       </div>
     </section>
   )}
@@ -94,14 +116,22 @@ const cats = CATEGORIES.filter((c) => projet.categories.includes(c.value));
   <section class="flex flex-col items-center justify-center gap-4 border-t border-gray-100 px-6 py-10 text-center sm:flex-row sm:gap-10">
     {cats.map((c) => (
       <a
-        href={`/realisations?cat=${c.slug}`}
+        href={c.page}
+        class="text-[10px] font-bold uppercase tracking-widest text-accent transition hover:text-anthracite"
+      >
+        Notre offre {c.label} →
+      </a>
+    ))}
+    {cats.map((c) => (
+      <a
+        href={`/realisations/?cat=${c.slug}`}
         class="text-[10px] font-bold uppercase tracking-widest text-gray-400 transition hover:text-accent"
       >
         ← Autres projets {c.label}
       </a>
     ))}
     <a
-      href="/realisations"
+      href="/realisations/"
       class="text-[10px] font-bold uppercase tracking-widest text-gray-400 transition hover:text-accent"
     >
       Toutes les réalisations

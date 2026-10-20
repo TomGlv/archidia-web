@@ -1,0 +1,24 @@
+# ArchidiA
+
+> ArchidiA est une agence d'architecture et d'assistance à maîtrise d'ouvrage installée à Bougival (78380, Yvelines), fondée en 2019 par Claudia Aubert-Paredes, architecte inscrite à l'Ordre des architectes d'Île-de-France (n° 086701). Elle intervient à Bougival, dans les Yvelines, les Hauts-de-Seine, à Paris et en Île-de-France.
+
+Contact : 8, avenue des Fauvettes, 78380 Bougival · 06 14 60 06 63 · claudia.aubert@archidia.fr · SIREN 878 483 239.
+Honoraires : diagnostics et études sur la base de 800 € HT par jour ; visite conseil habitat à partir de 180 € HT.
+
+## Métiers
+
+- [AMO & MOE](https://archidia.fr/amo-moe/): assistance à maîtrise d'ouvrage et maîtrise d'œuvre pour bureaux, hôtels, logements collectifs et résidences seniors
+- [Diagnostics & Copropriétés](https://archidia.fr/diagnostics/): DTG, PPPT pour les copropriétés ; diagnostics architecturaux et énergétiques (DAE) de maisons et petits collectifs
+- [Habitats](https://archidia.fr/habitats/): construction, extension et rénovation de maisons, de la visite conseil à la réception des travaux
+- [Autonomie](https://archidia.fr/autonomie/): adaptation du logement pour le maintien à domicile, aides dont MaPrimeAdapt'
+
+## Guides
+
+- [Le PPPT de copropriété](https://archidia.fr/diagnostics/pppt/): obligation, contenu, échéances, vote
+- [Le DTG de copropriété](https://archidia.fr/diagnostics/dtg/): contenu, cas obligatoires, lien avec le PPPT
+
+## Agence
+
+- [Réalisations](https://archidia.fr/realisations/): projets classés par métier
+- [À propos](https://archidia.fr/a-propos/): parcours et qualifications de Claudia Aubert-Paredes
+- [Contact](https://archidia.fr/contact/)

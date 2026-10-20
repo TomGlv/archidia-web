@@ -27,7 +27,7 @@ const slug = CATEGORIES.find((c) => c.value === categorie)!.slug;
         </div>
         {total > projets.length && (
           <a
-            href={`/realisations?cat=${slug}`}
+            href={`/realisations/?cat=${slug}`}
             class="inline-block self-start border-2 border-anthracite px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-anthracite transition hover:bg-anthracite hover:text-white md:self-auto"
           >
             Voir tous les projets →

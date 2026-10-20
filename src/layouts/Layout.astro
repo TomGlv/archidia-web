@@ -57,7 +57,29 @@ const organisation = {
     addressRegion: "Île-de-France",
     addressCountry: "FR",
   },
-  areaServed: { "@type": "AdministrativeArea", name: "Île-de-France" },
+  // Coordonnées de l'adresse d'après la Base Adresse Nationale
+  geo: { "@type": "GeoCoordinates", latitude: 48.86721, longitude: 2.15226 },
+  hasMap: "https://www.google.com/maps/search/?api=1&query=8+avenue+des+Fauvettes+78380+Bougival",
+  areaServed: [
+    { "@type": "City", name: "Bougival" },
+    { "@type": "AdministrativeArea", name: "Yvelines" },
+    { "@type": "AdministrativeArea", name: "Hauts-de-Seine" },
+    { "@type": "City", name: "Paris" },
+    { "@type": "AdministrativeArea", name: "Île-de-France" },
+  ],
+  sameAs: [
+    "https://www.linkedin.com/in/claudia-aubert-paredes-90141a16",
+    "https://www.instagram.com/archidia_architecture",
+  ],
+  // Les quatre métiers, décrits en détail (Service) sur leurs pages respectives
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Missions ArchidiA",
+    itemListElement: ["amo-moe", "diagnostics", "habitats", "autonomie"].map((page) => ({
+      "@type": "Offer",
+      itemOffered: { "@id": `${siteUrl}${page}/#service` },
+    })),
+  },
   founder: {
     "@type": "Person",
     "@id": `${siteUrl}a-propos/#claudia`,
@@ -65,6 +87,14 @@ const organisation = {
     jobTitle: "Architecte",
     url: abs("/a-propos/"),
     image: abs("/images/claudia.jpg"),
+    sameAs: ["https://www.linkedin.com/in/claudia-aubert-paredes-90141a16"],
+    hasCredential: {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Inscription à l'Ordre des architectes",
+      name: "Architecte inscrite à l'Ordre des architectes d'Île-de-France, n° 086701",
+      recognizedBy: { "@type": "Organization", name: "Ordre des architectes d'Île-de-France" },
+    },
+    memberOf: { "@type": "Organization", name: "Architectes & Particuliers" },
   },
   foundingDate: "2019",
   vatID: "FR81878483239",
@@ -119,6 +149,7 @@ const structuredData = {
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="canonical" href={canonical} />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
     <meta name="generator" content={Astro.generator} />
 
     <title>{fullTitle}</title>

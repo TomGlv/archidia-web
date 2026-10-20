@@ -19,9 +19,25 @@ const chip =
 ---
 
 <Layout
-  title="Réalisations — Nos projets"
-  description="Découvrez les réalisations d'ArchidiA : AMO/MOE (bureaux, hôtellerie, logements), diagnostics de copropriétés, habitats et adaptation du logement."
+  title="Réalisations : bureaux, copropriétés, maisons | ArchidiA"
+  description="Projets d'ArchidiA en Île-de-France : AMO/MOE de bureaux, hôtels et logements, DTG et PPPT de copropriétés, maisons rénovées ou agrandies, résidences seniors."
   breadcrumbs={[{ name: "Réalisations", path: "/realisations/" }]}
+  jsonLd={{
+    "@type": "CollectionPage",
+    "@id": "https://archidia.fr/realisations/#page",
+    url: "https://archidia.fr/realisations/",
+    name: "Réalisations d'ArchidiA",
+    isPartOf: { "@id": "https://archidia.fr/#website" },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: projets.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `https://archidia.fr/realisations/${p.slug}/`,
+        name: p.titre,
+      })),
+    },
+  }}
 >
   <section class="border-b border-gray-100 px-6 py-8 md:px-8 md:py-10">
     <div class="mx-auto max-w-7xl">
@@ -40,21 +56,21 @@ const chip =
       <!-- Filtres (fonctionnent via ?cat=…&secteur=… ; sans JS, tout est affiché) -->
       <nav id="filtres" class="mb-12 space-y-4" aria-label="Filtrer les réalisations">
         <div class="flex flex-wrap gap-2">
-          <a href="/realisations" data-cat="" class={chip}>Tous · {projets.length}</a>
+          <a href="/realisations/" data-cat="" class={chip}>Tous · {projets.length}</a>
           {filtres.map((c) => (
-            <a href={`/realisations?cat=${c.slug}`} data-cat={c.slug} class={chip}>
+            <a href={`/realisations/?cat=${c.slug}`} data-cat={c.slug} class={chip}>
               {c.label} · {c.total}
             </a>
           ))}
         </div>
         {filtres.filter((c) => c.secteurs.length > 1).map((c) => (
           <div class="secteurs hidden flex-wrap gap-2" data-for={c.slug}>
-            <a href={`/realisations?cat=${c.slug}`} data-cat={c.slug} data-secteur="" class={chip}>
+            <a href={`/realisations/?cat=${c.slug}`} data-cat={c.slug} data-secteur="" class={chip}>
               Tous les secteurs
             </a>
             {c.secteurs.map((s) => (
               <a
-                href={`/realisations?cat=${c.slug}&secteur=${s.slug}`}
+                href={`/realisations/?cat=${c.slug}&secteur=${s.slug}`}
                 data-cat={c.slug}
                 data-secteur={s.slug}
                 class={chip}
@@ -67,7 +83,7 @@ const chip =
       </nav>
 
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {projets.map((p) => <ProjetCard projet={p} />)}
+        {projets.map((p, i) => <ProjetCard projet={p} eager={i < 3} />)}
       </div>
 
       {hasAvantArchidia && (
@@ -86,7 +102,7 @@ const chip =
         Nos réalisations seront présentées ici très prochainement.
       </p>
       <a
-        href="/contact"
+        href="/contact/"
         class="mt-8 inline-block border-2 border-anthracite px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-anthracite transition hover:bg-anthracite hover:text-white"
       >
         Parlons de votre projet →

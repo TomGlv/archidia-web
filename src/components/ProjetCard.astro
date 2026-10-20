@@ -1,10 +1,15 @@
 ---
-import { CATEGORIES, slugify, urlFor, type ProjetListItem } from "../lib/sanity";
+import { CATEGORIES, slugify, srcsetFor, urlFor, type ProjetListItem } from "../lib/sanity";
 
 interface Props {
   projet: ProjetListItem;
+  /** Image chargée tout de suite (cartes visibles sans défiler) */
+  eager?: boolean;
 }
-const { projet: p } = Astro.props;
+const { projet: p, eager = false } = Astro.props;
+
+// Texte alternatif par défaut : nom, type et lieu du projet
+const altCarte = [p.titre, p.secteur, p.lieu].filter(Boolean).join(" — ");
 
 const meta = [p.chiffres, p.lieu, p.annee].filter(Boolean).join(" · ");
 const cats = CATEGORIES.filter((c) => p.categories.includes(c.value))
@@ -16,7 +21,7 @@ const etiquette = "bg-accent px-2.5 py-1 text-[10px] font-bold uppercase trackin
 ---
 
 <a
-  href={`/realisations/${p.slug}`}
+  href={`/realisations/${p.slug}/`}
   class="projet-card reveal group flex flex-col overflow-hidden border border-gray-200 bg-white transition hover:border-accent"
   data-cats={cats}
   data-secteur={p.secteur ? slugify(p.secteur) : ""}
@@ -24,10 +29,14 @@ const etiquette = "bg-accent px-2.5 py-1 text-[10px] font-bold uppercase trackin
   {p.cover ? (
     <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
       <img
-        src={urlFor(p.cover)?.width(800).height(600).quality(78).url()}
-        alt={p.cover.alt || p.titre}
+        src={urlFor(p.cover)?.width(800).height(600).quality(75).auto("format").url()}
+        srcset={srcsetFor(p.cover, [400, 600, 800], 0.75)}
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+        alt={p.cover.alt || altCarte}
         class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-        loading="lazy"
+        width="800"
+        height="600"
+        loading={eager ? "eager" : "lazy"}
       />
       {mission && <span class:list={["absolute left-3 top-3", etiquette]}>{mission}</span>}
     </div>
