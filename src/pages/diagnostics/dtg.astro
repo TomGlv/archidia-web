@@ -1,0 +1,103 @@
+---
+import Guide from "../../components/Guide.astro";
+import { getLigne, lienRealisations } from "../../lib/sanity";
+
+const CAT = "Diagnostics & Copropriétés";
+const projets = await getLigne(CAT, (p) => /\bDTG\b/.test(p.secteur ?? ""));
+const references = [{ libelle: "Diagnostics techniques globaux", projets, href: lienRealisations(CAT, projets[0]?.secteur) }];
+---
+
+<Guide
+  title="DTG copropriété : contenu, vote, obligation | ArchidiA"
+  description="Le diagnostic technique global (DTG) fait l'état complet d'une copropriété et chiffre les travaux à 10 ans. Contenu, vote en AG, cas obligatoires, lien avec le PPPT."
+  sigle="DTG"
+  h1="Le DTG de copropriété : ce que contient le diagnostic technique global"
+  path="/diagnostics/dtg/"
+  majLe="2026-10-20"
+  references={references}
+>
+  <p>
+    <strong>Le diagnostic technique global (DTG) est un état des lieux complet d'un immeuble en copropriété :
+    état des parties communes et des équipements, situation au regard des obligations réglementaires,
+    performance énergétique et liste chiffrée des travaux nécessaires dans les dix ans.</strong>{" "}
+    Créé par la loi ALUR de 2014 (articles L731-1 et suivants du code de la construction et de
+    l'habitation), il donne aux copropriétaires une vision claire de leur immeuble avant de décider
+    des travaux.
+  </p>
+
+  <h2>Que contient un DTG ?</h2>
+  <ul>
+    <li>une analyse de l'état apparent des parties communes et des équipements communs de l'immeuble ;</li>
+    <li>un état de la situation du syndicat des copropriétaires au regard de ses obligations légales et réglementaires ;</li>
+    <li>une analyse des améliorations possibles de la gestion technique et patrimoniale de l'immeuble ;</li>
+    <li>un diagnostic de performance énergétique (ou un audit énergétique) de l'immeuble ;</li>
+    <li>une évaluation sommaire du coût et une liste des travaux nécessaires à la conservation de l'immeuble, notamment ceux à mener dans les dix prochaines années.</li>
+  </ul>
+
+  <h2>Le DTG est-il obligatoire ?</h2>
+  <p>
+    Pour la plupart des copropriétés, le DTG n'est pas obligatoire en soi : l'assemblée générale doit
+    se prononcer sur l'opportunité de le faire réaliser, à la majorité simple de l'article 24 de la loi
+    du 10 juillet 1965. Il devient en revanche obligatoire dans certains cas :
+  </p>
+  <ul>
+    <li>lorsqu'un immeuble de plus de dix ans est mis en copropriété ;</li>
+    <li>lorsque l'administration le demande, dans le cadre d'une procédure liée à l'insalubrité ou à la sécurité de l'immeuble.</li>
+  </ul>
+
+  <h2>DTG et PPPT : quelle différence ?</h2>
+  <p>
+    Le <a href="/diagnostics/pppt/">projet de plan pluriannuel de travaux (PPPT)</a>, obligatoire pour les
+    copropriétés d'habitation de plus de 15 ans, se concentre sur la programmation des travaux à dix ans.
+    Le DTG est plus large : il ajoute l'analyse réglementaire et celle de la gestion de l'immeuble.
+    Lorsqu'un DTG de moins de dix ans ne fait apparaître aucun besoin de travaux sur les dix années
+    suivantes, il dispense la copropriété d'élaborer un PPPT pendant sa durée de validité.
+  </p>
+
+  <h2>Comment se déroule un DTG ?</h2>
+  <h3>1. Vote et commande</h3>
+  <p>L'assemblée générale vote la réalisation du DTG et le choix du prestataire, sur proposition du syndic et du conseil syndical.</p>
+  <h3>2. Collecte et visites</h3>
+  <p>
+    Analyse des documents (règlement de copropriété, carnet d'entretien, contrats, diagnostics existants),
+    visite des parties communes et des équipements, échanges avec le syndic et le conseil syndical.
+  </p>
+  <h3>3. Rapport et présentation</h3>
+  <p>
+    Le rapport hiérarchise les travaux et en estime le coût ; il est présenté à l'assemblée générale
+    suivante, qui décide des suites à donner.
+  </p>
+
+  <h2>Qui peut réaliser un DTG ?</h2>
+  <p>
+    Un tiers indépendant, justifiant de compétences et d'une assurance définies par décret. Chez
+    <strong>ArchidiA</strong>, les DTG sont réalisés par Claudia Aubert-Paredes, architecte inscrite à
+    l'Ordre des architectes d'Île-de-France et référencée CoachCopro : copropriétés à Paris
+    (15<sup>e</sup>, 19<sup>e</sup>) et à Bougival (résidence La Jonchère).
+  </p>
+
+  <h2>Combien coûte un DTG ?</h2>
+  <p>
+    Le coût dépend du nombre de lots et de bâtiments, des équipements communs et de la documentation
+    disponible. Nos honoraires sont établis sur la base de 800 € HT par jour, avec un nombre de jours
+    détaillé dans chaque proposition.
+  </p>
+
+  <h2>Questions fréquentes</h2>
+  <h3>Combien de temps un DTG reste-t-il valable ?</h3>
+  <p>
+    Le DTG décrit l'immeuble à une date donnée ; il est pertinent de le mettre à jour lorsque des
+    travaux importants ont été réalisés. Sa durée de dix ans compte notamment pour la dispense de PPPT.
+  </p>
+  <h3>Le DTG oblige-t-il à voter des travaux ?</h3>
+  <p>
+    Non : il éclaire la décision. C'est l'assemblée générale qui choisit les travaux à engager et leur
+    calendrier.
+  </p>
+
+  <p class="mt-10 text-sm text-gray-400">
+    Textes de référence : loi n° 2014-366 du 24 mars 2014 (ALUR) ; articles L731-1 à L731-5 du code de
+    la construction et de l'habitation. Cette page présente le cadre général et ne remplace pas un
+    conseil adapté à votre copropriété.
+  </p>
+</Guide>

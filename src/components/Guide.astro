@@ -1,0 +1,90 @@
+---
+// Mise en page des guides pratiques (DTG, PPPT…) : bandeau titre, auteur et
+// date de mise à jour, contenu, puis appel à l'action et références liées.
+import Layout from "../layouts/Layout.astro";
+import ReferencesParLigne from "./ReferencesParLigne.astro";
+import type { ProjetListItem } from "../lib/sanity";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Sigle affiché au-dessus du titre (ex. « PPPT ») */
+  sigle: string;
+  h1: string;
+  path: string;
+  /** Date de dernière mise à jour du contenu (AAAA-MM-JJ) */
+  majLe: string;
+  references: { libelle: string; projets: ProjetListItem[]; href: string }[];
+}
+const { title, description, sigle, h1, path, majLe, references } = Astro.props;
+const url = `https://archidia.fr${path}`;
+const majTexte = new Date(majLe).toLocaleDateString("fr-FR", { month: "long", year: "numeric" });
+---
+
+<Layout
+  title={title}
+  description={description}
+  breadcrumbs={[
+    { name: "Diagnostics & Copropriétés", path: "/diagnostics/" },
+    { name: sigle, path },
+  ]}
+  jsonLd={{
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline: h1,
+    description,
+    url,
+    inLanguage: "fr-FR",
+    dateModified: majLe,
+    author: { "@id": "https://archidia.fr/a-propos/#claudia" },
+    publisher: { "@id": "https://archidia.fr/#organisation" },
+    about: { "@id": "https://archidia.fr/diagnostics/#service" },
+  }}
+>
+  <section class="border-b border-gray-100 px-6 py-8 md:px-8 md:py-10">
+    <div class="mx-auto max-w-3xl">
+      <p class="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+        <a href="/diagnostics/" class="hover:underline">Diagnostics &amp; Copropriétés</a> · {sigle}
+      </p>
+      <h1 class="titre-1 text-anthracite">{h1}</h1>
+      <p class="mt-5 text-xs uppercase tracking-[0.15em] text-gray-400">
+        Par <a href="/a-propos/" class="font-semibold text-anthracite hover:text-accent">Claudia Aubert-Paredes</a>,
+        architecte · Mis à jour en {majTexte}
+      </p>
+    </div>
+  </section>
+
+  <article class="guide mx-auto max-w-3xl px-6 py-10 text-base leading-relaxed text-gray-600 md:py-12">
+    <slot />
+  </article>
+
+  <section class="theme-fixe bg-anthracite px-6 py-12 text-center text-white md:px-8">
+    <h2 class="titre-2">Un {sigle} à faire réaliser ?</h2>
+    <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-gray-200">
+      Indiquez le nombre de lots, l'année de construction et l'adresse de l'immeuble :
+      nous vous adressons une proposition d'honoraires, établie sur la base de 800 € HT par jour.
+    </p>
+    <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <a href="/contact/" class="inline-block bg-accent px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-white transition hover:bg-white hover:text-anthracite">
+        Demander une proposition →
+      </a>
+      <a href="tel:+33614600663" class="inline-block border-2 border-white px-10 py-5 text-[10px] font-bold uppercase tracking-widest text-white transition hover:bg-white hover:text-anthracite">
+        06 14 60 06 63
+      </a>
+    </div>
+  </section>
+
+  <ReferencesParLigne titre={`Nos missions ${sigle}`} lignes={references} />
+</Layout>
+
+<style>
+  .guide :global(h2) { margin: 2.5rem 0 1rem; font-size: 1.5rem; line-height: 1.25; color: var(--color-anthracite); }
+  .guide :global(h3) { margin: 1.75rem 0 0.5rem; font-size: 1.125rem; font-weight: 600; color: var(--color-anthracite); }
+  .guide :global(p) { margin: 0.75rem 0; }
+  .guide :global(ul) { margin: 0.75rem 0; padding-left: 1.25rem; list-style: disc; }
+  .guide :global(li) { margin: 0.35rem 0; }
+  .guide :global(strong) { color: var(--color-anthracite); font-weight: 600; }
+  .guide :global(table) { width: 100%; margin: 1rem 0; border-collapse: collapse; font-size: 0.95rem; }
+  .guide :global(th), .guide :global(td) { border-bottom: 1px solid var(--color-gray-200); padding: 0.6rem 0.5rem; text-align: left; vertical-align: top; }
+  .guide :global(a) { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+</style>

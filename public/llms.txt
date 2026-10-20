@@ -12,6 +12,11 @@ Honoraires : diagnostics et études sur la base de 800 € HT par jour ; visite 
 - [Habitats](https://archidia.fr/habitats/): construction, extension et rénovation de maisons, de la visite conseil à la réception des travaux
 - [Autonomie](https://archidia.fr/autonomie/): adaptation du logement pour le maintien à domicile, aides dont MaPrimeAdapt'
 
+## Guides
+
+- [Le PPPT de copropriété](https://archidia.fr/diagnostics/pppt/): obligation, contenu, échéances, vote
+- [Le DTG de copropriété](https://archidia.fr/diagnostics/dtg/): contenu, cas obligatoires, lien avec le PPPT
+
 ## Agence
 
 - [Réalisations](https://archidia.fr/realisations/): projets classés par métier

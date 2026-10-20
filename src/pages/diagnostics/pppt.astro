@@ -1,0 +1,122 @@
+---
+import Guide from "../../components/Guide.astro";
+import { getLigne, lienRealisations } from "../../lib/sanity";
+
+const CAT = "Diagnostics & Copropriétés";
+const projets = await getLigne(CAT, (p) => /\bPPPT\b/.test(p.secteur ?? ""));
+const references = [{ libelle: "Projets de plan pluriannuel de travaux", projets, href: lienRealisations(CAT, projets[0]?.secteur) }];
+---
+
+<Guide
+  title="PPPT copropriété : obligation, contenu, échéances | ArchidiA"
+  description="Le projet de plan pluriannuel de travaux (PPPT) est obligatoire pour les copropriétés de plus de 15 ans. Qui est concerné, que contient-il, comment le voter ?"
+  sigle="PPPT"
+  h1="Le PPPT de copropriété : à quoi sert le plan pluriannuel de travaux ?"
+  path="/diagnostics/pppt/"
+  majLe="2026-10-20"
+  references={references}
+>
+  <p>
+    <strong>Le projet de plan pluriannuel de travaux (PPPT) est un document qui recense et chiffre les
+    travaux à réaliser dans les parties communes d'une copropriété sur les dix prochaines années.</strong>{" "}
+    Créé par la loi Climat et Résilience du 22 août 2021 (article 14-2 de la loi du 10 juillet 1965),
+    il est devenu obligatoire pour toutes les copropriétés à usage d'habitation de plus de 15 ans.
+    Son objectif : anticiper les travaux de conservation de l'immeuble et engager la rénovation
+    énergétique, plutôt que de subir les urgences.
+  </p>
+
+  <h2>Quelles copropriétés sont concernées ?</h2>
+  <p>
+    Toute copropriété dont l'immeuble est destiné, totalement ou partiellement, à l'habitation et dont
+    la construction est achevée depuis plus de 15 ans. L'obligation est entrée en vigueur par étapes,
+    selon la taille de la copropriété :
+  </p>
+  <table>
+    <thead><tr><th>Taille de la copropriété</th><th>PPPT obligatoire depuis</th></tr></thead>
+    <tbody>
+      <tr><td>Plus de 200 lots</td><td>1<sup>er</sup> janvier 2023</td></tr>
+      <tr><td>Entre 51 et 200 lots</td><td>1<sup>er</sup> janvier 2024</td></tr>
+      <tr><td>50 lots ou moins</td><td>1<sup>er</sup> janvier 2025</td></tr>
+    </tbody>
+  </table>
+  <p>Toutes les copropriétés d'habitation de plus de 15 ans sont donc aujourd'hui concernées.</p>
+
+  <h2>Que contient un PPPT ?</h2>
+  <p>Établi à partir d'une analyse du bâti et des équipements de l'immeuble, et du diagnostic de performance énergétique, le PPPT comprend :</p>
+  <ul>
+    <li>la liste des travaux nécessaires à la sauvegarde de l'immeuble, à la préservation de la santé et de la sécurité des occupants, à la réalisation d'économies d'énergie et à la réduction des émissions de gaz à effet de serre ;</li>
+    <li>une estimation du niveau de performance énergétique que ces travaux permettent d'atteindre ;</li>
+    <li>une estimation sommaire de leur coût et leur hiérarchisation ;</li>
+    <li>une proposition d'échéancier sur les dix années à venir.</li>
+  </ul>
+  <p>Le plan est actualisé tous les dix ans.</p>
+
+  <h2>Comment se déroule l'élaboration du PPPT ?</h2>
+  <h3>1. Le vote en assemblée générale</h3>
+  <p>
+    Le syndic inscrit à l'ordre du jour de l'assemblée générale l'élaboration du PPPT et le choix du
+    professionnel chargé de le réaliser. Le conseil syndical peut comparer plusieurs propositions
+    d'honoraires en amont.
+  </p>
+  <h3>2. Les visites et l'analyse</h3>
+  <p>
+    L'architecte visite les parties communes (toitures, façades, caves, réseaux, menuiseries…),
+    consulte les documents de la copropriété (carnet d'entretien, diagnostics existants, DPE) et
+    échange avec le conseil syndical sur l'historique des travaux.
+  </p>
+  <h3>3. La remise et la présentation</h3>
+  <p>
+    Le PPPT est remis au syndic puis présenté à l'assemblée générale, qui se prononce sur les travaux
+    à engager et leur calendrier. Une fois le plan adopté, le fonds de travaux est alimenté par une
+    cotisation annuelle au moins égale à 2,5 % du montant des travaux prévus et à 5 % du budget
+    prévisionnel.
+  </p>
+
+  <h2>PPPT ou DTG : faut-il les deux ?</h2>
+  <p>
+    Non, pas nécessairement. Si un <a href="/diagnostics/dtg/">diagnostic technique global (DTG)</a>{" "}
+    réalisé depuis moins de dix ans ne fait apparaître aucun besoin de travaux sur les dix années
+    suivantes, la copropriété est dispensée d'élaborer un PPPT pendant la durée de validité du DTG.
+    Dans les autres cas, le DTG constitue une base très utile pour établir le PPPT.
+  </p>
+
+  <h2>Qui peut réaliser le PPPT ?</h2>
+  <p>
+    Le PPPT doit être établi par un professionnel disposant des compétences et des garanties fixées
+    par décret ; les architectes en font partie. Chez <strong>ArchidiA</strong>, il est réalisé par
+    Claudia Aubert-Paredes, architecte inscrite à l'Ordre des architectes d'Île-de-France et
+    référencée CoachCopro, qui a déjà mené des PPPT pour des copropriétés parisiennes
+    (5<sup>e</sup>, 13<sup>e</sup>, 14<sup>e</sup> arrondissements).
+  </p>
+
+  <h2>Combien coûte un PPPT ?</h2>
+  <p>
+    Le prix dépend du nombre de lots, du nombre de bâtiments, de leur complexité et des documents
+    disponibles. Nos honoraires sont établis sur la base d'un tarif journalier de 800 € HT, et chaque
+    proposition détaille le nombre de jours prévus.
+  </p>
+
+  <h2>Questions fréquentes</h2>
+  <h3>Que se passe-t-il si la copropriété n'a pas de PPPT ?</h3>
+  <p>
+    L'obligation pèse sur le syndicat des copropriétaires. En l'absence de plan, il est plus difficile
+    d'anticiper les travaux et d'informer correctement les acquéreurs lors des ventes de lots ; en cas
+    de risque pour la sécurité, l'administration peut aussi demander le PPPT.
+  </p>
+  <h3>Le PPPT oblige-t-il à faire les travaux ?</h3>
+  <p>
+    Le PPPT est un outil de programmation : c'est l'assemblée générale qui décide des travaux à
+    engager et de leur calendrier, en s'appuyant sur les priorités qu'il établit.
+  </p>
+  <h3>Combien de temps faut-il pour réaliser un PPPT ?</h3>
+  <p>
+    Comptez généralement quelques semaines entre la commande et la remise du rapport, selon la taille
+    de l'immeuble et l'accès aux documents de la copropriété.
+  </p>
+
+  <p class="mt-10 text-sm text-gray-400">
+    Textes de référence : loi n° 2021-1104 du 22 août 2021 (Climat et Résilience) ; article 14-2 de
+    la loi n° 65-557 du 10 juillet 1965. Cette page présente le cadre général et ne remplace pas un
+    conseil adapté à votre copropriété.
+  </p>
+</Guide>

@@ -16,19 +16,27 @@ const year = 2026;
     <img src="/images/logo.jpg" alt="ArchidiA" class="h-10 w-auto grayscale transition hover:grayscale-0 dark:hidden" width="128" height="40" />
     <img src="/images/logo-sombre.png" alt="ArchidiA" class="hidden h-10 w-auto grayscale transition hover:grayscale-0 dark:block" width="128" height="40" />
 
-    <nav class="flex flex-wrap justify-center gap-6 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-400">
+    <nav class="flex flex-wrap justify-center gap-x-6 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-400">
       {links.map((l) => (
-        <a href={l.href} class="transition hover:text-anthracite">{l.label}</a>
+        <a href={l.href} class="inline-flex min-h-11 items-center transition hover:text-anthracite">{l.label}</a>
       ))}
     </nav>
 
-    <div class="text-center text-[11px] text-gray-500 md:text-right">
-      <a href="mailto:claudia.aubert@archidia.fr" class="transition hover:text-accent">claudia.aubert@archidia.fr</a>
-    </div>
+    <!-- Coordonnées (nom, adresse, téléphone identiques partout) -->
+    <address class="flex flex-col items-center text-[12px] not-italic leading-relaxed text-gray-500 md:items-end md:text-right">
+      <span>8, av. des Fauvettes, 78380 Bougival</span>
+      <a href="tel:+33614600663" class="inline-flex min-h-11 items-center font-semibold text-anthracite transition hover:text-accent">06 14 60 06 63</a>
+      <a href="mailto:claudia.aubert@archidia.fr" class="inline-flex min-h-11 items-center transition hover:text-accent">claudia.aubert@archidia.fr</a>
+    </address>
   </div>
 
-  <div class="mt-6 text-center text-[9px] font-medium uppercase tracking-[0.2em] text-gray-300">
-    © {year} <span class="text-accent">A</span>rchidi<span class="text-accent">A</span> — Architecture &amp; AMO ·
-    <a href="/mentions-legales/" class="hover:text-gray-500">Mentions légales</a>
+  <div class="mt-6 flex flex-wrap items-center justify-center gap-x-2 text-[10px] font-medium uppercase tracking-[0.2em] text-gray-400">
+    <span>© {year} <span class="text-accent">A</span>rchidi<span class="text-accent">A</span> — Architecte à Bougival (78) · Ordre des architectes d'Île-de-France</span>
+    ·
+    <a href="https://www.linkedin.com/in/claudia-aubert-paredes-90141a16" target="_blank" rel="noopener" class="inline-flex min-h-11 items-center hover:text-gray-600">LinkedIn</a>
+    ·
+    <a href="https://www.instagram.com/archidia_architecture" target="_blank" rel="noopener" class="inline-flex min-h-11 items-center hover:text-gray-600">Instagram</a>
+    ·
+    <a href="/mentions-legales/" class="inline-flex min-h-11 items-center hover:text-gray-600">Mentions légales</a>
   </div>
 </footer>
