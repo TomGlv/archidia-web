@@ -103,6 +103,7 @@ const AJUSTEMENTS: Record<string, Partial<Pick<ProjetListItem, "mission" | "ordr
   "hotel-voco": { mission: "AMO" },
   "hotel-bellune": { mission: "AMO" },
   "hotel-melia": { mission: "MOE" },
+  "hotel-novotel": { mission: "MOE" },
 };
 
 // Photos de couverture interverties entre deux projets (paires de slugs).
